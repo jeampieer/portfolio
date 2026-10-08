@@ -87,7 +87,9 @@ El timeline actual es un proceso en tres pasos, sin fechas. Se puede sustituir s
 
 Los seis grupos del arsenal existen en `skillGroups`: frontend, backend, base de datos, despliegue/cloud, IA y herramientas. Los grupos vacíos no se renderizan. El arsenal describe las tecnologías del perfil; los `tags` de cada proyecto conservan su stack particular. Añadir solo las tecnologías que el usuario quiera declarar. No hay barras ni porcentajes de dominio.
 
-El stack confirmado del perfil incluye React, JavaScript, TypeScript y Next.js en frontend; Python, Django REST Framework y Node.js en backend; PostgreSQL en base de datos; y AWS con EC2, S3, IAM, Route 53 y VPC para despliegue. AWS se presenta explícitamente como conocimiento básico suficiente para desplegar aplicaciones. Esto no atribuye experiencia avanzada, empresas, cargos ni años de trabajo. IA sigue sin tecnologías confirmadas.
+El stack confirmado del perfil incluye React, JavaScript, TypeScript y Next.js en frontend; Python, Django REST Framework y Node.js en backend; PostgreSQL, SQL Server y MySQL en base de datos; y AWS con EC2, S3, IAM, Route 53 y VPC para despliegue. AWS se presenta explícitamente como conocimiento básico suficiente para desplegar aplicaciones. Esto no atribuye experiencia avanzada, empresas, cargos ni años de trabajo. IA sigue sin tecnologías confirmadas.
+
+El grupo «Herramientas y prácticas» presenta Git, Docker y Testing por elección del propietario. Testing describe una práctica sin atribuir un framework ni un nivel de dominio. ESLint, Prettier y Playwright siguen siendo herramientas de verificación del portafolio, pero no se declaran como parte del stack personal.
 
 ## Antes de publicar
 

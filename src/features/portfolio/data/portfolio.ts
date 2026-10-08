@@ -220,7 +220,7 @@ export const skillGroups: SkillGroup[] = [
     {
         id: "database",
         label: { es: "Base de datos", en: "Database" },
-        items: ["PostgreSQL"],
+        items: ["PostgreSQL", "SQL Server", "MySQL"],
     },
     {
         id: "cloud",
@@ -234,7 +234,7 @@ export const skillGroups: SkillGroup[] = [
     },
     {
         id: "tools",
-        label: { es: "Herramientas y calidad", en: "Tools & quality" },
-        items: ["Git", "ESLint", "Prettier", "Playwright"],
+        label: { es: "Herramientas y prácticas", en: "Tools & practices" },
+        items: ["Git", "Docker", "Testing"],
     },
 ];
