@@ -96,6 +96,7 @@ const es = {
         problem: "El punto de partida",
         participation: "Mi participación",
         contribution: "Mi aporte",
+        index: "En este caso",
         architecture: "La arquitectura",
         decisions: "Decisiones de ingeniería",
         impact: "El resultado",
@@ -107,6 +108,17 @@ const es = {
         repository: "Ver código",
         system: "Sistema visual",
         preview: "Vista conceptual del sistema visual de Orbital Signal",
+    },
+    viewer: {
+        open: "Ampliar captura",
+        close: "Cerrar visor",
+        previous: "Captura anterior",
+        next: "Captura siguiente",
+        fit: "Ajustar a pantalla",
+        originalSize: "Tamaño original",
+        original: "Abrir archivo original",
+        position: "de",
+        scrollHint: "Desplázate por la imagen para leerla a tamaño original.",
     },
     experiences: {
         eyebrow: "05 / EXPERIENCES & COMMUNITY",
@@ -171,6 +183,9 @@ const es = {
         title: "Esta señal no llegó.",
         description: "La página que buscas no está en esta órbita.",
         back: "Volver al inicio",
+        projects: "Explorar proyectos",
+        spanish: "Ir al inicio en Español",
+        english: "Go to home in English",
     },
 };
 
@@ -271,6 +286,7 @@ const en: Dictionary = {
         problem: "The starting point",
         participation: "My contribution",
         contribution: "My contribution",
+        index: "In this case",
         architecture: "The architecture",
         decisions: "Engineering decisions",
         impact: "The outcome",
@@ -282,6 +298,17 @@ const en: Dictionary = {
         repository: "View code",
         system: "Visual system",
         preview: "Conceptual preview of the Orbital Signal visual system",
+    },
+    viewer: {
+        open: "Enlarge screenshot",
+        close: "Close viewer",
+        previous: "Previous screenshot",
+        next: "Next screenshot",
+        fit: "Fit to screen",
+        originalSize: "Original size",
+        original: "Open original file",
+        position: "of",
+        scrollHint: "Scroll within the image to read it at its original size.",
     },
     experiences: {
         eyebrow: "05 / EXPERIENCES & COMMUNITY",
@@ -345,6 +372,9 @@ const en: Dictionary = {
         title: "This signal didn't arrive.",
         description: "The page you are looking for is outside this orbit.",
         back: "Back to home",
+        projects: "Explore projects",
+        spanish: "Ir al inicio en Español",
+        english: "Go to home in English",
     },
 };
 

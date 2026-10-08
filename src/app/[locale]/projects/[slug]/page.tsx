@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
+import { NotFoundContent } from "@/components/ui/NotFoundContent";
+import { getDictionary } from "@/lib/i18n";
 import { ProjectView } from "@/features/portfolio/components/views/ProjectView";
 import { projects } from "@/features/portfolio/data/portfolio";
 import { isLocale } from "@/types/i18n";
@@ -16,7 +17,8 @@ export async function generateMetadata({
 }): Promise<Metadata> {
     const { locale, slug } = await params;
     const project = projects.find((item) => item.slug === slug);
-    if (!isLocale(locale) || !project) notFound();
+    if (!isLocale(locale) || !project)
+        return { title: "404 · JEAMPIEER.TECH", robots: { index: false, follow: false } };
     return {
         ...pageMetadata(
             locale,
@@ -35,6 +37,15 @@ export default async function ProjectPage({
 }) {
     const { locale, slug } = await params;
     const project = projects.find((item) => item.slug === slug);
-    if (!isLocale(locale) || !project) notFound();
+    if (!isLocale(locale) || !project) {
+        const recoveryLocale = isLocale(locale) ? locale : "es";
+        return (
+            <NotFoundContent
+                locale={recoveryLocale}
+                labels={getDictionary(recoveryLocale).notFound}
+                global={!isLocale(locale)}
+            />
+        );
+    }
     return <ProjectView project={project} locale={locale} />;
 }

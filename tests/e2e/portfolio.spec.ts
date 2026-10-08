@@ -33,7 +33,7 @@ test("redirects to Spanish, renders the eight sections and has no runtime errors
                 await image.evaluate((element: HTMLImageElement) => element.naturalWidth)
             ).toBeGreaterThan(0);
             await expect(image).toHaveCSS("object-fit", "contain");
-            await expect(card.locator("figcaption a")).toHaveAttribute(
+            await expect(card.locator("figcaption .original-image-link")).toHaveAttribute(
                 "href",
                 /^\/images\/experiences\//
             );
@@ -180,7 +180,7 @@ test("full stack case has a working demo gallery, original images and bilingual 
         });
         expect(ratio).toBeCloseTo(16 / 9, 2);
     }
-    const originals = page.locator(".project-gallery figcaption a");
+    const originals = page.locator(".project-gallery figcaption .original-image-link");
     await expect(originals).toHaveCount(8);
     for (const link of await originals.all()) {
         const href = await link.getAttribute("href");
@@ -273,7 +273,7 @@ test("backend case has verified screenshots, locale navigation and deployment at
         });
         expect(ratio).toBeCloseTo(16 / 9, 2);
     }
-    const originals = page.locator(".project-gallery figcaption a");
+    const originals = page.locator(".project-gallery figcaption .original-image-link");
     await expect(originals).toHaveCount(4);
     for (const link of await originals.all()) {
         await expect(link).toHaveAttribute("target", "_blank");
@@ -380,6 +380,10 @@ test("project detail passes automated accessibility checks", async ({ page }) =>
 test("missing pages return 404 and local preview stays unindexed", async ({ request, page }) => {
     for (const path of [
         "/fr",
+        "/fr-CA",
+        "/fr.invalid",
+        "/es/projects/missing.invalid",
+        "/fr/projects/servicio-mfa",
         "/es/projects/missing",
         "/en/projects/missing",
         "/es/missing/path",
@@ -387,6 +391,10 @@ test("missing pages return 404 and local preview stays unindexed", async ({ requ
         const response = await request.get(path);
         expect(response.status()).toBe(404);
     }
+    const cv = await request.get("/documents/Jeampieer-Limahuaya-CV.pdf");
+    expect(cv.status()).toBe(200);
+    expect(cv.headers()["content-type"]).toContain("application/pdf");
+    expect((await request.get("/icon.svg")).status()).toBe(200);
     await page.goto("/fr");
     await expect(page.getByRole("heading", { level: 1 })).toHaveText("Esta señal no llegó.");
     await page.goto("/en/projects/missing");
@@ -429,7 +437,7 @@ test("content and project routes remain readable without JavaScript", async ({ b
         .click();
     await expect(page).toHaveURL(/\/es\/projects\/servicio-mfa$/);
     await expect(page.getByRole("heading", { name: "Mi participación" })).toBeVisible();
-    await expect(page.locator(".project-gallery figcaption a")).toHaveCount(4);
+    await expect(page.locator(".project-gallery figcaption .original-image-link")).toHaveCount(4);
     await expect(page.locator(".project-gallery-notice")).toContainText("datos sintéticos");
     await page.goto("http://127.0.0.1:3100/es");
     await page
@@ -439,7 +447,7 @@ test("content and project routes remain readable without JavaScript", async ({ b
         .click();
     await expect(page).toHaveURL(/\/es\/projects\/plataforma-encuestas-gm$/);
     await expect(page.getByRole("heading", { name: "Funcionalidades principales" })).toBeVisible();
-    await expect(page.locator(".project-gallery figcaption a")).toHaveCount(8);
+    await expect(page.locator(".project-gallery figcaption .original-image-link")).toHaveCount(8);
     await context.close();
 });
 
@@ -542,4 +550,151 @@ test("lab pauses outside the viewport and reduced motion hydrates without errors
     await expect(page).toHaveURL(/\/en#labs$/);
     await expect(page.getByRole("button", { name: "Pause animation" })).toBeEnabled();
     expect(errors).toEqual([]);
+});
+
+test("case index preserves its anchor across languages and keeps verified contribution before cover", async ({
+    page,
+}) => {
+    await page.goto("/es/projects/servicio-mfa");
+    const contribution = page.locator(".case-contribution");
+    await expect(contribution).toContainText("Despliegue inicial a cargo de otro integrante");
+    expect(
+        await contribution.evaluate(
+            (el) =>
+                !!(
+                    el.compareDocumentPosition(document.querySelector(".project-cover")!) &
+                    Node.DOCUMENT_POSITION_FOLLOWING
+                )
+        )
+    ).toBe(true);
+    await page
+        .getByRole("navigation", { name: "En este caso" })
+        .getByRole("link", { name: "Mi participación" })
+        .click();
+    await expect(page).toHaveURL(/#case-participation$/);
+    await page.getByRole("link", { name: "Read in English" }).click();
+    await expect(page).toHaveURL(/\/en\/projects\/servicio-mfa#case-participation$/);
+    await expect(page.locator("#case-participation h2")).toHaveText("My contribution");
+});
+
+test("project viewer traps focus, navigates, fits, scrolls originals and restores focus and page scroll", async ({
+    page,
+}, testInfo) => {
+    await page.emulateMedia({ reducedMotion: "reduce" });
+    await page.goto("/es/projects/plataforma-encuestas-gm#case-gallery");
+    const trigger = page.locator(".viewer-trigger").first();
+    await trigger.scrollIntoViewIfNeeded();
+    const scroll = await page.evaluate(() => window.scrollY);
+    await trigger.click();
+    const dialog = page.getByRole("dialog");
+    await expect(dialog).toBeVisible();
+    await expect(dialog.getByRole("button", { name: "Cerrar visor" })).toBeFocused();
+    await expect(dialog.getByRole("button", { name: "Captura anterior" })).toBeDisabled();
+    await expect(dialog).toContainText("no representan resultados reales");
+    await expect(page.locator("body")).toHaveCSS("overflow", "hidden");
+    await page.keyboard.press("Shift+Tab");
+    expect(await page.evaluate(() => document.activeElement?.closest("dialog") !== null)).toBe(
+        true
+    );
+    await page.keyboard.press("ArrowRight");
+    await expect(dialog.getByRole("status")).toHaveText("2 de 8");
+    await dialog.getByRole("button", { name: "Tamaño original" }).click();
+    await expect(dialog.locator("img")).toHaveCSS("width", "1920px");
+    const imageRegion = dialog.getByRole("region");
+    await imageRegion.focus();
+    await page.keyboard.press("ArrowRight");
+    await expect.poll(() => imageRegion.evaluate((el) => el.scrollLeft)).toBeGreaterThan(0);
+    await dialog.getByRole("button", { name: "Ajustar a pantalla" }).click();
+    await expect(dialog.locator(".viewer-viewport")).not.toHaveClass(/viewer-original-size/);
+    const fit = await imageRegion.evaluate((el) => ({
+        width: el.clientWidth,
+        scroll: el.scrollWidth,
+        height: el.clientHeight,
+        scrollHeight: el.scrollHeight,
+    }));
+    expect(fit.scroll).toBeLessThanOrEqual(fit.width);
+    expect(fit.scrollHeight).toBeLessThanOrEqual(fit.height);
+    const axe = await new AxeBuilder({ page })
+        .withTags(["wcag2a", "wcag2aa", "wcag21aa"])
+        .analyze();
+    expect(axe.violations).toEqual([]);
+    await page.screenshot({
+        path: testInfo.outputPath("viewer-desktop.png"),
+        animations: "disabled",
+    });
+    await page.keyboard.press("Escape");
+    await expect(dialog).toBeHidden();
+    await expect(trigger).toBeFocused();
+    expect(await page.evaluate(() => window.scrollY)).toBeCloseTo(scroll, 0);
+    await expect(page.locator("body")).not.toHaveCSS("overflow", "hidden");
+});
+
+test("touch viewer shares community captures and preserves publishers", async ({
+    browser,
+}, testInfo) => {
+    const context = await browser.newContext({
+        viewport: { width: 390, height: 844 },
+        hasTouch: true,
+        isMobile: true,
+        reducedMotion: "reduce",
+    });
+    const page = await context.newPage();
+    await page.goto("http://127.0.0.1:3100/en#experiences");
+    const trigger = page.locator(".experience-capture").first();
+    await trigger.tap();
+    const dialog = page.getByRole("dialog");
+    await expect(dialog).toBeVisible();
+    await expect(dialog).toContainText("Published on LinkedIn by Egresados UTP");
+    await dialog.getByRole("button", { name: "Next screenshot" }).tap();
+    await expect(dialog).toContainText("IGH · Inveritas Global Holdings");
+    await expect(dialog.getByRole("status")).toHaveText("2 of 2");
+    await dialog.getByRole("button", { name: "Original size" }).tap();
+    await expect(dialog.locator("img")).toHaveCSS("width", "2052px");
+    await page.screenshot({
+        path: testInfo.outputPath("viewer-mobile-original.png"),
+        animations: "disabled",
+    });
+    await dialog.getByRole("button", { name: "Close viewer" }).tap();
+    await expect(dialog).toBeHidden();
+    await expect(trigger).toBeFocused();
+    await context.close();
+});
+
+test("404 recovery uses brand, loaded fonts, saved theme and separate localized actions", async ({
+    page,
+}) => {
+    await page.goto("/es");
+    await page.getByRole("button", { name: "Activar tema claro" }).click();
+    await page.goto("/fr");
+    await expect(page.locator("html")).toHaveAttribute("data-theme", "light");
+    await expect(page.locator(".not-found .brand")).toBeVisible();
+    await page.evaluate(() => document.fonts.ready);
+    expect(await page.evaluate(() => document.fonts.check('16px "Space Grotesk Variable"'))).toBe(
+        true
+    );
+    await page.getByRole("link", { name: "Go to home in English" }).click();
+    await expect(page).toHaveURL(/\/en$/);
+    await page.goto("/en/projects/missing");
+    await page.locator(".not-found").getByRole("link", { name: "Explore projects" }).click();
+    await expect(page).toHaveURL(/\/en#projects$/);
+});
+
+test("viewer links and both 404 variants remain usable without JavaScript", async ({ browser }) => {
+    const context = await browser.newContext({ javaScriptEnabled: false });
+    const page = await context.newPage();
+    await page.goto("http://127.0.0.1:3100/es/projects/servicio-mfa#case-gallery");
+    const link = page.locator(".viewer-trigger").first();
+    const href = await link.getAttribute("href");
+    const popupPromise = page.waitForEvent("popup");
+    await link.press("Enter");
+    const original = await popupPromise;
+    await expect(original).toHaveURL(`http://127.0.0.1:3100${href}`);
+    await original.close();
+    for (const path of ["/fr", "/en/projects/missing", "/es/missing/path"]) {
+        const response = await page.goto(`http://127.0.0.1:3100${path}`);
+        expect(response?.status()).toBe(404);
+        await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
+        await expect(page.locator(".not-found-actions a")).toHaveCount(2);
+    }
+    await context.close();
 });

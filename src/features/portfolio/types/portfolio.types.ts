@@ -24,6 +24,8 @@ export interface ProfessionalExperience {
     title: Localized<string>;
     description: Localized<string>;
     imageFile: string;
+    imageWidth: number;
+    imageHeight: number;
     imageAlt: Localized<string>;
 }
 

@@ -19,7 +19,7 @@ export function OrbitalScene({ label, caption }: { label: string; caption: strin
                             alt=""
                             fill
                             sizes="(max-width: 640px) 240px, 320px"
-                            priority
+                            loading="eager"
                             className="portrait"
                         />
                     ) : (

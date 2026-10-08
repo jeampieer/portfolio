@@ -16,6 +16,8 @@ export const experiences: ProfessionalExperience[] = [
             en: "The Egresados UTP page shared this photograph alongside a message congratulating students and graduates. A memory from my professional journey, published by my university community.",
         },
         imageFile: "utp-linkedin.png",
+        imageWidth: 928,
+        imageHeight: 1292,
         imageAlt: {
             es: "Captura completa de LinkedIn: publicación de Egresados UTP con una felicitación y una fotografía grupal en TCS.",
             en: "Full LinkedIn screenshot: an Egresados UTP post with a congratulatory message and a group photograph at TCS.",
@@ -31,6 +33,8 @@ export const experiences: ProfessionalExperience[] = [
             en: "IGH, the company where I work, published this team photograph at its stand during the 28th International Mining Safety Seminar. A glimpse of the professional environment I am part of.",
         },
         imageFile: "igh-linkedin.png",
+        imageWidth: 2052,
+        imageHeight: 1148,
         imageAlt: {
             es: "Captura completa de LinkedIn: publicación de IGH sobre el XXVIII Seminario Internacional de Seguridad Minera, con una fotografía de equipo en su stand.",
             en: "Full LinkedIn screenshot: an IGH post about the 28th International Mining Safety Seminar, with a team photograph at its stand.",

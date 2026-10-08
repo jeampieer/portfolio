@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
 import "@fontsource-variable/geist";
 import "@fontsource-variable/space-grotesk";
 import "@fontsource/ibm-plex-mono/latin-400.css";
 import "@/app/globals.css";
+import { RecoveryTheme } from "@/providers/RecoveryTheme";
 import { AppProvider } from "@/providers/AppProvider";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
@@ -22,7 +22,8 @@ export async function generateMetadata({
     params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
     const { locale } = await params;
-    if (!isLocale(locale)) notFound();
+    if (!isLocale(locale))
+        return { title: "404 · JEAMPIEER.TECH", robots: { index: false, follow: false } };
     const { meta } = getDictionary(locale);
     return {
         title: { default: meta.title, template: "%s · JEAMPIEER.TECH" },
@@ -41,7 +42,17 @@ export default async function LocaleLayout({
     params: Promise<{ locale: string }>;
 }) {
     const { locale } = await params;
-    if (!isLocale(locale)) notFound();
+    // Unknown locales get a recovery shell; proxy supplies HTTP 404 before rendering.
+    if (!isLocale(locale)) {
+        return (
+            <html lang="es" suppressHydrationWarning>
+                <body>
+                    <RecoveryTheme />
+                    <main>{children}</main>
+                </body>
+            </html>
+        );
+    }
     const dictionary = getDictionary(locale);
     return (
         <html lang={locale} data-scroll-behavior="smooth" suppressHydrationWarning>

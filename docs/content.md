@@ -76,9 +76,9 @@ La carpeta `public/images/experiences/` contiene las dos capturas completas de L
 | `utp-linkedin.png` | Egresados UTP                   |
 | `igh-linkedin.png` | IGH · Inveritas Global Holdings |
 
-Guardar PNG reales; renombrar la extensión de un JPEG no convierte el formato. Si se usan otros nombres o formatos, actualizar `imageFile` en los datos. El sitio comprueba la existencia del archivo al renderizar en el servidor: mientras falte, muestra un estado de captura pendiente sin solicitar imágenes inexistentes. En desarrollo, añadir o reemplazar los archivos y refrescar la página; en producción, ejecutar un nuevo build después de actualizarlos.
+Guardar PNG reales; renombrar la extensión de un JPEG no convierte el formato. Si se usan otros nombres o formatos, actualizar `imageFile`, `imageWidth` e `imageHeight` en los datos con dimensiones reales del nuevo archivo. El sitio comprueba la existencia del archivo al renderizar en el servidor: mientras falte, muestra un estado de captura pendiente sin solicitar imágenes inexistentes. En desarrollo, añadir o reemplazar los archivos y refrescar la página; en producción, ejecutar un nuevo build después de actualizarlos.
 
-Cada captura se conserva completa, con `object-fit: contain`, sin filtros ni recortes, dentro de un marco 4:3. Se sirve sin recomprimir para conservar el texto de LinkedIn y dispone de acceso al archivo original en una pestaña nueva. El marco mantiene una altura estable aunque las capturas tengan proporciones distintas. En móvil, abrir el original permite ampliar para leer. Los autores también aparecen como texto fuera de las capturas. No se incluyen URLs de publicaciones hasta disponer de enlaces confirmados.
+Cada captura se conserva completa, con `object-fit: contain`, sin filtros ni recortes, dentro de un marco 4:3. Se sirve sin recomprimir para conservar el texto de LinkedIn y dispone de acceso al archivo original en una pestaña nueva. El marco mantiene una altura estable aunque las capturas tengan proporciones distintas. En móvil, el visor compartido permite leer a tamaño original mediante scroll, con acceso adicional al archivo. Los autores también aparecen como texto fuera de las capturas. No se incluyen URLs de publicaciones hasta disponer de enlaces confirmados.
 
 Los rótulos de sección, estado pendiente y enlaces se editan en `dictionary.experiences` en ambos idiomas. La composición es de servidor y reutiliza `Reveal`; no añade carrusel, modal ni estado cliente.
 
@@ -107,3 +107,7 @@ Revisar los textos propuestos, completar los datos públicos, verificar todas la
 ## Navegación y orden
 
 Los destinos se editan en `data/navigation.ts` con etiquetas `dictionary.nav` ES/EN. Educación y Contacto están en la navegación principal; Experiencias y Labs en Más. El menú compacto, activo por debajo de 1280px, contiene todos los destinos y el CV. Hero y Contacto también ofrecen el archivo configurado. El archivo muestra GM Social antes de MFA, sin filtros ni bloque de proyectos futuros; Orbital Signal conserva su visibilidad configurada y las rutas directas.
+
+## Aporte, índice y visor
+
+`contributionSummary` resume participación ya publicada; no reemplaza el detalle ni sus atribuciones. El índice del caso se deriva únicamente de los campos existentes y conserva identificadores entre ES/EN. Las etiquetas del visor viven en `dictionary.viewer`; títulos, captions, alternativas y avisos siguen en los datos autorizados. Cambiar un original requiere actualizar sus dimensiones verificadas, además del texto localizado. No incorporar métricas o datos reales a las capturas demo.

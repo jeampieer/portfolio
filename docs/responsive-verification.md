@@ -1,5 +1,7 @@
 # Revisión responsive — JEAMPIEER.TECH
 
+Registro histórico; la revisión UX/UI vigente está al final de este documento.
+
 Fecha: **7 de octubre de 2026**, America/Lima. Revisión paralela a la incorporación de la ficha MFA; este registro se mantiene separado de `verification.md` para evitar ediciones simultáneas.
 
 ## Hallazgos y ajustes
@@ -30,3 +32,9 @@ La [matriz final](previews/responsive/results.json) registró **60/60 combinacio
 ## Límites
 
 La revisión usa Chromium con tamaños simulados; no sustituye Safari/Firefox ni dispositivos físicos. Las comprobaciones de axe no certifican conformidad WCAG completa. El aviso de hidratación de `OrbitalLab` bajo movimiento reducido, ya documentado en `verification.md`, queda fuera de este cambio; el recorrido E2E comprueba el estado reducido final. No se valida envío de correo ni servicios privados: el portafolio no implementa esos servicios.
+
+## Actualización UX/UI — 8 de octubre de 2026
+
+La matriz actual incluye inicio, los **tres** proyectos y 404 localizada/global, ES/EN y oscuro/claro a **360, 390, 768, 1024, 1280 y 1440px**: **144/144 combinaciones** sin overflow horizontal. Se comprueban títulos de casos ≤56px (≤40px móvil), menú compacto <1280px, navegación desktop desde 1280px y CV accesible en el menú. Se revisaron capturas completas a 390/1440px y el visor a 390px con touch simulado y a 1440px con teclado.
+
+La nueva navegación, ocho secciones principales y proceso integrado sustituyen la organización y los filtros del registro histórico. El aviso de hidratación del laboratorio bajo movimiento reducido queda corregido y tiene cobertura de consola. Los límites Chromium, touch simulado y axe parcial siguen vigentes. Evidencia y ejecución final: [verification.md](verification.md); capturas en [previews/ux-ui](previews/ux-ui/).

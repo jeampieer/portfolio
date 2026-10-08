@@ -1,2 +1,2 @@
-// Handles notFound() before a localized root layout can render, including invalid locales.
+// Root fallback for notFound() outside a localized recovery shell.
 export { default } from "@/app/global-not-found";
