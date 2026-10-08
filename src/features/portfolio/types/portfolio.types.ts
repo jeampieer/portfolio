@@ -1,6 +1,16 @@
 import type { Localized } from "@/types/i18n";
 
 export type ProjectCategory = "frontend" | "backend" | "fullstack";
+export interface ProfessionalExperience {
+    id: string;
+    publisher: string;
+    category: Localized<string>;
+    title: Localized<string>;
+    description: Localized<string>;
+    imageFile: string;
+    imageAlt: Localized<string>;
+}
+
 export interface ProjectImage {
     src: string;
     width: number;

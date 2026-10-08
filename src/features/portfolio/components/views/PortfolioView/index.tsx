@@ -2,6 +2,7 @@ import { Hero } from "@/features/portfolio/components/Hero";
 import { IdentitySignal } from "@/features/portfolio/components/IdentitySignal";
 import { OrbitalTimeline } from "@/features/portfolio/components/OrbitalTimeline";
 import { MissionArchive } from "@/features/portfolio/components/MissionArchive";
+import { ProfessionalExperiences } from "@/features/portfolio/components/ProfessionalExperiences";
 import { EngineeringArsenal } from "@/features/portfolio/components/EngineeringArsenal";
 import { OrbitalLab } from "@/features/portfolio/components/OrbitalLab";
 import { Contact } from "@/features/portfolio/components/Contact";
@@ -21,6 +22,7 @@ export function PortfolioView({ locale }: { locale: Locale }) {
                 labels={dictionary.projects}
                 locale={locale}
             />
+            <ProfessionalExperiences labels={dictionary.experiences} locale={locale} />
             <EngineeringArsenal labels={dictionary.stack} groups={skillGroups} locale={locale} />
             <OrbitalLab labels={dictionary.labs} />
             <Contact labels={dictionary.contact} />

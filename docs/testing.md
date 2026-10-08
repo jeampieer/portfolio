@@ -15,7 +15,7 @@ Los E2E sirven el build de producción en `127.0.0.1:3100`, con dos workers y Ch
 
 ## Cobertura
 
-- Redirección inicial y siete secciones.
+- Redirección inicial y ocho secciones, incluidas experiencias y comunidad, autores ES/EN y estado pendiente sin imágenes rotas cuando la carpeta está vacía.
 - Rutas y contenido ES/EN, también en detalles de proyectos.
 - Cambio de tema y persistencia entre recargas e idiomas.
 - Filtros de proyectos y estado vacío.

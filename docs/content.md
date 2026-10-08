@@ -64,6 +64,23 @@ La galería usa ocho PNG reales de `public/images/projects/plataforma-encuestas-
 
 La aceptación integral con Flutter, instrumentos oficiales e infraestructura productiva permanece pendiente. Google Maps no se validó en el entorno local y no se incluye una captura de mapa funcional. No atribuir resultados comerciales a los valores demo ni ampliar el stack personal a partir del stack de este proyecto. La autorización se limita a este caso y material demo; otros proyectos requieren su propia confirmación. El portafolio no depende de servicios, código o autenticación de GM Social.
 
+## Experiencias y comunidad
+
+La sección aparece después de Proyectos y antes de Stack. Los dos textos ES/EN y sus autores viven en `src/features/portfolio/data/experiences.ts`. Presentan las publicaciones de Egresados UTP y de IGH, empresa donde trabaja el propietario según su confirmación. No se deducen fechas, cargos ni el logro concreto de la felicitación universitaria.
+
+La carpeta `public/images/experiences/` contiene las dos capturas completas de LinkedIn añadidas por el propietario. Se usan estos nombres exactos:
+
+| Archivo            | Publicación                     |
+| ------------------ | ------------------------------- |
+| `utp-linkedin.png` | Egresados UTP                   |
+| `igh-linkedin.png` | IGH · Inveritas Global Holdings |
+
+Guardar PNG reales; renombrar la extensión de un JPEG no convierte el formato. Si se usan otros nombres o formatos, actualizar `imageFile` en los datos. El sitio comprueba la existencia del archivo al renderizar en el servidor: mientras falte, muestra un estado de captura pendiente sin solicitar imágenes inexistentes. En desarrollo, añadir o reemplazar los archivos y refrescar la página; en producción, ejecutar un nuevo build después de actualizarlos.
+
+Cada captura se conserva completa, con `object-fit: contain`, sin filtros ni recortes, dentro de un marco 4:3. Se sirve sin recomprimir para conservar el texto de LinkedIn y dispone de acceso al archivo original en una pestaña nueva. El marco mantiene una altura estable aunque las capturas tengan proporciones distintas. En móvil, abrir el original permite ampliar para leer. Los autores también aparecen como texto fuera de las capturas. No se incluyen URLs de publicaciones hasta disponer de enlaces confirmados.
+
+Los rótulos de sección, estado pendiente y enlaces se editan en `dictionary.experiences` en ambos idiomas. La composición es de servidor y reutiliza `Reveal`; no añade carrusel, modal ni estado cliente.
+
 ## Trayectoria y stack
 
 El timeline actual es un proceso en tres pasos, sin fechas. Se puede sustituir su contenido en `dictionary.timeline.steps` por hitos laborales reales cuando se confirmen, y cambiar el título/descripción para que diga trayectoria. No añadir años de experiencia por deducción.

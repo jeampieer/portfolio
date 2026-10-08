@@ -1,7 +1,7 @@
 import { expect, test } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
 
-test("redirects to Spanish, renders the seven sections and has no runtime errors", async ({
+test("redirects to Spanish, renders the eight sections and has no runtime errors", async ({
     page,
 }, testInfo) => {
     const errors: string[] = [];
@@ -12,12 +12,42 @@ test("redirects to Spanish, renders the seven sections and has no runtime errors
     await expect(page.getByRole("heading", { level: 1 })).toHaveText(
         "Ideas que tomanforma en código."
     );
-    await expect(page.locator("main > section")).toHaveCount(7);
+    await expect(page.locator("main > section")).toHaveCount(8);
+    const experiences = page.locator("#experiences");
+    await expect(experiences.locator("article")).toHaveCount(2);
+    await expect(experiences).toContainText("Egresados UTP");
+    await expect(experiences).toContainText("IGH · Inveritas Global Holdings");
+    await expect(experiences.getByRole("heading", { level: 2 })).toHaveText(
+        "Experiencias que suman."
+    );
+    // An empty images directory must render useful content without broken image requests.
+    for (const card of await experiences.locator("article").all()) {
+        const image = card.locator("img");
+        if ((await image.count()) === 0) {
+            await expect(card.getByText("Captura pendiente", { exact: true })).toBeAttached();
+            await expect(card.locator("a")).toHaveCount(0);
+        } else {
+            await image.scrollIntoViewIfNeeded();
+            await expect(image).toHaveJSProperty("complete", true);
+            expect(
+                await image.evaluate((element: HTMLImageElement) => element.naturalWidth)
+            ).toBeGreaterThan(0);
+            await expect(image).toHaveCSS("object-fit", "contain");
+            await expect(card.locator("figcaption a")).toHaveAttribute(
+                "href",
+                /^\/images\/experiences\//
+            );
+        }
+    }
     await page.evaluate(() => document.fonts.ready);
     await page.screenshot({ path: testInfo.outputPath("desktop.png"), animations: "disabled" });
     await page.getByRole("link", { name: "Read in English" }).click();
     await expect(page).toHaveURL(/\/en$/);
     await expect(page.locator("html")).toHaveAttribute("lang", "en");
+    await expect(experiences.getByRole("heading", { level: 2 })).toHaveText(
+        "Experiences that shape my journey."
+    );
+    await expect(experiences).toContainText("Published on LinkedIn by");
     await expect(page.getByRole("heading", { level: 1 })).toContainText("to life in code.");
     expect(errors).toEqual([]);
 });
@@ -318,6 +348,9 @@ test("content and project routes remain readable without JavaScript", async ({ b
     const page = await context.newPage();
     await page.goto("http://127.0.0.1:3100/es");
     await expect(page.getByRole("heading", { name: "Más allá del código." })).toBeVisible();
+    await expect(page.locator("#experiences article")).toHaveCount(2);
+    await expect(page.locator("#experiences")).toContainText("Egresados UTP");
+    await expect(page.locator("#experiences")).toContainText("IGH · Inveritas Global Holdings");
     await expect(page.locator("#projects article")).toHaveCount(2);
     await expect(page.getByRole("heading", { name: "Orbital Signal", exact: true })).toHaveCount(0);
     await page.goto("http://127.0.0.1:3100/es/projects/orbital-signal");

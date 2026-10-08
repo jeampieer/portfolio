@@ -1417,6 +1417,114 @@ input[type="range"] {
     color: var(--text-secondary);
     line-height: 1.85;
 }
+/* Professional experiences: preserve the complete LinkedIn capture. */
+.experience-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+}
+.experience-grid > div {
+    min-width: 0;
+}
+.experience-card {
+    height: 100%;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--card-bg);
+}
+.experience-publisher {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--border);
+}
+.experience-publisher > svg {
+    color: var(--accent);
+}
+.experience-publisher span {
+    display: block;
+    color: var(--text-secondary);
+    font-size: 12px;
+}
+.experience-publisher p {
+    font-size: 14px;
+    font-weight: 500;
+}
+.experience-card figure {
+    margin: 0;
+}
+.experience-capture,
+.experience-placeholder {
+    position: relative;
+    display: flex;
+    aspect-ratio: 4 / 3;
+    background: var(--bg-secondary);
+}
+.experience-capture {
+    background: #ffffff;
+}
+.experience-capture img {
+    object-fit: contain;
+}
+.experience-capture:focus-visible {
+    outline-offset: -6px;
+}
+.experience-placeholder {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 24px;
+    text-align: center;
+    color: var(--text-secondary);
+    background:
+        radial-gradient(ellipse at center, var(--glow), transparent 75%), var(--bg-secondary);
+}
+.experience-placeholder svg {
+    color: var(--accent);
+}
+.experience-placeholder p {
+    color: var(--text-primary);
+    font-size: 16px;
+}
+.experience-placeholder span {
+    max-width: 240px;
+    font-size: 13px;
+}
+.experience-content {
+    padding: 24px;
+}
+.experience-content h3 {
+    margin-block: 16px 12px;
+    font-size: 23px;
+}
+.experience-description,
+.experience-note {
+    color: var(--text-secondary);
+    font-size: 14px;
+    line-height: 1.8;
+}
+.experience-content .text-link {
+    min-height: 44px;
+    margin-top: 16px;
+}
+.experience-note {
+    max-width: 760px;
+    margin-top: 24px;
+    font-size: 13px;
+}
+@media (max-width: 767px) {
+    .experience-grid {
+        grid-template-columns: 1fr;
+    }
+    .experience-publisher,
+    .experience-content {
+        padding: 20px;
+    }
+}
+
 .project-gallery {
     margin-block: 64px;
 }

@@ -29,6 +29,7 @@ Las versiones exactas están en [`package-lock.json`](package-lock.json). Las te
 - Contenido y detalles de proyectos en ES/EN, con cambio de idioma que conserva el caso abierto.
 - Temas claro y oscuro con preferencia persistida en el navegador.
 - Archivo de proyectos con filtros por categoría y galerías con acceso a las capturas originales.
+- Experiencias y comunidad con capturas completas de las publicaciones de mi universidad y mi empresa en LinkedIn. La [guía de contenido](docs/content.md#experiencias-y-comunidad) explica cómo actualizarlas en `public/images/experiences/`.
 - Laboratorio orbital con controles de trayectoria, velocidad, pausa y reinicio.
 - Navegación por teclado, foco visible, menú móvil con Escape y enlace para saltar al contenido.
 - Contenido principal y enlaces de proyectos legibles sin JavaScript.

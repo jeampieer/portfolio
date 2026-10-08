@@ -1,0 +1,173 @@
+{
+    "context": "Temporary copies of user attachments; final public images directory remains empty.",
+    "results": [
+        {
+            "locale": "es",
+            "theme": "dark",
+            "width": 360,
+            "overflow": false,
+            "images": [
+                {
+                    "loaded": true,
+                    "width": 928,
+                    "height": 1292,
+                    "fit": "contain"
+                },
+                {
+                    "loaded": true,
+                    "width": 2052,
+                    "height": 1148,
+                    "fit": "contain"
+                }
+            ],
+            "runtimeErrors": []
+        },
+        {
+            "locale": "es",
+            "theme": "dark",
+            "width": 1440,
+            "overflow": false,
+            "images": [
+                {
+                    "loaded": true,
+                    "width": 928,
+                    "height": 1292,
+                    "fit": "contain"
+                },
+                {
+                    "loaded": true,
+                    "width": 2052,
+                    "height": 1148,
+                    "fit": "contain"
+                }
+            ],
+            "runtimeErrors": []
+        },
+        {
+            "locale": "es",
+            "theme": "light",
+            "width": 360,
+            "overflow": false,
+            "images": [
+                {
+                    "loaded": true,
+                    "width": 928,
+                    "height": 1292,
+                    "fit": "contain"
+                },
+                {
+                    "loaded": true,
+                    "width": 2052,
+                    "height": 1148,
+                    "fit": "contain"
+                }
+            ],
+            "runtimeErrors": []
+        },
+        {
+            "locale": "es",
+            "theme": "light",
+            "width": 1440,
+            "overflow": false,
+            "images": [
+                {
+                    "loaded": true,
+                    "width": 928,
+                    "height": 1292,
+                    "fit": "contain"
+                },
+                {
+                    "loaded": true,
+                    "width": 2052,
+                    "height": 1148,
+                    "fit": "contain"
+                }
+            ],
+            "runtimeErrors": []
+        },
+        {
+            "locale": "en",
+            "theme": "dark",
+            "width": 360,
+            "overflow": false,
+            "images": [
+                {
+                    "loaded": true,
+                    "width": 928,
+                    "height": 1292,
+                    "fit": "contain"
+                },
+                {
+                    "loaded": true,
+                    "width": 2052,
+                    "height": 1148,
+                    "fit": "contain"
+                }
+            ],
+            "runtimeErrors": []
+        },
+        {
+            "locale": "en",
+            "theme": "dark",
+            "width": 1440,
+            "overflow": false,
+            "images": [
+                {
+                    "loaded": true,
+                    "width": 928,
+                    "height": 1292,
+                    "fit": "contain"
+                },
+                {
+                    "loaded": true,
+                    "width": 2052,
+                    "height": 1148,
+                    "fit": "contain"
+                }
+            ],
+            "runtimeErrors": []
+        },
+        {
+            "locale": "en",
+            "theme": "light",
+            "width": 360,
+            "overflow": false,
+            "images": [
+                {
+                    "loaded": true,
+                    "width": 928,
+                    "height": 1292,
+                    "fit": "contain"
+                },
+                {
+                    "loaded": true,
+                    "width": 2052,
+                    "height": 1148,
+                    "fit": "contain"
+                }
+            ],
+            "runtimeErrors": []
+        },
+        {
+            "locale": "en",
+            "theme": "light",
+            "width": 1440,
+            "overflow": false,
+            "images": [
+                {
+                    "loaded": true,
+                    "width": 928,
+                    "height": 1292,
+                    "fit": "contain"
+                },
+                {
+                    "loaded": true,
+                    "width": 2052,
+                    "height": 1148,
+                    "fit": "contain"
+                }
+            ],
+            "runtimeErrors": []
+        }
+    ]
+}

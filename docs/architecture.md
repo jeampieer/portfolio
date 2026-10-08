@@ -31,6 +31,8 @@ El contrato `Project` admite títulos localizados, categorías frontend/backend/
 
 GM Social incorpora `features`, `cover` y `galleryNotice` opcionales. `ProjectImage` conserva dimensiones, título, alternativa y caption localizados. La galería presenta los PNG originales sin recomprimir texto, permite abrirlos en una pestaña nueva y se adapta a una o dos columnas; no requiere estado cliente. Los datos de galería viven en `data/gm-social-gallery.ts`, y los archivos autorizados en `public/images/projects/plataforma-encuestas-gm/`. MFA reutiliza el mismo contrato y presentación; sus datos viven en `data/mfa-gallery.ts` y sus cuatro PNG en `public/images/projects/servicio-mfa/`. El cliente de prueba visible en las capturas pertenece al entorno de evidencia y no se incorpora al sitio. Los servicios de GM Social y MFA no son dependencias de ejecución del portafolio.
 
+`ProfessionalExperiences` es una sección de servidor entre proyectos y stack. Sus dos entradas localizadas viven en `data/experiences.ts`; `getExperienceImage` comprueba archivos locales de `public/images/experiences/` al renderizar para omitir solicitudes a capturas ausentes. En producción esa disponibilidad queda prerenderizada durante el build y requiere reconstrucción después de incorporar archivos. La carpeta contiene las dos capturas añadidas por el propietario. Las capturas completas usan `next/image` con `fill`, `object-fit: contain` y `unoptimized` para conservar el texto, con enlace al original. No se consume LinkedIn ni se añade un servicio de datos o una isla cliente.
+
 ## Rutas
 
 | Ruta                               | Resultado                                         |

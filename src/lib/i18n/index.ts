@@ -113,15 +113,26 @@ const es = {
         system: "Sistema visual",
         preview: "Vista conceptual del sistema visual de Orbital Signal",
     },
+    experiences: {
+        eyebrow: "04 / EXPERIENCES & COMMUNITY",
+        title: "Experiencias que suman.",
+        description:
+            "Mi camino también se construye con personas, encuentros y momentos compartidos.",
+        publishedBy: "Publicado en LinkedIn por",
+        pendingImage: "Captura pendiente",
+        pendingDescription: "Pronto podrás ver la publicación completa aquí.",
+        openImage: "Abrir captura completa",
+        note: "Las capturas se muestran completas para conservar el contexto y la identidad de quien las publicó.",
+    },
     stack: {
-        eyebrow: "04 / ENGINEERING ARSENAL",
+        eyebrow: "05 / ENGINEERING ARSENAL",
         title: "Las herramientas del viaje.",
         description:
             "Cada herramienta tiene un propósito. Este es mi stack para desarrollar aplicaciones full stack.",
         note: "AWS: conocimientos básicos para desplegar aplicaciones.",
     },
     labs: {
-        eyebrow: "05 / LABS",
+        eyebrow: "06 / LABS",
         title: "Un espacio para explorar.",
         description: "Pequeñas ideas, interacciones reales. La curiosidad también se construye.",
         titleCard: "Orbital playground",
@@ -139,7 +150,7 @@ const es = {
         reset: "Restablecer",
     },
     contact: {
-        eyebrow: "06 / OPEN CHANNEL",
+        eyebrow: "07 / OPEN CHANNEL",
         title: "La próxima gran idea",
         accent: "empieza conversando.",
         description:
@@ -273,15 +284,25 @@ const en: Dictionary = {
         system: "Visual system",
         preview: "Conceptual preview of the Orbital Signal visual system",
     },
+    experiences: {
+        eyebrow: "04 / EXPERIENCES & COMMUNITY",
+        title: "Experiences that shape my journey.",
+        description: "People, encounters and shared moments are also part of my journey.",
+        publishedBy: "Published on LinkedIn by",
+        pendingImage: "Screenshot coming soon",
+        pendingDescription: "The complete post will be available here soon.",
+        openImage: "Open full screenshot",
+        note: "Screenshots are displayed in full to preserve the context and the identity of their publishers.",
+    },
     stack: {
-        eyebrow: "04 / ENGINEERING ARSENAL",
+        eyebrow: "05 / ENGINEERING ARSENAL",
         title: "Tools for the journey.",
         description:
             "Every tool has a purpose. This is my stack for developing full stack applications.",
         note: "AWS: basic knowledge for deploying applications.",
     },
     labs: {
-        eyebrow: "05 / LABS",
+        eyebrow: "06 / LABS",
         title: "Room to explore.",
         description: "Small ideas, real interactions. Curiosity can be built, too.",
         titleCard: "Orbital playground",
@@ -299,7 +320,7 @@ const en: Dictionary = {
         reset: "Reset",
     },
     contact: {
-        eyebrow: "06 / OPEN CHANNEL",
+        eyebrow: "07 / OPEN CHANNEL",
         title: "The next great idea",
         accent: "starts with a conversation.",
         description:
