@@ -23,7 +23,7 @@ No se copió código de negocio ni documentación privada dentro de páginas pú
 
 ## Flujo
 
-`page.tsx` valida los parámetros → carga una vista de la feature → la vista obtiene diccionario y datos → componentes de sección presentan el contenido. Las funciones `generateMetadata` viven junto a la ruta y usan `lib/seo.ts`. El seguimiento de secciones vive en un hook y los destinos compartidos de Header/Footer en `data/navigation.ts`. Los disclosures nativos mantienen navegación sin JavaScript; el cambio de idioma carga el documento localizado y conserva el ancla. El laboratorio mantiene estado local porque su comportamiento no se comparte.
+`page.tsx` valida los parámetros → carga una vista de la feature → la vista obtiene diccionario y datos → componentes de sección presentan el contenido. Las funciones `generateMetadata` viven junto a la ruta y usan `lib/seo.ts`. El seguimiento de secciones vive en un hook y los destinos compartidos de Header/Footer en `data/navigation.ts`. Los disclosures nativos mantienen navegación sin JavaScript; el cambio de idioma carga el documento localizado y conserva el ancla. El laboratorio mantiene estado local porque su comportamiento no se comparte. `useMotionPreferences` comparte suscripciones a movimiento reducido y visibilidad del documento, con snapshots de servidor estables para evitar discrepancias de hidratación. Un observador de viewport pausa el laboratorio fuera de pantalla.
 
 `AppProvider` integra `next-themes`, `LazyMotion` y `MotionConfig`. No convierte en cliente los hijos ya compuestos en servidor. Los componentes estáticos, como Hero, IdentitySignal, EngineeringArsenal, Timeline y ProjectView, siguen siendo Server Components. Las islas cliente son Header, Reveal, OrbitalLab y Contact.
 

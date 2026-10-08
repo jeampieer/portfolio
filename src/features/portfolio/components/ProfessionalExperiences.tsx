@@ -23,11 +23,11 @@ export function ProfessionalExperiences({
                 <SectionHeading {...labels} />
             </Reveal>
             <div className="experience-grid">
-                {experiences.map((experience) => {
+                {experiences.map((experience, index) => {
                     const imageSrc = getExperienceImage(experience.imageFile);
                     return (
-                        <Reveal key={experience.id}>
-                            <article className="experience-card">
+                        <Reveal key={experience.id} delay={index * 50}>
+                            <article className="experience-card surface-card surface-card-link">
                                 <div className="experience-publisher">
                                     <Linkedin size={19} aria-hidden="true" />
                                     <div>

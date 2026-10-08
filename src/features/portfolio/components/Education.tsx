@@ -16,10 +16,10 @@ export function Education({ labels, locale }: { labels: Dictionary["education"];
                 <SectionHeading {...labels} />
             </Reveal>
             <ol className="education-grid">
-                {education.map((entry) => (
+                {education.map((entry, index) => (
                     <li key={entry.id}>
-                        <Reveal>
-                            <article className="education-card">
+                        <Reveal delay={index * 50}>
+                            <article className="education-card surface-card">
                                 <div className="education-card-top">
                                     <GraduationCap size={24} strokeWidth={1.5} aria-hidden="true" />
                                     <span className="education-status">
@@ -41,7 +41,7 @@ export function Education({ labels, locale }: { labels: Dictionary["education"];
                 ))}
             </ol>
             <Reveal>
-                <div className="education-languages">
+                <div className="education-languages surface-card">
                     <h3>
                         <Languages size={20} strokeWidth={1.5} aria-hidden="true" />
                         {labels.languages}

@@ -23,8 +23,8 @@ export function IdentitySignal({
                 {labels.cards.map((card, i) => {
                     const Icon = icons[i];
                     return (
-                        <Reveal key={card.title}>
-                            <article className="identity-card">
+                        <Reveal key={card.title} delay={i * 50}>
+                            <article className="identity-card surface-card">
                                 <div className="card-top">
                                     <Icon size={22} strokeWidth={1.5} aria-hidden="true" />
                                     <span className="mono">0{i + 1}</span>

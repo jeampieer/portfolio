@@ -500,3 +500,46 @@ test("native disclosures and archive navigation work without JavaScript on mobil
     await expect(page.locator("#education")).toContainText("Ingeniería de Software");
     await context.close();
 });
+
+test("informational cards stay stable and project hover also follows keyboard focus", async ({
+    page,
+}) => {
+    await page.goto("/es#about");
+    const identity = page.locator(".identity-card").first();
+    await identity.scrollIntoViewIfNeeded();
+    await expect(identity).toHaveCSS("transform", "none");
+    await identity.hover();
+    await expect(identity).toHaveCSS("transform", "none");
+    const project = page.locator(".project-card").first();
+    await project.scrollIntoViewIfNeeded();
+    await project.hover();
+    await expect(project).toHaveCSS("transform", "matrix(1, 0, 0, 1, 0, -3)");
+    await page.mouse.move(0, 0);
+    await project.getByRole("link", { name: "Explorar proyecto", exact: true }).focus();
+    await expect(project).toHaveCSS("transform", "matrix(1, 0, 0, 1, 0, -3)");
+    await page.emulateMedia({ reducedMotion: "reduce" });
+    await expect(project).toHaveCSS("transform", "none");
+});
+
+test("lab pauses outside the viewport and reduced motion hydrates without errors", async ({
+    page,
+}) => {
+    const errors: string[] = [];
+    page.on("pageerror", (error) => errors.push(error.message));
+    page.on("console", (message) => {
+        if (message.type() === "error") errors.push(message.text());
+    });
+    await page.emulateMedia({ reducedMotion: "reduce" });
+    await page.goto("/es#labs");
+    await expect(page.getByRole("button", { name: "Reanudar animación" })).toBeDisabled();
+    await page.emulateMedia({ reducedMotion: "no-preference" });
+    await expect(page.locator(".lab-orbiter")).toHaveCSS("animation-play-state", "running");
+    await page.locator("#about").scrollIntoViewIfNeeded();
+    await expect(page.locator(".lab-orbiter")).toHaveCSS("animation-play-state", "paused");
+    await page.locator("#labs").scrollIntoViewIfNeeded();
+    await expect(page.locator(".lab-orbiter")).toHaveCSS("animation-play-state", "running");
+    await page.getByRole("link", { name: "Read in English" }).click();
+    await expect(page).toHaveURL(/\/en#labs$/);
+    await expect(page.getByRole("button", { name: "Pause animation" })).toBeEnabled();
+    expect(errors).toEqual([]);
+});

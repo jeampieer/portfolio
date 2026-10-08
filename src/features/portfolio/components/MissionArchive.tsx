@@ -28,10 +28,10 @@ export function MissionArchive({
                 <SectionHeading {...labels} />
             </Reveal>
             <div className="project-list">
-                {projects.map((project) => (
-                    <Reveal key={project.slug}>
+                {projects.map((project, index) => (
+                    <Reveal key={project.slug} delay={index * 50}>
                         <article
-                            className={clsx("project-card", {
+                            className={clsx("project-card surface-card surface-card-link", {
                                 "project-card-text": !project.artwork && !project.cover,
                             })}
                         >

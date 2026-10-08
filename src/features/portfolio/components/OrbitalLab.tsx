@@ -1,9 +1,13 @@
 "use client";
 
-import { useId, useState, type CSSProperties } from "react";
+import { useId, useRef, useState, type CSSProperties } from "react";
 import { Pause, Play, RotateCcw } from "lucide-react";
-import { useReducedMotion } from "framer-motion";
+import { useInView } from "framer-motion";
 import clsx from "clsx";
+import {
+    usePageVisible,
+    useReducedMotionPreference,
+} from "@/features/portfolio/hooks/useMotionPreferences";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import type { Dictionary } from "@/lib/i18n";
@@ -12,14 +16,22 @@ export function OrbitalLab({ labels }: { labels: Dictionary["labs"] }) {
     const [speed, setSpeed] = useState(1);
     const [elliptical, setElliptical] = useState(false);
     const [paused, setPaused] = useState(false);
-    const reduced = useReducedMotion();
+    const reduced = useReducedMotionPreference();
+    const pageVisible = usePageVisible();
+    const section = useRef<HTMLElement>(null);
+    const inView = useInView(section, { amount: 0.15 });
     const inputId = useId();
     const style = {
         "--orbit-duration": `${18 / speed}s`,
-        "--orbit-state": paused || reduced ? "paused" : "running",
+        "--orbit-state": paused || reduced || !inView || !pageVisible ? "paused" : "running",
     } as CSSProperties;
     return (
-        <section id="labs" className="section container section-divider" aria-label={labels.title}>
+        <section
+            ref={section}
+            id="labs"
+            className="section container section-divider"
+            aria-label={labels.title}
+        >
             <Reveal>
                 <SectionHeading {...labels} />
             </Reveal>

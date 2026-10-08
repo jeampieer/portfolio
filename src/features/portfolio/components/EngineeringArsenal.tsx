@@ -31,11 +31,11 @@ export function EngineeringArsenal({
             <div className="skills-grid">
                 {groups
                     .filter((group) => group.items.length > 0)
-                    .map((group) => {
+                    .map((group, index) => {
                         const Icon = icons[group.id];
                         return (
-                            <Reveal key={group.id}>
-                                <div className="skill-group">
+                            <Reveal key={group.id} delay={index * 50}>
+                                <div className="skill-group surface-card">
                                     <h3>
                                         <Icon size={20} aria-hidden="true" />
                                         {group.label[locale]}
@@ -45,9 +45,6 @@ export function EngineeringArsenal({
                                             <li key={item}>
                                                 <span className="skill-marker" aria-hidden="true" />
                                                 {item}
-                                                <span className="mono" aria-hidden="true">
-                                                    ↗
-                                                </span>
                                             </li>
                                         ))}
                                     </ul>

@@ -11,9 +11,9 @@ export function OrbitalTimeline({ labels }: { labels: Dictionary["timeline"] }) 
                 </div>
             </Reveal>
             <ol className="timeline">
-                {labels.steps.map((step) => (
+                {labels.steps.map((step, index) => (
                     <li key={step.label}>
-                        <Reveal>
+                        <Reveal delay={index * 50}>
                             <span className="timeline-dot" aria-hidden="true" />
                             <p className="eyebrow">{step.label}</p>
                             <h4>{step.title}</h4>

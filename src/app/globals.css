@@ -30,6 +30,8 @@
     --line: rgb(152 162 179 / 14%);
     --glow: rgb(89 225 231 / 8%);
     --card-bg: #14171d;
+    --motion-fast: 180ms;
+    --motion-card: 200ms;
 }
 
 [data-theme="light"] {
@@ -60,6 +62,7 @@
     html {
         scroll-behavior: smooth;
         scroll-padding-top: 112px;
+        scrollbar-gutter: stable;
     }
     body {
         margin: 0;
@@ -157,7 +160,7 @@
     align-items: center;
     gap: 10px;
     color: var(--accent);
-    font-size: 11px;
+    font-size: 12px;
     letter-spacing: 0.13em;
     line-height: 1.7;
 }
@@ -811,25 +814,40 @@
     border: 1px solid var(--border);
     border-radius: 8px;
     padding: 28px 24px;
-    transition:
-        transform 220ms,
-        border-color 220ms,
-        box-shadow 220ms;
 }
-.identity-card:hover {
-    transform: translateY(-4px) scale(1.02);
+.surface-card {
+    transition:
+        border-color var(--motion-card),
+        box-shadow var(--motion-card),
+        transform var(--motion-card);
+}
+.surface-card-link:focus-within {
     border-color: color-mix(in srgb, var(--accent) 60%, var(--border));
-    box-shadow: 0 12px 40px var(--glow);
+    box-shadow: 0 12px 32px var(--glow);
+    transform: translateY(-3px);
+}
+@media (hover: hover) and (pointer: fine) {
+    .surface-card:hover {
+        border-color: color-mix(in srgb, var(--accent) 60%, var(--border));
+        box-shadow: 0 12px 32px var(--glow);
+    }
+    .surface-card-link:hover {
+        transform: translateY(-3px);
+    }
+}
+.project-cover-link:focus-visible,
+.project-artwork-link:focus-visible {
+    outline-offset: -6px;
 }
 .card-top {
     display: flex;
     align-items: center;
     justify-content: space-between;
     color: var(--accent);
-    margin-bottom: 40px;
+    margin-bottom: 28px;
 }
 .card-top > span {
-    font-size: 10px;
+    font-size: 12px;
     color: var(--text-secondary);
 }
 .identity-card h3 {
@@ -838,7 +856,7 @@
     margin-bottom: 12px;
 }
 .identity-card p {
-    font-size: 13px;
+    font-size: 14px;
     line-height: 1.85;
     color: var(--text-secondary);
 }
@@ -992,7 +1010,7 @@
     background: var(--bg-primary);
     box-shadow: 0 24px 45px rgb(0 0 0 / 18%);
     transform: perspective(900px) rotateY(-5deg) rotateX(4deg) rotateZ(-2deg);
-    transition: transform 450ms;
+    transition: transform var(--motion-card);
 }
 .project-artwork-link:hover .preview-window {
     transform: perspective(900px) rotateY(0) rotateX(0) rotateZ(0);
@@ -1090,7 +1108,7 @@
     flex-direction: column;
 }
 .project-year {
-    font-size: 9px;
+    font-size: 12px;
     color: var(--text-secondary);
     letter-spacing: 0.06em;
     margin-top: 24px;
@@ -1113,7 +1131,7 @@
 .tags li {
     font-family: var(--font-mono);
     color: var(--text-secondary);
-    font-size: 9px;
+    font-size: 12px;
     border: 1px solid var(--border);
     background: var(--bg-primary);
     border-radius: 4px;
@@ -1134,12 +1152,12 @@
 .skills-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 24px;
+    gap: 16px;
 }
 .skill-group {
     border: 1px solid var(--border);
     border-radius: 8px;
-    padding: 28px;
+    padding: 24px;
     background: var(--card-bg);
 }
 .skill-group h3 {
@@ -1161,9 +1179,9 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    padding-block: 16px;
+    padding-block: 12px;
     border-top: 1px solid var(--line);
-    font-size: 13px;
+    font-size: 14px;
 }
 .skill-marker {
     width: 5px;
@@ -1172,13 +1190,8 @@
     border-radius: 1px;
     transform: rotate(45deg);
 }
-.skill-group li > span:last-child {
-    margin-left: auto;
-    color: var(--text-secondary);
-    font-size: 10px;
-}
 .stack-note {
-    font-size: 10px;
+    font-size: 12px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1196,7 +1209,7 @@
 }
 .lab-visual {
     position: relative;
-    min-height: 420px;
+    min-height: 360px;
     overflow: hidden;
     background: radial-gradient(ellipse, var(--glow), transparent 70%);
     display: grid;
@@ -1218,7 +1231,7 @@
     border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
     border-radius: 50%;
     position: absolute;
-    transition: transform 400ms;
+    transition: transform var(--motion-card);
 }
 .lab-orbit::before {
     content: "";
@@ -1266,7 +1279,7 @@
     position: absolute;
     bottom: 24px;
     left: 28px;
-    font-size: 9px;
+    font-size: 12px;
     letter-spacing: 0.1em;
     color: var(--text-secondary);
 }
@@ -1278,7 +1291,7 @@
     font-family: var(--font-mono);
 }
 .lab-controls {
-    padding: 40px;
+    padding: 28px;
     border-left: 1px solid var(--line);
 }
 .lab-controls h3 {
@@ -1298,7 +1311,7 @@
 }
 .range-label output {
     color: var(--accent);
-    font-size: 11px;
+    font-size: 12px;
 }
 input[type="range"] {
     display: block;
@@ -1318,7 +1331,7 @@ input[type="range"] {
     margin-top: 24px;
 }
 .lab-controls .reduced-note {
-    font-size: 11px !important;
+    font-size: 12px;
     margin-top: 14px;
 }
 .contact-section {
@@ -1515,7 +1528,7 @@ input[type="range"] {
 }
 .education-card {
     height: 100%;
-    padding: 32px;
+    padding: 24px;
     border: 1px solid var(--border);
     border-radius: 8px;
     background: var(--card-bg);
@@ -1526,7 +1539,7 @@ input[type="range"] {
     justify-content: space-between;
     gap: 16px;
     color: var(--accent);
-    margin-bottom: 32px;
+    margin-bottom: 24px;
 }
 .education-status {
     border: 1px solid var(--border);
@@ -1553,12 +1566,12 @@ input[type="range"] {
     align-items: center;
     gap: 8px;
     color: var(--text-secondary);
-    font-size: 13px;
+    font-size: 14px;
     margin-top: 16px;
 }
 .education-languages {
     margin-top: 24px;
-    padding: 28px 32px;
+    padding: 24px;
     border: 1px solid var(--border);
     border-radius: 8px;
     background: var(--card-bg);
@@ -1568,7 +1581,7 @@ input[type="range"] {
     align-items: center;
     gap: 12px;
     font-size: 20px;
-    margin-bottom: 24px;
+    margin-bottom: 20px;
 }
 .education-languages h3 svg {
     color: var(--accent);
@@ -1601,7 +1614,7 @@ input[type="range"] {
     margin-top: 8px;
     max-width: 280px;
     color: var(--text-secondary);
-    font-size: 13px;
+    font-size: 14px;
     line-height: 1.7;
 }
 @media (max-width: 767px) {
@@ -1999,7 +2012,7 @@ input[type="range"] {
         font-size: 14px;
     }
     .eyebrow {
-        font-size: 10px;
+        font-size: 12px;
     }
     .identity-grid {
         gap: 12px;
@@ -2167,6 +2180,13 @@ input[type="range"] {
     }
     .typewriter {
         max-width: none;
+    }
+    .surface-card-link:hover,
+    .surface-card-link:focus-within,
+    .button:hover,
+    .text-link:hover svg,
+    .project-artwork-link:hover .preview-window {
+        transform: none;
     }
     .lab-orbiter {
         animation: none !important;
