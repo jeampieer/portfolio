@@ -66,7 +66,7 @@ La aceptación integral con Flutter, instrumentos oficiales e infraestructura pr
 
 ## Experiencias y comunidad
 
-La sección aparece después de Proyectos y antes de Stack. Los dos textos ES/EN y sus autores viven en `src/features/portfolio/data/experiences.ts`. Presentan las publicaciones de Egresados UTP y de IGH, empresa donde trabaja el propietario según su confirmación. No se deducen fechas, cargos ni el logro concreto de la felicitación universitaria.
+La sección aparece después de Proyectos y antes de Educación. Los dos textos ES/EN y sus autores viven en `src/features/portfolio/data/experiences.ts`. Presentan las publicaciones de Egresados UTP y de IGH, empresa donde trabaja el propietario según su confirmación. No se deducen fechas, cargos ni el logro concreto de la felicitación universitaria.
 
 La carpeta `public/images/experiences/` contiene las dos capturas completas de LinkedIn añadidas por el propietario. Se usan estos nombres exactos:
 
@@ -80,6 +80,14 @@ Guardar PNG reales; renombrar la extensión de un JPEG no convierte el formato. 
 Cada captura se conserva completa, con `object-fit: contain`, sin filtros ni recortes, dentro de un marco 4:3. Se sirve sin recomprimir para conservar el texto de LinkedIn y dispone de acceso al archivo original en una pestaña nueva. El marco mantiene una altura estable aunque las capturas tengan proporciones distintas. En móvil, abrir el original permite ampliar para leer. Los autores también aparecen como texto fuera de las capturas. No se incluyen URLs de publicaciones hasta disponer de enlaces confirmados.
 
 Los rótulos de sección, estado pendiente y enlaces se editan en `dictionary.experiences` en ambos idiomas. La composición es de servidor y reutiliza `Reveal`; no añade carrusel, modal ni estado cliente.
+
+## Educación e idiomas
+
+«Mi educación» aparece después de Experiencias y comunidad y antes de Stack. Las listas `education` y `languages` viven en `src/features/portfolio/data/portfolio.ts`, con contratos `EducationEntry` y `LanguageSkill`. Los encabezados y estados académicos se editan en `dictionary.education` en ambos idiomas. Los nombres oficiales de las instituciones se conservan en español también en EN.
+
+La información fue confirmada por el propietario: Universidad Tecnológica del Perú (UTP), Ingeniería de Software, Lima, Perú, **2026 – Actualidad**, **En curso**; IDAT – Instituto de Educación Superior, Desarrollo de Sistemas de Información, Lima, Perú, **2023**, **Egresado**. El año de IDAT se muestra como un dato único, sin inferir fecha de inicio o duración. Egresado no se convierte en bachiller o titulado; la traducción EN tampoco atribuye un grado académico.
+
+Idiomas: **Español — Nativo**, **Inglés — Intermedio (lectura técnica y comunicación oral/escrita)** e **Italiano — Básico**. No se añaden porcentajes, niveles MCER, certificaciones, documentos ni logos no proporcionados. Cada programa tiene institución, ubicación, periodo y estado; las descripciones de idioma son opcionales. La sección usa dos tarjetas académicas en escritorio y una columna en móvil, con una lista de definiciones para los idiomas debajo. No requiere archivos nuevos, backend ni estado cliente.
 
 ## Trayectoria y stack
 

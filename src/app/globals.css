@@ -1417,6 +1417,119 @@ input[type="range"] {
     color: var(--text-secondary);
     line-height: 1.85;
 }
+/* Education and language proficiency. */
+.education-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+}
+.education-grid li,
+.education-grid li > div {
+    min-width: 0;
+    height: 100%;
+}
+.education-card {
+    height: 100%;
+    padding: 32px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--card-bg);
+}
+.education-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    color: var(--accent);
+    margin-bottom: 32px;
+}
+.education-status {
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 4px 12px;
+    font-size: 12px;
+    background: var(--glow);
+}
+.education-period {
+    font-size: 12px;
+    color: var(--accent);
+    margin-bottom: 12px;
+}
+.education-card h3 {
+    font-size: clamp(22px, 2.2vw, 26px);
+    margin-bottom: 16px;
+}
+.education-institution {
+    font-size: 15px;
+    line-height: 1.7;
+}
+.education-location {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-secondary);
+    font-size: 13px;
+    margin-top: 16px;
+}
+.education-languages {
+    margin-top: 24px;
+    padding: 28px 32px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--card-bg);
+}
+.education-languages h3 {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 20px;
+    margin-bottom: 24px;
+}
+.education-languages h3 svg {
+    color: var(--accent);
+}
+.language-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+    margin: 0;
+}
+.language-grid > div {
+    min-width: 0;
+    padding-left: 16px;
+    border-left: 1px solid var(--border);
+}
+.language-grid dt {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+.language-grid dd {
+    margin: 0;
+}
+.language-level {
+    color: var(--accent);
+    font-size: 14px;
+}
+.language-description {
+    display: block;
+    margin-top: 8px;
+    max-width: 280px;
+    color: var(--text-secondary);
+    font-size: 13px;
+    line-height: 1.7;
+}
+@media (max-width: 767px) {
+    .education-grid,
+    .language-grid {
+        grid-template-columns: 1fr;
+    }
+    .education-card,
+    .education-languages {
+        padding: 24px;
+    }
+}
+
 /* Professional experiences: preserve the complete LinkedIn capture. */
 .experience-grid {
     display: grid;

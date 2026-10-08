@@ -1,4 +1,9 @@
-import type { Project, SkillGroup } from "@/features/portfolio/types/portfolio.types";
+import type {
+    EducationEntry,
+    LanguageSkill,
+    Project,
+    SkillGroup,
+} from "@/features/portfolio/types/portfolio.types";
 import { gmSocialGallery } from "@/features/portfolio/data/gm-social-gallery";
 import { mfaGallery } from "@/features/portfolio/data/mfa-gallery";
 
@@ -202,6 +207,50 @@ export const projects: Project[] = [
             en: "Screenshots from a local environment with demonstration data. Figures, people, responses and locations do not represent real study results.",
         },
         gallery: gmSocialGallery,
+    },
+];
+
+export const education: EducationEntry[] = [
+    {
+        id: "utp",
+        institution: "Universidad Tecnológica del Perú (UTP)",
+        program: { es: "Ingeniería de Software", en: "Software Engineering" },
+        location: { es: "Lima, Perú", en: "Lima, Peru" },
+        period: { es: "2026 – Actualidad", en: "2026 – Present" },
+        status: "in-progress",
+    },
+    {
+        id: "idat",
+        institution: "IDAT – Instituto de Educación Superior",
+        program: {
+            es: "Desarrollo de Sistemas de Información",
+            en: "Information Systems Development",
+        },
+        location: { es: "Lima, Perú", en: "Lima, Peru" },
+        period: { es: "2023", en: "2023" },
+        status: "graduate",
+    },
+];
+
+export const languages: LanguageSkill[] = [
+    {
+        id: "spanish",
+        name: { es: "Español", en: "Spanish" },
+        level: { es: "Nativo", en: "Native" },
+    },
+    {
+        id: "english",
+        name: { es: "Inglés", en: "English" },
+        level: { es: "Intermedio", en: "Intermediate" },
+        description: {
+            es: "Lectura técnica y comunicación oral/escrita",
+            en: "Technical reading and spoken/written communication",
+        },
+    },
+    {
+        id: "italian",
+        name: { es: "Italiano", en: "Italian" },
+        level: { es: "Básico", en: "Basic" },
     },
 ];
 

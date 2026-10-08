@@ -1,7 +1,7 @@
 import { expect, test } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
 
-test("redirects to Spanish, renders the eight sections and has no runtime errors", async ({
+test("redirects to Spanish, renders the nine sections and has no runtime errors", async ({
     page,
 }, testInfo) => {
     const errors: string[] = [];
@@ -12,7 +12,7 @@ test("redirects to Spanish, renders the eight sections and has no runtime errors
     await expect(page.getByRole("heading", { level: 1 })).toHaveText(
         "Ideas que tomanforma en código."
     );
-    await expect(page.locator("main > section")).toHaveCount(8);
+    await expect(page.locator("main > section")).toHaveCount(9);
     const experiences = page.locator("#experiences");
     await expect(experiences.locator("article")).toHaveCount(2);
     await expect(experiences).toContainText("Egresados UTP");
@@ -50,6 +50,61 @@ test("redirects to Spanish, renders the eight sections and has no runtime errors
     await expect(experiences).toContainText("Published on LinkedIn by");
     await expect(page.getByRole("heading", { level: 1 })).toContainText("to life in code.");
     expect(errors).toEqual([]);
+});
+
+test("education and languages preserve confirmed dates and academic status in both locales", async ({
+    page,
+}) => {
+    await page.goto("/es#education");
+    const section = page.locator("#education");
+    const cards = section.locator("article");
+    await expect(cards).toHaveCount(2);
+    await expect(section.getByRole("heading", { level: 2 })).toHaveText("Mi educación");
+    await expect(cards.nth(0)).toContainText("Universidad Tecnológica del Perú (UTP)");
+    await expect(cards.nth(0).getByRole("heading")).toHaveText("Ingeniería de Software");
+    await expect(cards.nth(0)).toContainText("2026 – Actualidad");
+    await expect(cards.nth(0).locator(".education-status")).toHaveText("En curso");
+    await expect(cards.nth(1)).toContainText("IDAT – Instituto de Educación Superior");
+    await expect(cards.nth(1).getByRole("heading")).toHaveText(
+        "Desarrollo de Sistemas de Información"
+    );
+    await expect(cards.nth(1).locator(".education-period")).toHaveText("2023");
+    await expect(cards.nth(1).locator(".education-status")).toHaveText("Egresado");
+    await expect(section.locator(".education-location")).toHaveText(["Lima, Perú", "Lima, Perú"]);
+    await expect(section.locator("dt")).toHaveText(["Español", "Inglés", "Italiano"]);
+    await expect(section.locator(".language-level")).toHaveText(["Nativo", "Intermedio", "Básico"]);
+    await expect(section.locator(".language-description")).toHaveText(
+        "Lectura técnica y comunicación oral/escrita"
+    );
+    expect(
+        await page.locator("main > section").evaluateAll((elements) => elements.map((el) => el.id))
+    ).toEqual([
+        "hero",
+        "about",
+        "process",
+        "projects",
+        "experiences",
+        "education",
+        "stack",
+        "labs",
+        "contact",
+    ]);
+    await page.getByRole("link", { name: "Read in English" }).click();
+    await expect(section.getByRole("heading", { level: 2 })).toHaveText("My education");
+    await expect(cards.nth(0).getByRole("heading")).toHaveText("Software Engineering");
+    await expect(cards.nth(0)).toContainText("2026 – Present");
+    await expect(cards.nth(0).locator(".education-status")).toHaveText("In progress");
+    await expect(cards.nth(1).getByRole("heading")).toHaveText("Information Systems Development");
+    await expect(cards.nth(1).locator(".education-status")).toHaveText("Graduate");
+    await expect(section.locator("dt")).toHaveText(["Spanish", "English", "Italian"]);
+    await expect(section.locator(".language-level")).toHaveText([
+        "Native",
+        "Intermediate",
+        "Basic",
+    ]);
+    await expect(section.locator(".language-description")).toHaveText(
+        "Technical reading and spoken/written communication"
+    );
 });
 
 test("theme switches and persists on reload and locale navigation", async ({ page }) => {
@@ -351,6 +406,10 @@ test("content and project routes remain readable without JavaScript", async ({ b
     await expect(page.locator("#experiences article")).toHaveCount(2);
     await expect(page.locator("#experiences")).toContainText("Egresados UTP");
     await expect(page.locator("#experiences")).toContainText("IGH · Inveritas Global Holdings");
+    await expect(page.locator("#education article")).toHaveCount(2);
+    await expect(page.locator("#education")).toContainText("Ingeniería de Software");
+    await expect(page.locator("#education .education-status")).toHaveText(["En curso", "Egresado"]);
+    await expect(page.locator("#education dt")).toHaveText(["Español", "Inglés", "Italiano"]);
     await expect(page.locator("#projects article")).toHaveCount(2);
     await expect(page.getByRole("heading", { name: "Orbital Signal", exact: true })).toHaveCount(0);
     await page.goto("http://127.0.0.1:3100/es/projects/orbital-signal");

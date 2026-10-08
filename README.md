@@ -30,6 +30,7 @@ Las versiones exactas están en [`package-lock.json`](package-lock.json). Las te
 - Temas claro y oscuro con preferencia persistida en el navegador.
 - Archivo de proyectos con filtros por categoría y galerías con acceso a las capturas originales.
 - Experiencias y comunidad con capturas completas de las publicaciones de mi universidad y mi empresa en LinkedIn. La [guía de contenido](docs/content.md#experiencias-y-comunidad) explica cómo actualizarlas en `public/images/experiences/`.
+- Educación en UTP e IDAT e idiomas con sus niveles confirmados, disponibles en ES/EN.
 - Laboratorio orbital con controles de trayectoria, velocidad, pausa y reinicio.
 - Navegación por teclado, foco visible, menú móvil con Escape y enlace para saltar al contenido.
 - Contenido principal y enlaces de proyectos legibles sin JavaScript.
@@ -104,7 +105,7 @@ npx playwright install chromium   # Primera instalación
 npm run verify
 ```
 
-Las 21 pruebas actuales cubren navegación bilingüe, persistencia del tema, filtros, galerías, laboratorio, movimiento reducido, teclado, rutas inexistentes y lectura sin JavaScript. También comprueban desbordamientos en varios anchos y ejecutan análisis automáticos de accesibilidad con axe.
+Las 22 pruebas actuales cubren navegación bilingüe, educación e idiomas, persistencia del tema, filtros, galerías, laboratorio, movimiento reducido, teclado, rutas inexistentes y lectura sin JavaScript. También comprueban desbordamientos en varios anchos y ejecutan análisis automáticos de accesibilidad con axe.
 
 Playwright inicia un servidor de producción independiente en `127.0.0.1:3100`; ese puerto debe estar libre. Para ejecutar solo los E2E, primero actualizo el build y después uso `npm run test:e2e`. Los resultados y límites de la validación están en [`docs/verification.md`](docs/verification.md). Las comprobaciones automáticas se complementan con revisión visual; no certifican conformidad WCAG completa.
 

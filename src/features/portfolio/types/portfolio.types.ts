@@ -1,6 +1,22 @@
 import type { Localized } from "@/types/i18n";
 
 export type ProjectCategory = "frontend" | "backend" | "fullstack";
+export interface EducationEntry {
+    id: string;
+    institution: string;
+    program: Localized<string>;
+    location: Localized<string>;
+    period: Localized<string>;
+    status: "in-progress" | "graduate";
+}
+
+export interface LanguageSkill {
+    id: string;
+    name: Localized<string>;
+    level: Localized<string>;
+    description?: Localized<string>;
+}
+
 export interface ProfessionalExperience {
     id: string;
     publisher: string;

@@ -124,15 +124,23 @@ const es = {
         openImage: "Abrir captura completa",
         note: "Las capturas se muestran completas para conservar el contexto y la identidad de quien las publicó.",
     },
+    education: {
+        eyebrow: "05 / EDUCATION",
+        title: "Mi educación",
+        description: "La base de lo que construyo.",
+        inProgress: "En curso",
+        graduate: "Egresado",
+        languages: "Idiomas",
+    },
     stack: {
-        eyebrow: "05 / ENGINEERING ARSENAL",
+        eyebrow: "06 / ENGINEERING ARSENAL",
         title: "Las herramientas del viaje.",
         description:
             "Cada herramienta tiene un propósito. Este es mi stack para desarrollar aplicaciones full stack.",
         note: "AWS: conocimientos básicos para desplegar aplicaciones.",
     },
     labs: {
-        eyebrow: "06 / LABS",
+        eyebrow: "07 / LABS",
         title: "Un espacio para explorar.",
         description: "Pequeñas ideas, interacciones reales. La curiosidad también se construye.",
         titleCard: "Orbital playground",
@@ -150,7 +158,7 @@ const es = {
         reset: "Restablecer",
     },
     contact: {
-        eyebrow: "07 / OPEN CHANNEL",
+        eyebrow: "08 / OPEN CHANNEL",
         title: "La próxima gran idea",
         accent: "empieza conversando.",
         description:
@@ -294,15 +302,23 @@ const en: Dictionary = {
         openImage: "Open full screenshot",
         note: "Screenshots are displayed in full to preserve the context and the identity of their publishers.",
     },
+    education: {
+        eyebrow: "05 / EDUCATION",
+        title: "My education",
+        description: "The foundation of what I build.",
+        inProgress: "In progress",
+        graduate: "Graduate",
+        languages: "Languages",
+    },
     stack: {
-        eyebrow: "05 / ENGINEERING ARSENAL",
+        eyebrow: "06 / ENGINEERING ARSENAL",
         title: "Tools for the journey.",
         description:
             "Every tool has a purpose. This is my stack for developing full stack applications.",
         note: "AWS: basic knowledge for deploying applications.",
     },
     labs: {
-        eyebrow: "06 / LABS",
+        eyebrow: "07 / LABS",
         title: "Room to explore.",
         description: "Small ideas, real interactions. Curiosity can be built, too.",
         titleCard: "Orbital playground",
@@ -320,7 +336,7 @@ const en: Dictionary = {
         reset: "Reset",
     },
     contact: {
-        eyebrow: "07 / OPEN CHANNEL",
+        eyebrow: "08 / OPEN CHANNEL",
         title: "The next great idea",
         accent: "starts with a conversation.",
         description:

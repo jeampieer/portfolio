@@ -1,0 +1,98 @@
+[
+    {
+        "locale": "es",
+        "theme": "dark",
+        "width": 360,
+        "overflow": false,
+        "states": ["En curso", "Egresado"],
+        "runtimeErrors": []
+    },
+    {
+        "locale": "es",
+        "theme": "dark",
+        "width": 768,
+        "overflow": false,
+        "states": ["En curso", "Egresado"],
+        "runtimeErrors": []
+    },
+    {
+        "locale": "es",
+        "theme": "dark",
+        "width": 1440,
+        "overflow": false,
+        "states": ["En curso", "Egresado"],
+        "runtimeErrors": []
+    },
+    {
+        "locale": "es",
+        "theme": "light",
+        "width": 360,
+        "overflow": false,
+        "states": ["En curso", "Egresado"],
+        "runtimeErrors": []
+    },
+    {
+        "locale": "es",
+        "theme": "light",
+        "width": 768,
+        "overflow": false,
+        "states": ["En curso", "Egresado"],
+        "runtimeErrors": []
+    },
+    {
+        "locale": "es",
+        "theme": "light",
+        "width": 1440,
+        "overflow": false,
+        "states": ["En curso", "Egresado"],
+        "runtimeErrors": []
+    },
+    {
+        "locale": "en",
+        "theme": "dark",
+        "width": 360,
+        "overflow": false,
+        "states": ["In progress", "Graduate"],
+        "runtimeErrors": []
+    },
+    {
+        "locale": "en",
+        "theme": "dark",
+        "width": 768,
+        "overflow": false,
+        "states": ["In progress", "Graduate"],
+        "runtimeErrors": []
+    },
+    {
+        "locale": "en",
+        "theme": "dark",
+        "width": 1440,
+        "overflow": false,
+        "states": ["In progress", "Graduate"],
+        "runtimeErrors": []
+    },
+    {
+        "locale": "en",
+        "theme": "light",
+        "width": 360,
+        "overflow": false,
+        "states": ["In progress", "Graduate"],
+        "runtimeErrors": []
+    },
+    {
+        "locale": "en",
+        "theme": "light",
+        "width": 768,
+        "overflow": false,
+        "states": ["In progress", "Graduate"],
+        "runtimeErrors": []
+    },
+    {
+        "locale": "en",
+        "theme": "light",
+        "width": 1440,
+        "overflow": false,
+        "states": ["In progress", "Graduate"],
+        "runtimeErrors": []
+    }
+]
