@@ -548,7 +548,7 @@ test("lab pauses outside the viewport and reduced motion hydrates without errors
     await expect(page.locator(".lab-orbiter")).toHaveCSS("animation-play-state", "running");
     await page.getByRole("link", { name: "Read in English" }).click();
     await expect(page).toHaveURL(/\/en#labs$/);
-    await expect(page.getByRole("button", { name: "Pause animation" })).toBeEnabled();
+    await expect(page.getByRole("button", { name: "Pause animation", exact: true })).toBeEnabled();
     expect(errors).toEqual([]);
 });
 
@@ -773,4 +773,142 @@ test("greeting repeats writing and erasing while reduced motion keeps the full t
     await expect(page.locator(".typing-cursor")).toHaveCSS("animation-name", "none");
     await page.getByRole("link", { name: "Read in English" }).click();
     await expect(greeting).toHaveText("Hi, I'm Jeampieer.");
+});
+
+test("portrait signal follows its orbit, pause works with keyboard and halo keeps the photo stable", async ({
+    page,
+}, testInfo) => {
+    for (const [locale, theme] of [
+        ["es", "dark"],
+        ["en", "light"],
+    ]) {
+        await page.addInitScript((value) => localStorage.setItem("theme", value), theme);
+        await page.goto(`/${locale}`);
+        const orbit = page.locator(".hero-orbiter");
+        const halo = page.locator(".orbit-halo");
+        const portrait = page.locator(".portrait");
+        await expect(orbit).toHaveCSS("animation-play-state", "running");
+        await expect(orbit).toHaveCSS("animation-duration", "28s");
+        const pause = page.getByRole("button", {
+            name: locale === "es" ? "Pausar animaciones" : "Pause animations",
+            exact: true,
+        });
+        await pause.focus();
+        await page.keyboard.press("Enter");
+        await expect(orbit).toHaveCSS("animation-play-state", "paused");
+        await expect(page.locator(".typewriter")).toHaveCSS("animation-name", "none");
+        const positions = await orbit.evaluate((el) => {
+            const animation = el.getAnimations()[0];
+            return [0, 7000, 14000, 21000].map((time) => {
+                animation.currentTime = time;
+                const point = el.querySelector(".satellite-one")!.getBoundingClientRect();
+                const core = document.querySelector(".orbital-core")!.getBoundingClientRect();
+                return {
+                    x: point.x + point.width / 2 - core.x - core.width / 2,
+                    y: point.y + point.height / 2 - core.y - core.height / 2,
+                };
+            });
+        });
+        const radii = positions.map(({ x, y }) => Math.hypot(x, y));
+        expect(Math.max(...radii) - Math.min(...radii)).toBeLessThan(1);
+        expect(positions[0].x).toBeGreaterThan(0);
+        expect(positions[1].y).toBeGreaterThan(0);
+        expect(positions[2].x).toBeLessThan(0);
+        expect(positions[3].y).toBeLessThan(0);
+        await page.mouse.move(0, 0);
+        const before = await portrait.boundingBox();
+        const opacity = await halo.evaluate((el) => Number(getComputedStyle(el).opacity));
+        await page.locator(".orbital-art").hover();
+        await expect(halo).toHaveCSS("opacity", theme === "dark" ? "1" : "0.85");
+        expect(Number(await halo.evaluate((el) => getComputedStyle(el).opacity))).toBeGreaterThan(
+            opacity
+        );
+        expect(await portrait.boundingBox()).toEqual(before);
+        await expect(portrait).toHaveCSS("transform", "none");
+        await page.screenshot({ path: testInfo.outputPath(`portrait-desktop-${theme}.png`) });
+        await page
+            .getByRole("button", {
+                name: locale === "es" ? "Reanudar animaciones" : "Resume animations",
+                exact: true,
+            })
+            .click();
+        await expect(orbit).toHaveCSS("animation-play-state", "running");
+        await expect(page.locator(".typewriter")).toHaveCSS("animation-name", "type-in");
+    }
+});
+
+test("portrait pauses offscreen and in a hidden document, and reduced motion hydrates without errors", async ({
+    page,
+}) => {
+    const errors: string[] = [];
+    page.on("pageerror", (error) => errors.push(error.message));
+    page.on("console", (message) => {
+        if (message.type() === "error") errors.push(message.text());
+    });
+    await page.emulateMedia({ reducedMotion: "reduce" });
+    await page.goto("/es");
+    const orbit = page.locator(".hero-orbiter");
+    await expect(orbit).toHaveCSS("animation-name", "none");
+    await expect(page.getByRole("button", { name: "Movimiento reducido activo" })).toBeDisabled();
+    await expect(page.locator(".hero-orbit-trail")).toBeHidden();
+    await page.emulateMedia({ reducedMotion: "no-preference" });
+    await expect(orbit).toHaveCSS("animation-play-state", "running");
+    await page.locator("#education").scrollIntoViewIfNeeded();
+    await expect(orbit).toHaveCSS("animation-play-state", "paused");
+    await page.locator(".site-header .brand").click();
+    await expect(orbit).toHaveCSS("animation-play-state", "running");
+    // Simulate the document lifecycle event without relying on the test runner's tab focus.
+    await page.evaluate(() => {
+        Object.defineProperty(document, "hidden", { configurable: true, value: true });
+        document.dispatchEvent(new Event("visibilitychange"));
+    });
+    await expect(orbit).toHaveCSS("animation-play-state", "paused");
+    await expect(page.locator(".typewriter")).toHaveCSS("animation-play-state", "paused");
+    await page.evaluate(() => {
+        Reflect.deleteProperty(document, "hidden");
+        document.dispatchEvent(new Event("visibilitychange"));
+    });
+    await expect(orbit).toHaveCSS("animation-play-state", "running");
+    await page.emulateMedia({ reducedMotion: "reduce" });
+    await page.getByRole("link", { name: "Read in English" }).click();
+    await expect(page.getByRole("button", { name: "Reduced motion enabled" })).toBeDisabled();
+    await expect(orbit).toHaveCSS("animation-name", "none");
+    expect(errors).toEqual([]);
+});
+
+test("portrait controls work on touch and the no-JavaScript hero stays static and readable", async ({
+    browser,
+}, testInfo) => {
+    const touch = await browser.newContext({
+        viewport: { width: 390, height: 844 },
+        hasTouch: true,
+        isMobile: true,
+    });
+    const page = await touch.newPage();
+    await page.goto("/es");
+    const orbit = page.locator(".hero-orbiter");
+    await page.locator("#education").scrollIntoViewIfNeeded();
+    await expect(orbit).toHaveCSS("animation-play-state", "paused");
+    await page.locator(".orbital-art").scrollIntoViewIfNeeded();
+    await expect(orbit).toHaveCSS("animation-play-state", "running");
+    await expect
+        .poll(async () => (await page.locator(".portrait").boundingBox())!.width)
+        .toBeGreaterThan(150);
+    await page.getByRole("button", { name: "Pausar animaciones", exact: true }).tap();
+    await expect(orbit).toHaveCSS("animation-play-state", "paused");
+    await page.screenshot({ path: testInfo.outputPath("portrait-mobile.png") });
+    await page.getByRole("button", { name: "Reanudar animaciones", exact: true }).tap();
+    await expect(orbit).toHaveCSS("animation-play-state", "running");
+    await touch.close();
+    const staticContext = await browser.newContext({ javaScriptEnabled: false });
+    const staticPage = await staticContext.newPage();
+    for (const locale of ["es", "en"]) {
+        await staticPage.goto(`/${locale}`);
+        await expect(staticPage.locator(".typewriter")).toHaveCSS("animation-name", "none");
+        await expect(staticPage.locator(".typewriter")).toHaveCSS("max-width", "none");
+        await expect(staticPage.locator(".hero-orbiter")).toHaveCSS("animation-name", "none");
+        await expect(staticPage.locator(".portrait")).toBeVisible();
+        await expect(staticPage.locator(".hero-motion-toggle")).toBeHidden();
+    }
+    await staticContext.close();
 });

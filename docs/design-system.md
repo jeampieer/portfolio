@@ -18,10 +18,10 @@ La escala usa títulos hero de hasta 72px, títulos de casos de hasta 56px (40px
 - Superficie compartida `surface-card`: borde de acento y glow tenue en hover; las informativas conservan su tamaño. `surface-card-link` añade elevación de 3px en hover y foco interno, sin ocultar contenido. Transiciones de 180–200ms.
 - Header transparente sobre la portada y blur con borde al desplazar.
 - Disclosures nativos para Más y menú compacto por debajo de 1280px; Escape devuelve el foco al summary. Destinos compartidos y CV independiente.
-- Señales y órbitas son decorativas; no hay canvas, Three.js ni render loop.
+- Señales y órbitas son decorativas; no hay canvas, Three.js ni render loop. En la fotografía, un satélite cian recorre el anillo intermedio cada 28 segundos con una estela SVG corta. Los anillos y el retrato mantienen posición y dimensiones. El halo aumenta su opacidad en 220ms con un puntero preciso, con brillo más tenue en tema claro; en touch conserva su intensidad base.
 - El laboratorio permite cambiar velocidad, trayectoria y pausa. Movimiento reducido detiene la órbita; también se pausa fuera del viewport o al ocultar la pestaña.
 - Reveal usa detección de viewport de Framer Motion y animación de 400ms una sola vez, desplazamiento de 24px y escalonado de 50ms limitado a 150ms; el HTML inicial sigue visible sin JavaScript.
-- El saludo se escribe, permanece visible y se borra en un ciclo CSS de seis segundos, con cursor continuo. El texto completo permanece en el DOM y, con movimiento reducido, ambos efectos se desactivan.
+- El saludo se escribe, permanece visible y se borra en un ciclo CSS de seis segundos, con cursor continuo. «Pausar animaciones» / «Pause animations» detiene la señal y muestra el saludo completo; permite reanudar. Los efectos se pausan fuera del viewport o con la pestaña oculta. Movimiento reducido elimina órbita, estela y escritura, y el control indica la preferencia activa. El HTML inicial y la vista sin JavaScript presentan el saludo completo y el retrato estático.
 
 ## Decisiones por datos pendientes
 

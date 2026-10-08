@@ -528,11 +528,17 @@
     display: inline-block;
     white-space: nowrap;
     overflow: hidden;
-    animation: type-in 6s steps(24) infinite;
 }
 .typing-cursor {
     color: var(--accent);
+}
+.hero[data-motion-ready="true"]:not([data-motion-paused="true"]) .typewriter {
+    animation: type-in 6s steps(24) infinite;
+    animation-play-state: var(--hero-motion-state, paused);
+}
+.hero[data-motion-ready="true"]:not([data-motion-paused="true"]) .typing-cursor {
     animation: blink 1s step-end infinite;
+    animation-play-state: var(--hero-motion-state, paused);
 }
 .hero h1 {
     font-size: clamp(48px, 5.2vw, 72px);
@@ -607,6 +613,41 @@
 .hero-bottom > span {
     gap: 28px;
 }
+.hero-scene {
+    min-width: 0;
+    width: 100%;
+    align-self: center;
+}
+.hero-motion-controls {
+    min-height: 44px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+}
+.hero[data-motion-ready="true"] .hero-motion-controls {
+    visibility: visible;
+}
+.hero-motion-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    min-height: 44px;
+    padding: 8px 12px;
+    border: 0;
+    border-radius: 5px;
+    background: transparent;
+    color: var(--text-secondary);
+    font-size: 12px;
+    transition:
+        color var(--motion-fast),
+        background var(--motion-fast);
+}
+.hero-motion-toggle:hover:not(:disabled) {
+    color: var(--accent);
+    background: var(--glow);
+}
 .orbital-scene {
     position: relative;
     overflow: clip;
@@ -624,6 +665,20 @@
     inset: -8%;
     border-radius: 50%;
     background: radial-gradient(ellipse, var(--glow) 0%, var(--glow) 15%, transparent 62%);
+    opacity: 0.75;
+    pointer-events: none;
+    transition: opacity 220ms ease;
+}
+[data-theme="light"] .orbit-halo {
+    opacity: 0.6;
+}
+@media (hover: hover) and (pointer: fine) {
+    .orbital-art:hover .orbit-halo {
+        opacity: 1;
+    }
+    [data-theme="light"] .orbital-art:hover .orbit-halo {
+        opacity: 0.85;
+    }
 }
 .orbit {
     position: absolute;
@@ -712,9 +767,31 @@
     border-radius: 50%;
     box-shadow: 0 0 10px color-mix(in srgb, var(--accent) 50%, transparent);
 }
+.hero-orbiter {
+    position: absolute;
+    inset: 11%;
+    border-radius: 50%;
+    transform: rotate(45deg);
+    pointer-events: none;
+}
+.hero[data-motion-ready="true"] .hero-orbiter {
+    animation: hero-orbit 28s linear infinite;
+    animation-play-state: var(--portrait-motion-state, paused);
+}
+.hero-orbit-trail {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    color: var(--accent);
+    opacity: 0.4;
+}
+[data-theme="light"] .hero-orbit-trail {
+    opacity: 0.25;
+}
 .satellite-one {
-    top: 22%;
-    right: 22%;
+    top: -3.5px;
+    left: calc(50% - 3.5px);
 }
 .satellite-two {
     bottom: 19%;
@@ -2048,6 +2125,14 @@ input[type="range"] {
         transform: rotate(360deg);
     }
 }
+@keyframes hero-orbit {
+    from {
+        transform: rotate(45deg);
+    }
+    to {
+        transform: rotate(405deg);
+    }
+}
 
 @media (min-width: 1536px) {
     .hero {
@@ -2173,6 +2258,9 @@ input[type="range"] {
     }
     .hero-stack > span + span::before {
         margin-right: 10px;
+    }
+    .hero-scene {
+        max-width: 440px;
     }
     .orbital-scene {
         max-width: 440px;
@@ -2389,12 +2477,18 @@ input[type="range"] {
         transition-duration: 0.01ms !important;
         scroll-behavior: auto !important;
     }
-    .typewriter {
+    .hero[data-motion-ready="true"]:not([data-motion-paused="true"]) .typewriter {
         animation: none;
         max-width: none;
     }
-    .typing-cursor {
+    .hero[data-motion-ready="true"]:not([data-motion-paused="true"]) .typing-cursor {
         animation: none;
+    }
+    .hero[data-motion-ready="true"] .hero-orbiter {
+        animation: none !important;
+    }
+    .hero-orbit-trail {
+        display: none;
     }
     .surface-card-link:hover,
     .surface-card-link:focus-within,

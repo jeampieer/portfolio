@@ -39,6 +39,9 @@ const es = {
         note: "DEL CONCEPTO A LA EXPERIENCIA",
         orbit: "INGENIERÍA × CREATIVIDAD",
         caption: "Un universo de posibilidades.",
+        pauseMotion: "Pausar animaciones",
+        resumeMotion: "Reanudar animaciones",
+        reducedMotion: "Movimiento reducido activo",
     },
     about: {
         eyebrow: "02 / IDENTITY SIGNAL",
@@ -229,6 +232,9 @@ const en: Dictionary = {
         note: "FROM CONCEPT TO EXPERIENCE",
         orbit: "ENGINEERING × CREATIVITY",
         caption: "A universe of possibilities.",
+        pauseMotion: "Pause animations",
+        resumeMotion: "Resume animations",
+        reducedMotion: "Reduced motion enabled",
     },
     about: {
         eyebrow: "02 / IDENTITY SIGNAL",

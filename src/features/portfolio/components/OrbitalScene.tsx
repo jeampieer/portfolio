@@ -32,7 +32,18 @@ export function OrbitalScene({ label, caption }: { label: string; caption: strin
                         </>
                     )}
                 </div>
-                <div className="orbit-satellite satellite-one" />
+                <div className="hero-orbiter">
+                    <svg className="hero-orbit-trail" viewBox="0 0 100 100" fill="none">
+                        <path
+                            d="M 37.6 1.56 A 50 50 0 0 1 50 0"
+                            stroke="currentColor"
+                            strokeWidth="1.5"
+                            strokeLinecap="round"
+                            vectorEffect="non-scaling-stroke"
+                        />
+                    </svg>
+                    <div className="orbit-satellite satellite-one" />
+                </div>
                 <div className="orbit-satellite satellite-two" />
                 <div className="orbit-cross cross-one">+</div>
                 <div className="orbit-cross cross-two">+</div>
