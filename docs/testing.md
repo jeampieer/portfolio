@@ -39,3 +39,7 @@ Comprobar composición, tamaños, recortes, foco visible y encabezado al hacer s
 axe no sustituye una evaluación manual con lector de pantalla, todos los navegadores, dispositivos físicos ni auditorías completas de WCAG. El rango de pantallas comprobado no garantiza todos los tamaños posibles.
 
 Resultados de la entrega: [verification.md](verification.md).
+
+## Cierre de tareas
+
+Cada agente cierra una tarea con cambios mediante un commit local de su trabajo, después de ejecutar las comprobaciones aplicables. Debe evaluar si corresponde actualizar las guías de `docs/` e incluirlas en el mismo commit; las etapas significativas conservan evidencia y límites en `verification.md`. Revisar el diff preparado para evitar incluir cambios ajenos y comunicar el hash y las verificaciones realizadas. Las tareas de análisis o lectura sin cambios no generan commits vacíos. Esta regla no autoriza push ni despliegues; una instrucción explícita del usuario de no hacer commit prevalece. La regla completa vive en [AGENTS.md](../AGENTS.md).

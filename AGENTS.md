@@ -51,8 +51,11 @@ tests/e2e/                          pruebas de recorridos reales
 4. Ejecutar las verificaciones aplicables. Para cambios que afectan el sitio completo, ejecutar `npm run verify` con Node 24.
 5. Revisar visualmente desktop y móvil cuando cambie el layout. No afirmar conformidad WCAG completa solo por pasar axe.
 6. Registrar evidencia y límites en `docs/verification.md` cuando se cierre una etapa significativa.
+7. Al terminar cada tarea con cambios, crear un commit local con el trabajo propio de esa tarea y comunicar su hash y resultado de las verificaciones. Esta autorización aplica a todos los agentes; no pedir confirmación de nuevo. Respetar una instrucción explícita del usuario de no hacer commit. Si una tarea es solo de análisis o lectura y no modifica archivos, no crear commits vacíos.
 
-No crear commits, remotos, despliegues o integraciones externas salvo que el pedido lo requiera. Mantener cualquier servidor local solicitado por el usuario en ejecución e indicar su URL.
+Antes de cerrar, evaluar si el cambio es relevante para las guías de `docs/` y actualizarlas cuando corresponda, especialmente si cambia contenido, arquitectura, configuración, flujo de trabajo o evidencia de verificación. Incluir esas actualizaciones en el commit de la tarea. Revisar el diff preparado e incluir solo los archivos del alcance propio; coordinar los commits si hay otros agentes trabajando para no incorporar ni descartar cambios ajenos.
+
+No crear remotos, hacer push, desplegar o configurar integraciones externas salvo que el pedido lo requiera. Mantener cualquier servidor local solicitado por el usuario en ejecución e indicar su URL.
 
 ## Comandos
 
