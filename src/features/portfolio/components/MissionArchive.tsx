@@ -36,20 +36,12 @@ export function MissionArchive({
                             })}
                         >
                             {project.artwork === "orbital-signal" && (
-                                <Link
-                                    href={`/${locale}/projects/${project.slug}`}
-                                    className="project-artwork-link"
-                                    aria-label={`${labels.detail}: ${project.title[locale]}`}
-                                >
+                                <div className="project-artwork-link">
                                     <ProjectArtwork label={labels.preview} />
-                                </Link>
+                                </div>
                             )}
                             {project.cover && (
-                                <Link
-                                    href={`/${locale}/projects/${project.slug}`}
-                                    className="project-cover-link"
-                                    aria-label={`${labels.detail}: ${project.title[locale]}`}
-                                >
+                                <div className="project-cover-link">
                                     <Image
                                         src={project.cover.src}
                                         alt={project.cover.alt[locale]}
@@ -58,7 +50,7 @@ export function MissionArchive({
                                         sizes="(max-width: 768px) 100vw, 50vw"
                                         unoptimized
                                     />
-                                </Link>
+                                </div>
                             )}
                             <div className="project-info">
                                 <p className="eyebrow">
@@ -68,11 +60,7 @@ export function MissionArchive({
                                     {project.year && `${project.year} · `}
                                     {project.context?.[locale] ?? labels.type}
                                 </span>
-                                <h3>
-                                    <Link href={`/${locale}/projects/${project.slug}`}>
-                                        {project.title[locale]}
-                                    </Link>
-                                </h3>
+                                <h3 id={`project-${project.slug}`}>{project.title[locale]}</h3>
                                 <p>{project.description[locale]}</p>
                                 {project.contributionSummary && (
                                     <p className="contribution-summary">
@@ -86,7 +74,8 @@ export function MissionArchive({
                                     ))}
                                 </ul>
                                 <Link
-                                    className="text-link"
+                                    className="text-link project-card-action"
+                                    aria-describedby={`project-${project.slug}`}
                                     href={`/${locale}/projects/${project.slug}`}
                                 >
                                     {labels.detail}

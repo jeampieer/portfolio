@@ -528,11 +528,11 @@
     display: inline-block;
     white-space: nowrap;
     overflow: hidden;
-    animation: type-in 1.6s steps(24) both;
+    animation: type-in 6s steps(24) infinite;
 }
 .typing-cursor {
     color: var(--accent);
-    animation: blink 1s step-end 4;
+    animation: blink 1s step-end infinite;
 }
 .hero h1 {
     font-size: clamp(48px, 5.2vw, 72px);
@@ -941,12 +941,28 @@
     border-color: color-mix(in srgb, var(--accent) 18%, transparent);
 }
 .project-card {
+    position: relative;
     display: grid;
     grid-template-columns: 1.14fr 1fr;
     border: 1px solid var(--border);
     border-radius: 9px;
     overflow: hidden;
     background: var(--card-bg);
+}
+.project-card-action::after {
+    content: "";
+    z-index: 2;
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    cursor: pointer;
+}
+.project-card-action:focus-visible {
+    outline: none;
+}
+.project-card-action:focus-visible::after {
+    outline: 2px solid var(--accent);
+    outline-offset: -4px;
 }
 .project-list > div + div {
     margin-top: 24px;
@@ -1012,7 +1028,7 @@
     transform: perspective(900px) rotateY(-5deg) rotateX(4deg) rotateZ(-2deg);
     transition: transform var(--motion-card);
 }
-.project-artwork-link:hover .preview-window {
+.project-card:hover .preview-window {
     transform: perspective(900px) rotateY(0) rotateX(0) rotateZ(0);
 }
 .preview-toolbar {
@@ -2013,10 +2029,12 @@ input[type="range"] {
 }
 
 @keyframes type-in {
-    from {
+    0%,
+    100% {
         max-width: 0;
     }
-    to {
+    30%,
+    70% {
         max-width: 26ch;
     }
 }
@@ -2372,13 +2390,17 @@ input[type="range"] {
         scroll-behavior: auto !important;
     }
     .typewriter {
+        animation: none;
         max-width: none;
+    }
+    .typing-cursor {
+        animation: none;
     }
     .surface-card-link:hover,
     .surface-card-link:focus-within,
     .button:hover,
     .text-link:hover svg,
-    .project-artwork-link:hover .preview-window {
+    .project-card:hover .preview-window {
         transform: none;
     }
     .lab-orbiter {

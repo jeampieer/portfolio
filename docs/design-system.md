@@ -21,7 +21,7 @@ La escala usa títulos hero de hasta 72px, títulos de casos de hasta 56px (40px
 - Señales y órbitas son decorativas; no hay canvas, Three.js ni render loop.
 - El laboratorio permite cambiar velocidad, trayectoria y pausa. Movimiento reducido detiene la órbita; también se pausa fuera del viewport o al ocultar la pestaña.
 - Reveal usa detección de viewport de Framer Motion y animación de 400ms una sola vez, desplazamiento de 24px y escalonado de 50ms limitado a 150ms; el HTML inicial sigue visible sin JavaScript.
-- El efecto de escritura solo recorta visualmente un texto ya completo en el DOM y respeta movimiento reducido.
+- El saludo se escribe, permanece visible y se borra en un ciclo CSS de seis segundos, con cursor continuo. El texto completo permanece en el DOM y, con movimiento reducido, ambos efectos se desactivan.
 
 ## Decisiones por datos pendientes
 
@@ -30,3 +30,5 @@ La fotografía y el CV provienen de la configuración publicada; el CTA de desca
 La revisión automatizada de contraste/accesibilidad y la inspección responsive se detallan en [verification.md](verification.md). Las pruebas automáticas no certifican por sí solas conformidad completa WCAG AA.
 
 El visor usa la misma superficie, borde, tipografía y controles que el sitio, con opacidad de 160ms al abrir/cerrar mediante transiciones discretas de dialog. El fondo queda inerte y la captura completa se ajusta con contain; tamaño original habilita scroll nativo. Movimiento reducido elimina las transiciones y las transformaciones de hover; no se recorta el foco en los enlaces de imagen. La 404 reutiliza marca y estilos de recuperación en ambos temas.
+
+La marca usa el ancla nativa `/{locale}#top` para volver arriba incluso al repetir el mismo destino. Cada card de proyecto tiene un único enlace de detalle cuya área cubre toda la card, con foco visible en su contorno y contexto del título; no se anidan enlaces ni se añade un handler cliente a la sección.

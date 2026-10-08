@@ -698,3 +698,79 @@ test("viewer links and both 404 variants remain usable without JavaScript", asyn
     }
     await context.close();
 });
+
+test("brand returns to the top repeatedly and from a project detail in both locales", async ({
+    page,
+}) => {
+    await page.emulateMedia({ reducedMotion: "reduce" });
+    for (const locale of ["es", "en"]) {
+        await page.goto(`/${locale}#education`);
+        const brand = page.locator(".site-header .brand");
+        await brand.click();
+        await expect(page).toHaveURL(new RegExp(`/${locale}#top$`));
+        await expect.poll(() => page.evaluate(() => window.scrollY)).toBe(0);
+        // Scroll without changing the hash, then click the same brand destination again.
+        await page.locator("#contact").scrollIntoViewIfNeeded();
+        await brand.click();
+        await expect.poll(() => page.evaluate(() => window.scrollY)).toBe(0);
+        await page.goto(`/${locale}/projects/servicio-mfa`);
+        await brand.click();
+        await expect(page).toHaveURL(new RegExp(`/${locale}#top$`));
+        await expect.poll(() => page.evaluate(() => window.scrollY)).toBe(0);
+    }
+});
+
+test("project cards open from their summary, empty padding and keyboard with one link per card", async ({
+    page,
+}) => {
+    await page.emulateMedia({ reducedMotion: "reduce" });
+    await page.goto("/es#projects");
+    const cards = page.locator("#projects article");
+    await expect(cards.nth(0).getByRole("link")).toHaveCount(1);
+    await expect(cards.nth(1).getByRole("link")).toHaveCount(1);
+    const summary = await cards.nth(0).locator(".contribution-summary").boundingBox();
+    const card = await cards.nth(0).boundingBox();
+    await cards.nth(0).click({
+        position: {
+            x: summary!.x - card!.x + summary!.width / 2,
+            y: summary!.y - card!.y + summary!.height / 2,
+        },
+    });
+    await expect(page).toHaveURL(/\/es\/projects\/plataforma-encuestas-gm$/);
+    await page.goto("/es#projects");
+    await cards.nth(1).click({ position: { x: 8, y: 8 } });
+    await expect(page).toHaveURL(/\/es\/projects\/servicio-mfa$/);
+    await page.goto("/en#projects");
+    const action = cards.nth(0).getByRole("link", { name: "Explore project", exact: true });
+    await action.focus();
+    await page.keyboard.press("Enter");
+    await expect(page).toHaveURL(/\/en\/projects\/plataforma-encuestas-gm$/);
+});
+
+test("greeting repeats writing and erasing while reduced motion keeps the full text static", async ({
+    page,
+}) => {
+    await page.goto("/es");
+    const greeting = page.locator(".typewriter");
+    await expect(greeting).toHaveText("Hola, soy Jeampieer.");
+    // Sample the browser animation at representative points, without waiting a whole cycle.
+    const samples = await greeting.evaluate((el) => {
+        const animation = el.getAnimations()[0];
+        animation.pause();
+        return [0, 3000, 5500, 6000, 9000].map((time) => {
+            animation.currentTime = time;
+            return el.getBoundingClientRect().width;
+        });
+    });
+    expect(samples[0]).toBe(0);
+    expect(samples[1]).toBeGreaterThan(100);
+    expect(samples[2]).toBeLessThan(samples[1]);
+    expect(samples[3]).toBe(0);
+    expect(samples[4]).toBeCloseTo(samples[1], 1);
+    await page.emulateMedia({ reducedMotion: "reduce" });
+    await expect(greeting).toHaveCSS("animation-name", "none");
+    await expect(greeting).toHaveCSS("max-width", "none");
+    await expect(page.locator(".typing-cursor")).toHaveCSS("animation-name", "none");
+    await page.getByRole("link", { name: "Read in English" }).click();
+    await expect(greeting).toHaveText("Hi, I'm Jeampieer.");
+});
