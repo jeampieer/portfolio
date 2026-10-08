@@ -1,7 +1,7 @@
 import { expect, test } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
 
-test("redirects to Spanish, renders the nine sections and has no runtime errors", async ({
+test("redirects to Spanish, renders the eight sections and has no runtime errors", async ({
     page,
 }, testInfo) => {
     const errors: string[] = [];
@@ -12,7 +12,7 @@ test("redirects to Spanish, renders the nine sections and has no runtime errors"
     await expect(page.getByRole("heading", { level: 1 })).toHaveText(
         "Ideas que tomanforma en código."
     );
-    await expect(page.locator("main > section")).toHaveCount(9);
+    await expect(page.locator("main > section")).toHaveCount(8);
     const experiences = page.locator("#experiences");
     await expect(experiences.locator("article")).toHaveCount(2);
     await expect(experiences).toContainText("Egresados UTP");
@@ -80,12 +80,11 @@ test("education and languages preserve confirmed dates and academic status in bo
         await page.locator("main > section").evaluateAll((elements) => elements.map((el) => el.id))
     ).toEqual([
         "hero",
-        "about",
-        "process",
         "projects",
-        "experiences",
+        "about",
         "education",
         "stack",
+        "experiences",
         "labs",
         "contact",
     ]);
@@ -120,35 +119,29 @@ test("theme switches and persists on reload and locale navigation", async ({ pag
     await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
 });
 
-test("project filters, detail and language switch preserve the project", async ({ page }) => {
+test("archive order, direct detail and language switch preserve the project", async ({ page }) => {
     await page.goto("/es");
     const archive = page.locator("#projects");
     await expect(archive.locator("article")).toHaveCount(2);
-    await expect(
-        archive.getByRole("heading", { name: "Servicio MFA para plataformas empresariales" })
-    ).toBeVisible();
-    await expect(archive.getByRole("heading", { name: /^GM Social/ })).toBeVisible();
+    await expect(archive.locator("article h3")).toHaveText([
+        "GM Social — Gestión de estudios y trabajo de campo",
+        "Servicio MFA para plataformas empresariales",
+    ]);
+    await expect(archive.getByRole("button")).toHaveCount(0);
     await expect(archive.getByRole("heading", { name: "Orbital Signal" })).toHaveCount(0);
-    await archive.getByRole("button", { name: "Full stack", exact: true }).click();
-    await expect(archive.getByRole("heading", { name: /^GM Social/ })).toBeVisible();
-    await expect(archive.locator("article")).toHaveCount(1);
-    await expect(archive.getByRole("heading", { name: "Orbital Signal" })).toHaveCount(0);
-    await archive.getByRole("button", { name: "Frontend", exact: true }).click();
-    await expect(
-        archive.getByText("Aún no hay proyectos publicados en esta categoría.")
-    ).toBeVisible();
-    await expect(archive.locator("article")).toHaveCount(0);
+    await expect(archive.locator(".contribution-summary")).toHaveCount(2);
     const response = await page.goto("/es/projects/orbital-signal");
     expect(response?.status()).toBe(200);
-    await expect(page).toHaveURL(/\/es\/projects\/orbital-signal$/);
     await expect(page.getByRole("heading", { name: "La arquitectura" })).toBeVisible();
+    await expect(page.locator("header .desktop-navigation a[aria-current]")).toHaveText(
+        "Proyectos"
+    );
     await page.getByRole("link", { name: "Read in English" }).click();
     await expect(page).toHaveURL(/\/en\/projects\/orbital-signal$/);
     await expect(page.getByRole("heading", { name: "The architecture" })).toBeVisible();
     await page.getByRole("link", { name: "Back to projects" }).first().click();
     await expect(page).toHaveURL(/\/en#projects$/);
     await expect(archive.locator("article")).toHaveCount(2);
-    await expect(archive.getByRole("heading", { name: "Orbital Signal" })).toHaveCount(0);
 });
 
 test("full stack case has a working demo gallery, original images and bilingual navigation", async ({
@@ -157,8 +150,11 @@ test("full stack case has a working demo gallery, original images and bilingual 
 }) => {
     await page.goto("/es");
     const archive = page.locator("#projects");
-    await archive.getByRole("button", { name: "Full stack", exact: true }).click();
-    await archive.getByRole("link", { name: "Explorar proyecto", exact: true }).click();
+    await archive
+        .locator("article")
+        .filter({ has: page.getByRole("heading", { name: /^GM Social/ }) })
+        .getByRole("link", { name: "Explorar proyecto", exact: true })
+        .click();
     await expect(page).toHaveURL(/\/es\/projects\/plataforma-encuestas-gm$/);
     await expect(page.getByRole("heading", { level: 1 })).toHaveText(
         "GM Social — Gestión de estudios y trabajo de campo"
@@ -238,9 +234,13 @@ test("backend case has verified screenshots, locale navigation and deployment at
     request,
 }) => {
     await page.goto("/es");
-    const archive = page.locator("#projects");
-    await archive.getByRole("button", { name: "Backend", exact: true }).click();
-    await expect(archive.locator("article")).toHaveCount(1);
+    const archive = page.locator("#projects article").filter({
+        has: page.getByRole("heading", {
+            name: "Servicio MFA para plataformas empresariales",
+            exact: true,
+        }),
+    });
+    await expect(archive).toHaveCount(1);
     await expect(archive.getByRole("heading", { name: "Orbital Signal" })).toHaveCount(0);
     await expect(archive.locator(".project-cover-link img")).toHaveAttribute(
         "src",
@@ -321,16 +321,16 @@ test("mobile navigation closes on Escape and section selection", async ({ page }
     await page.goto("/es");
     await page.evaluate(() => document.fonts.ready);
     await page.screenshot({ path: testInfo.outputPath("mobile.png"), animations: "disabled" });
-    const menu = page.getByRole("button", { name: "Abrir menú" });
+    const menu = page.locator(".compact-menu > summary");
     await menu.click();
-    await expect(page.getByRole("navigation")).toBeVisible();
+    await expect(page.locator("#compact-navigation")).toBeVisible();
     await page.keyboard.press("Escape");
     await expect(menu).toBeFocused();
-    await expect(page.getByRole("navigation")).toBeHidden();
+    await expect(page.locator("#compact-navigation")).toBeHidden();
     await menu.click();
-    await page.getByRole("navigation").getByRole("link", { name: "Proyectos" }).click();
+    await page.locator("#compact-navigation").getByRole("link", { name: "Proyectos" }).click();
     await expect(page).toHaveURL(/#projects$/);
-    await expect(page.getByRole("navigation")).toBeHidden();
+    await expect(page.locator("#compact-navigation")).toBeHidden();
 });
 
 for (const width of [360, 390, 768, 1280, 1920]) {
@@ -387,6 +387,8 @@ test("missing pages return 404 and local preview stays unindexed", async ({ requ
         const response = await request.get(path);
         expect(response.status()).toBe(404);
     }
+    await page.goto("/fr");
+    await expect(page.getByRole("heading", { level: 1 })).toHaveText("Esta señal no llegó.");
     await page.goto("/en/projects/missing");
     await expect(page.getByRole("heading", { level: 1 })).toHaveText("This signal didn't arrive.");
     await page.goto("/es");
@@ -447,4 +449,54 @@ test("skip link is the first keyboard destination", async ({ page }) => {
     await expect(page.getByRole("link", { name: "Saltar al contenido" })).toBeFocused();
     await page.keyboard.press("Enter");
     await expect(page).toHaveURL(/#main-content$/);
+});
+
+test("header exposes education, secondary sections and mobile CV while preserving locale anchors", async ({
+    page,
+}) => {
+    await page.goto("/es#education");
+    const header = page.locator(".site-header");
+    await expect(header.locator('.desktop-navigation a[aria-current="location"]')).toHaveText(
+        "Educación"
+    );
+    await page.getByRole("link", { name: "Read in English" }).click();
+    await expect(page).toHaveURL(/\/en#education$/);
+    await expect(header.locator('.desktop-navigation a[aria-current="location"]')).toHaveText(
+        "Education"
+    );
+    await header.locator(".more-menu summary").click();
+    await header.getByRole("link", { name: "Experiences & community", exact: true }).click();
+    await expect(header.locator(".more-menu summary")).toHaveClass(/active/);
+    await expect(header.locator(".more-menu")).not.toHaveAttribute("open");
+    await page.setViewportSize({ width: 1024, height: 800 });
+    await header.locator(".compact-menu summary").click();
+    await expect(header.getByRole("link", { name: "Download CV" })).toBeVisible();
+    await header.getByRole("link", { name: "Education", exact: true }).click();
+    await expect(page).toHaveURL(/#education$/);
+    await expect(header.locator(".compact-menu")).not.toHaveAttribute("open");
+    await header.locator(".compact-menu summary").click();
+    await page.locator(".education-card").first().click();
+    await expect(header.locator(".compact-menu")).not.toHaveAttribute("open");
+});
+
+test("native disclosures and archive navigation work without JavaScript on mobile", async ({
+    browser,
+}) => {
+    const context = await browser.newContext({
+        javaScriptEnabled: false,
+        viewport: { width: 360, height: 800 },
+    });
+    const page = await context.newPage();
+    await page.goto("http://127.0.0.1:3100/es");
+    await page.locator(".compact-menu summary").click();
+    await expect(
+        page.locator("#compact-navigation").getByRole("link", { name: "Descargar CV" })
+    ).toBeVisible();
+    await page
+        .locator("#compact-navigation")
+        .getByRole("link", { name: "Educación", exact: true })
+        .click();
+    await expect(page).toHaveURL(/#education$/);
+    await expect(page.locator("#education")).toContainText("Ingeniería de Software");
+    await context.close();
 });

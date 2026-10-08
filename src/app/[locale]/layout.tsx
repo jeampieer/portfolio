@@ -44,7 +44,7 @@ export default async function LocaleLayout({
     if (!isLocale(locale)) notFound();
     const dictionary = getDictionary(locale);
     return (
-        <html lang={locale} suppressHydrationWarning>
+        <html lang={locale} data-scroll-behavior="smooth" suppressHydrationWarning>
             <body id="top">
                 <AppProvider>
                     <a className="skip-link" href="#main-content">

@@ -1,5 +1,6 @@
-import { ArrowDown, ArrowUpRight, MoveRight } from "lucide-react";
+import { ArrowDown, ArrowUpRight, Download } from "lucide-react";
 import { OrbitalScene } from "@/features/portfolio/components/OrbitalScene";
+import { siteConfig } from "@/config/site";
 import type { Dictionary } from "@/lib/i18n";
 
 export function Hero({ labels }: { labels: Dictionary["hero"] }) {
@@ -27,10 +28,12 @@ export function Hero({ labels }: { labels: Dictionary["hero"] }) {
                         {labels.projects}
                         <ArrowUpRight size={18} />
                     </a>
-                    <a href="#about" className="button button-ghost">
-                        {labels.about}
-                        <MoveRight size={18} />
-                    </a>
+                    {siteConfig.cv && (
+                        <a href={siteConfig.cv} download className="button button-ghost">
+                            {labels.cv}
+                            <Download size={18} aria-hidden="true" />
+                        </a>
+                    )}
                 </div>
                 <div className="hero-stack mono">
                     <span>React</span>
@@ -43,7 +46,7 @@ export function Hero({ labels }: { labels: Dictionary["hero"] }) {
             </div>
             <OrbitalScene label={labels.orbit} caption={labels.caption} />
             <div className="hero-bottom mono">
-                <a href="#about">
+                <a href="#projects">
                     <ArrowDown size={14} />
                     {labels.scroll}
                 </a>

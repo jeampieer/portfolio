@@ -1,14 +1,11 @@
-"use client";
-
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowUpRight, Plus } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import clsx from "clsx";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ProjectArtwork } from "@/features/portfolio/components/ProjectArtwork";
-import { useProjectFilter } from "@/features/portfolio/hooks/useProjectFilter";
-import type { Project, ProjectCategory } from "@/features/portfolio/types/portfolio.types";
+import type { Project } from "@/features/portfolio/types/portfolio.types";
 import type { Dictionary } from "@/lib/i18n";
 import type { Locale } from "@/types/i18n";
 
@@ -21,8 +18,6 @@ export function MissionArchive({
     labels: Dictionary["projects"];
     locale: Locale;
 }) {
-    const { filter, setFilter, visibleProjects } = useProjectFilter(projects);
-    const filters: (ProjectCategory | "all")[] = ["all", "frontend", "backend", "fullstack"];
     return (
         <section
             id="projects"
@@ -30,25 +25,10 @@ export function MissionArchive({
             aria-label={labels.title}
         >
             <Reveal>
-                <div className="section-heading-row">
-                    <SectionHeading {...labels} />
-                    <div className="filter-group" role="group" aria-label={labels.filters}>
-                        {filters.map((item) => (
-                            <button
-                                key={item}
-                                className={clsx("filter-button", { selected: filter === item })}
-                                type="button"
-                                aria-pressed={filter === item}
-                                onClick={() => setFilter(item)}
-                            >
-                                {labels[item]}
-                            </button>
-                        ))}
-                    </div>
-                </div>
+                <SectionHeading {...labels} />
             </Reveal>
-            <div className="project-list" aria-live="polite" aria-atomic="true">
-                {visibleProjects.map((project) => (
+            <div className="project-list">
+                {projects.map((project) => (
                     <Reveal key={project.slug}>
                         <article
                             className={clsx("project-card", {
@@ -94,6 +74,12 @@ export function MissionArchive({
                                     </Link>
                                 </h3>
                                 <p>{project.description[locale]}</p>
+                                {project.contributionSummary && (
+                                    <p className="contribution-summary">
+                                        <strong>{labels.contribution}:</strong>{" "}
+                                        {project.contributionSummary[locale]}
+                                    </p>
+                                )}
                                 <ul className="tags" aria-label="Stack">
                                     {project.tags.map((tag) => (
                                         <li key={tag}>{tag}</li>
@@ -110,20 +96,6 @@ export function MissionArchive({
                         </article>
                     </Reveal>
                 ))}
-                {visibleProjects.length === 0 && <p className="empty-state">{labels.empty}</p>}
-            </div>
-            <div className="next-project">
-                <div className="next-project-icon">
-                    <Plus size={22} strokeWidth={1} />
-                </div>
-                <div>
-                    <h3>{labels.nextTitle}</h3>
-                    <p>{labels.nextDescription}</p>
-                </div>
-                <a href="#labs" className="text-link">
-                    {labels.nextLink}
-                    <ArrowUpRight size={16} />
-                </a>
             </div>
         </section>
     );

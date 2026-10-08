@@ -12,7 +12,11 @@ const es = {
         projects: "Proyectos",
         stack: "Stack",
         labs: "Labs",
-        contact: "Hablemos",
+        contact: "Contacto",
+        education: "Educación",
+        experiences: "Experiencias y comunidad",
+        more: "Más",
+        secondary: "Explora el portafolio",
         cv: "Descargar CV",
         open: "Abrir menú",
         close: "Cerrar menú",
@@ -30,14 +34,14 @@ const es = {
         description:
             "Conecto diseño y tecnología para construir experiencias digitales claras, cuidadas y con propósito.",
         projects: "Explorar proyectos",
-        about: "Conóceme",
+        cv: "Descargar CV",
         scroll: "SIGUE LA SEÑAL",
         note: "DEL CONCEPTO A LA EXPERIENCIA",
         orbit: "INGENIERÍA × CREATIVIDAD",
         caption: "Un universo de posibilidades.",
     },
     about: {
-        eyebrow: "01 / IDENTITY SIGNAL",
+        eyebrow: "02 / IDENTITY SIGNAL",
         title: "Más allá del código.",
         description: "La curiosidad marca el rumbo. La ingeniería hace posible el viaje.",
         cards: [
@@ -60,8 +64,8 @@ const es = {
         ],
     },
     timeline: {
-        eyebrow: "02 / ORBITAL TIMELINE",
-        title: "Una idea. Un camino.",
+        eyebrow: "WORKING PROCESS",
+        title: "Cómo trabajo",
         description: "Mi enfoque para pasar de una pregunta a una experiencia funcional.",
         steps: [
             {
@@ -82,25 +86,16 @@ const es = {
         ],
     },
     projects: {
-        eyebrow: "03 / MISSION ARCHIVE",
+        eyebrow: "01 / MISSION ARCHIVE",
         title: "Ideas en órbita.",
         description: "Una mirada a lo que construyo y a las decisiones detrás del código.",
-        all: "Todos",
-        frontend: "Frontend",
-        backend: "Backend",
-        fullstack: "Full stack",
-        filters: "Filtrar proyectos",
-        empty: "Aún no hay proyectos publicados en esta categoría.",
         detail: "Explorar proyecto",
         back: "Volver a proyectos",
         featured: "PROYECTO DESTACADO",
         type: "PORTAFOLIO PERSONAL",
-        nextTitle: "El próximo capítulo",
-        nextDescription:
-            "Nuevos proyectos encontrarán su lugar aquí. Mientras tanto, puedes explorar el laboratorio.",
-        nextLink: "Ir al laboratorio",
         problem: "El punto de partida",
         participation: "Mi participación",
+        contribution: "Mi aporte",
         architecture: "La arquitectura",
         decisions: "Decisiones de ingeniería",
         impact: "El resultado",
@@ -114,7 +109,7 @@ const es = {
         preview: "Vista conceptual del sistema visual de Orbital Signal",
     },
     experiences: {
-        eyebrow: "04 / EXPERIENCES & COMMUNITY",
+        eyebrow: "05 / EXPERIENCES & COMMUNITY",
         title: "Experiencias que suman.",
         description:
             "Mi camino también se construye con personas, encuentros y momentos compartidos.",
@@ -125,7 +120,7 @@ const es = {
         note: "Las capturas se muestran completas para conservar el contexto y la identidad de quien las publicó.",
     },
     education: {
-        eyebrow: "05 / EDUCATION",
+        eyebrow: "03 / EDUCATION",
         title: "Mi educación",
         description: "La base de lo que construyo.",
         inProgress: "En curso",
@@ -133,14 +128,14 @@ const es = {
         languages: "Idiomas",
     },
     stack: {
-        eyebrow: "06 / ENGINEERING ARSENAL",
+        eyebrow: "04 / ENGINEERING ARSENAL",
         title: "Las herramientas del viaje.",
         description:
             "Cada herramienta tiene un propósito. Este es mi stack para desarrollar aplicaciones full stack.",
         note: "AWS: conocimientos básicos para desplegar aplicaciones.",
     },
     labs: {
-        eyebrow: "07 / LABS",
+        eyebrow: "06 / LABS",
         title: "Un espacio para explorar.",
         description: "Pequeñas ideas, interacciones reales. La curiosidad también se construye.",
         titleCard: "Orbital playground",
@@ -158,12 +153,13 @@ const es = {
         reset: "Restablecer",
     },
     contact: {
-        eyebrow: "08 / OPEN CHANNEL",
+        eyebrow: "07 / OPEN CHANNEL",
         title: "La próxima gran idea",
         accent: "empieza conversando.",
         description:
             "Un proyecto, una colaboración o una buena conversación sobre tecnología. Todo empieza con una señal.",
         email: "Escríbeme",
+        cv: "Descargar CV",
         copy: "Copiar correo",
         copied: "Correo copiado",
         failed: "No se pudo copiar. Puedes seleccionar el correo.",
@@ -191,7 +187,11 @@ const en: Dictionary = {
         projects: "Projects",
         stack: "Stack",
         labs: "Labs",
-        contact: "Let's talk",
+        contact: "Contact",
+        education: "Education",
+        experiences: "Experiences & community",
+        more: "More",
+        secondary: "Explore the portfolio",
         cv: "Download CV",
         open: "Open menu",
         close: "Close menu",
@@ -209,14 +209,14 @@ const en: Dictionary = {
         description:
             "I connect design and technology to build digital experiences with clarity, care and purpose.",
         projects: "Explore projects",
-        about: "Get to know me",
+        cv: "Download CV",
         scroll: "FOLLOW THE SIGNAL",
         note: "FROM CONCEPT TO EXPERIENCE",
         orbit: "ENGINEERING × CREATIVITY",
         caption: "A universe of possibilities.",
     },
     about: {
-        eyebrow: "01 / IDENTITY SIGNAL",
+        eyebrow: "02 / IDENTITY SIGNAL",
         title: "Beyond the code.",
         description: "Curiosity sets the course. Engineering makes the journey possible.",
         cards: [
@@ -239,8 +239,8 @@ const en: Dictionary = {
         ],
     },
     timeline: {
-        eyebrow: "02 / ORBITAL TIMELINE",
-        title: "One idea. A way forward.",
+        eyebrow: "WORKING PROCESS",
+        title: "How I work",
         description: "My approach to turning a question into a working experience.",
         steps: [
             {
@@ -261,25 +261,16 @@ const en: Dictionary = {
         ],
     },
     projects: {
-        eyebrow: "03 / MISSION ARCHIVE",
+        eyebrow: "01 / MISSION ARCHIVE",
         title: "Ideas in orbit.",
         description: "A look at what I build and the decisions behind the code.",
-        all: "All",
-        frontend: "Frontend",
-        backend: "Backend",
-        fullstack: "Full stack",
-        filters: "Filter projects",
-        empty: "No projects have been published in this category yet.",
         detail: "Explore project",
         back: "Back to projects",
         featured: "FEATURED PROJECT",
         type: "PERSONAL PORTFOLIO",
-        nextTitle: "The next chapter",
-        nextDescription:
-            "New projects will find their place here. In the meantime, explore the playground.",
-        nextLink: "Visit the lab",
         problem: "The starting point",
         participation: "My contribution",
+        contribution: "My contribution",
         architecture: "The architecture",
         decisions: "Engineering decisions",
         impact: "The outcome",
@@ -293,7 +284,7 @@ const en: Dictionary = {
         preview: "Conceptual preview of the Orbital Signal visual system",
     },
     experiences: {
-        eyebrow: "04 / EXPERIENCES & COMMUNITY",
+        eyebrow: "05 / EXPERIENCES & COMMUNITY",
         title: "Experiences that shape my journey.",
         description: "People, encounters and shared moments are also part of my journey.",
         publishedBy: "Published on LinkedIn by",
@@ -303,7 +294,7 @@ const en: Dictionary = {
         note: "Screenshots are displayed in full to preserve the context and the identity of their publishers.",
     },
     education: {
-        eyebrow: "05 / EDUCATION",
+        eyebrow: "03 / EDUCATION",
         title: "My education",
         description: "The foundation of what I build.",
         inProgress: "In progress",
@@ -311,14 +302,14 @@ const en: Dictionary = {
         languages: "Languages",
     },
     stack: {
-        eyebrow: "06 / ENGINEERING ARSENAL",
+        eyebrow: "04 / ENGINEERING ARSENAL",
         title: "Tools for the journey.",
         description:
             "Every tool has a purpose. This is my stack for developing full stack applications.",
         note: "AWS: basic knowledge for deploying applications.",
     },
     labs: {
-        eyebrow: "07 / LABS",
+        eyebrow: "06 / LABS",
         title: "Room to explore.",
         description: "Small ideas, real interactions. Curiosity can be built, too.",
         titleCard: "Orbital playground",
@@ -336,12 +327,13 @@ const en: Dictionary = {
         reset: "Reset",
     },
     contact: {
-        eyebrow: "08 / OPEN CHANNEL",
+        eyebrow: "07 / OPEN CHANNEL",
         title: "The next great idea",
         accent: "starts with a conversation.",
         description:
             "A project, a collaboration or a good conversation about technology. It all starts with a signal.",
         email: "Get in touch",
+        cv: "Download CV",
         copy: "Copy email",
         copied: "Email copied",
         failed: "Could not copy. You can select the email address.",

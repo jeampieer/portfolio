@@ -3,11 +3,19 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
 import type { Dictionary } from "@/lib/i18n";
 
+import { OrbitalTimeline } from "@/features/portfolio/components/OrbitalTimeline";
+
 const icons = [CodeXml, Fingerprint, Telescope, Compass];
 
-export function IdentitySignal({ labels }: { labels: Dictionary["about"] }) {
+export function IdentitySignal({
+    labels,
+    processLabels,
+}: {
+    labels: Dictionary["about"];
+    processLabels: Dictionary["timeline"];
+}) {
     return (
-        <section id="about" className="section container" aria-label={labels.title}>
+        <section id="about" className="section section-divider container" aria-label={labels.title}>
             <Reveal>
                 <SectionHeading {...labels} />
             </Reveal>
@@ -28,6 +36,7 @@ export function IdentitySignal({ labels }: { labels: Dictionary["about"] }) {
                     );
                 })}
             </div>
+            <OrbitalTimeline labels={processLabels} />
         </section>
     );
 }

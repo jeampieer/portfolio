@@ -50,6 +50,7 @@ export interface Project {
     description: Localized<string>;
     problem: Localized<string>;
     participation?: Localized<string>;
+    contributionSummary?: Localized<string>;
     architecture: Localized<string>;
     decisions?: Localized<string>;
     impact: Localized<string>;

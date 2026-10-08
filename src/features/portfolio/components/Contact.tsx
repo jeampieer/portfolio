@@ -1,20 +1,29 @@
 "use client";
 
-import { useState } from "react";
-import { ArrowUpRight, Check, Copy, Github, Linkedin } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { ArrowUpRight, Check, Copy, Download, Github, Linkedin } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import { Reveal } from "@/components/ui/Reveal";
 import type { Dictionary } from "@/lib/i18n";
 
 export function Contact({ labels }: { labels: Dictionary["contact"] }) {
     const [status, setStatus] = useState<"idle" | "copied" | "failed">("idle");
+    const statusTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+    useEffect(
+        () => () => {
+            if (statusTimer.current) clearTimeout(statusTimer.current);
+        },
+        []
+    );
     async function copyEmail() {
+        if (statusTimer.current) clearTimeout(statusTimer.current);
         try {
             await navigator.clipboard.writeText(siteConfig.email);
             setStatus("copied");
         } catch {
             setStatus("failed");
         }
+        statusTimer.current = setTimeout(() => setStatus("idle"), 4000);
     }
     return (
         <section id="contact" className="contact-section container" aria-labelledby="contact-title">
@@ -41,6 +50,12 @@ export function Contact({ labels }: { labels: Dictionary["contact"] }) {
                         >
                             {status === "copied" ? <Check size={18} /> : <Copy size={18} />}
                         </button>
+                        {siteConfig.cv && (
+                            <a className="button button-outline" href={siteConfig.cv} download>
+                                {labels.cv}
+                                <Download size={18} aria-hidden="true" />
+                            </a>
+                        )}
                         <p className="contact-email">{siteConfig.email}</p>
                         <span role="status">{status !== "idle" ? labels[status] : ""}</span>
                     </div>

@@ -33,8 +33,9 @@ Agregar una entrada a `projects` en `src/features/portfolio/data/portfolio.ts`. 
 
 - `slug` único, legible y estable, título ES/EN, número y categoría (`frontend`, `backend` o `fullstack`).
 - `year` opcional: omitir si el usuario no confirmó una fecha. `context` opcional con rótulo ES/EN; si se omite, se usa el rótulo del portafolio personal.
-- `showInArchive` opcional: se muestra por defecto; `false` oculta la ficha del archivo de proyectos y de todos sus filtros en el inicio ES/EN. Conserva el contenido y el acceso directo al detalle, metadatos y sitemap.
+- `showInArchive` opcional: se muestra por defecto; `false` oculta la ficha del archivo de proyectos en el inicio ES/EN. Conserva el contenido y el acceso directo al detalle, metadatos y sitemap.
 - `description`, `problem`, `architecture`, `impact` y `learnings`, cada uno con `es` y `en`.
+- `contributionSummary` opcional ES/EN resume el aporte ya autorizado para la ficha y el detalle; no añade cargos, métricas o responsabilidades.
 - `participation` y `decisions` opcionales, con ES/EN, para distinguir el aporte personal y las decisiones de ingeniería. Solo se muestran las secciones presentes.
 - `tags` con las tecnologías confirmadas del proyecto.
 - `features` opcional: lista de funcionalidades con título y descripción ES/EN.
@@ -66,7 +67,7 @@ La aceptación integral con Flutter, instrumentos oficiales e infraestructura pr
 
 ## Experiencias y comunidad
 
-La sección aparece después de Proyectos y antes de Educación. Los dos textos ES/EN y sus autores viven en `src/features/portfolio/data/experiences.ts`. Presentan las publicaciones de Egresados UTP y de IGH, empresa donde trabaja el propietario según su confirmación. No se deducen fechas, cargos ni el logro concreto de la felicitación universitaria.
+La sección aparece después del Stack y antes del laboratorio. Los dos textos ES/EN y sus autores viven en `src/features/portfolio/data/experiences.ts`. Presentan las publicaciones de Egresados UTP y de IGH, empresa donde trabaja el propietario según su confirmación. No se deducen fechas, cargos ni el logro concreto de la felicitación universitaria.
 
 La carpeta `public/images/experiences/` contiene las dos capturas completas de LinkedIn añadidas por el propietario. Se usan estos nombres exactos:
 
@@ -83,7 +84,7 @@ Los rótulos de sección, estado pendiente y enlaces se editan en `dictionary.ex
 
 ## Educación e idiomas
 
-«Mi educación» aparece después de Experiencias y comunidad y antes de Stack. Las listas `education` y `languages` viven en `src/features/portfolio/data/portfolio.ts`, con contratos `EducationEntry` y `LanguageSkill`. Los encabezados y estados académicos se editan en `dictionary.education` en ambos idiomas. Los nombres oficiales de las instituciones se conservan en español también en EN.
+«Mi educación» aparece después de Sobre mí y antes de Stack. Las listas `education` y `languages` viven en `src/features/portfolio/data/portfolio.ts`, con contratos `EducationEntry` y `LanguageSkill`. Los encabezados y estados académicos se editan en `dictionary.education` en ambos idiomas. Los nombres oficiales de las instituciones se conservan en español también en EN.
 
 La información fue confirmada por el propietario: Universidad Tecnológica del Perú (UTP), Ingeniería de Software, Lima, Perú, **2026 – Actualidad**, **En curso**; IDAT – Instituto de Educación Superior, Desarrollo de Sistemas de Información, Lima, Perú, **2023**, **Egresado**. El año de IDAT se muestra como un dato único, sin inferir fecha de inicio o duración. Egresado no se convierte en bachiller o titulado; la traducción EN tampoco atribuye un grado académico.
 
@@ -91,7 +92,7 @@ Idiomas: **Español — Nativo**, **Inglés — Intermedio (lectura técnica y c
 
 ## Trayectoria y stack
 
-El timeline actual es un proceso en tres pasos, sin fechas. Se puede sustituir su contenido en `dictionary.timeline.steps` por hitos laborales reales cuando se confirmen, y cambiar el título/descripción para que diga trayectoria. No añadir años de experiencia por deducción.
+El proceso está integrado en Sobre mí y conserva `#process`, con tres pasos sin fechas. Se puede sustituir su contenido en `dictionary.timeline.steps` por hitos laborales reales cuando se confirmen, y cambiar el título/descripción para que diga trayectoria. No añadir años de experiencia por deducción.
 
 Los seis grupos del arsenal existen en `skillGroups`: frontend, backend, base de datos, despliegue/cloud, IA y herramientas. Los grupos vacíos no se renderizan. El arsenal describe las tecnologías del perfil; los `tags` de cada proyecto conservan su stack particular. Añadir solo las tecnologías que el usuario quiera declarar. No hay barras ni porcentajes de dominio.
 
@@ -102,3 +103,7 @@ El grupo «Herramientas y prácticas» presenta Git, Docker y Testing por elecci
 ## Antes de publicar
 
 Revisar los textos propuestos, completar los datos públicos, verificar todas las URLs/descargas, dar permiso a cada caso de estudio y definir el dominio real con `SITE_URL`. Luego ejecutar `npm run verify` y revisar ambos idiomas, temas y móvil.
+
+## Navegación y orden
+
+Los destinos se editan en `data/navigation.ts` con etiquetas `dictionary.nav` ES/EN. Educación y Contacto están en la navegación principal; Experiencias y Labs en Más. El menú compacto, activo por debajo de 1280px, contiene todos los destinos y el CV. Hero y Contacto también ofrecen el archivo configurado. El archivo muestra GM Social antes de MFA, sin filtros ni bloque de proyectos futuros; Orbital Signal conserva su visibilidad configurada y las rutas directas.

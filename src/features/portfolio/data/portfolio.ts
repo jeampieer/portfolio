@@ -47,6 +47,10 @@ export const projects: Project[] = [
             es: "Servicio MFA para plataformas empresariales",
             en: "MFA service for enterprise platforms",
         },
+        contributionSummary: {
+            es: "Reconstrucción y refactorización del backend, validaciones y optimización del flujo de correo. Despliegue inicial a cargo de otro integrante.",
+            en: "Backend reconstruction and refactoring, validation and email flow optimization. Initial deployment by another team member.",
+        },
         category: "backend",
         cover: mfaGallery[2],
         context: {
@@ -94,6 +98,10 @@ export const projects: Project[] = [
         title: {
             es: "GM Social — Gestión de estudios y trabajo de campo",
             en: "GM Social — Social study and fieldwork management",
+        },
+        contributionSummary: {
+            es: "Desarrollo de la API y del backoffice web sobre una plantilla existente. La app móvil corresponde a otros compañeros.",
+            en: "API and web backoffice development using an existing template. The mobile app belongs to other teammates.",
         },
         category: "fullstack",
         context: {
@@ -287,3 +295,7 @@ export const skillGroups: SkillGroup[] = [
         items: ["Git", "Docker", "Testing"],
     },
 ];
+
+export const archiveProjects = projects
+    .filter((project) => project.showInArchive !== false)
+    .sort((a, b) => Number(b.category === "fullstack") - Number(a.category === "fullstack"));
