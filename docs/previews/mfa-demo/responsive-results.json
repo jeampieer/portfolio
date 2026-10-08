@@ -1,0 +1,502 @@
+{
+    "reviewDateLima": "2026-10-08",
+    "server": "local-development",
+    "results": [
+        {
+            "locale": "es",
+            "theme": "dark",
+            "width": 360,
+            "home": {
+                "viewport": 360,
+                "scrollWidth": 360
+            },
+            "detail": {
+                "viewport": 360,
+                "scrollWidth": 360
+            },
+            "images": [
+                {
+                    "src": "/images/projects/servicio-mfa/01-api-codigo-valido.png",
+                    "width": 1920,
+                    "height": 1080,
+                    "renderedWidth": 328,
+                    "renderedHeight": 185.375,
+                    "contentWidth": 326,
+                    "contentHeight": 183.375
+                },
+                {
+                    "src": "/images/projects/servicio-mfa/03-admin-plataformas.png",
+                    "width": 1920,
+                    "height": 1080,
+                    "renderedWidth": 328,
+                    "renderedHeight": 184.5,
+                    "contentWidth": 328,
+                    "contentHeight": 184.5
+                },
+                {
+                    "src": "/images/projects/servicio-mfa/04-admin-registro-solicitud.png",
+                    "width": 1920,
+                    "height": 1080,
+                    "renderedWidth": 328,
+                    "renderedHeight": 184.5,
+                    "contentWidth": 328,
+                    "contentHeight": 184.5
+                },
+                {
+                    "src": "/images/projects/servicio-mfa/01-api-codigo-valido.png",
+                    "width": 1920,
+                    "height": 1080,
+                    "renderedWidth": 328,
+                    "renderedHeight": 184.5,
+                    "contentWidth": 328,
+                    "contentHeight": 184.5
+                },
+                {
+                    "src": "/images/projects/servicio-mfa/02-api-destinatario-rechazado.png",
+                    "width": 1920,
+                    "height": 1080,
+                    "renderedWidth": 328,
+                    "renderedHeight": 184.5,
+                    "contentWidth": 328,
+                    "contentHeight": 184.5
+                }
+            ],
+            "originalLinks": 4,
+            "errors": []
+        },
+        {
+            "locale": "es",
+            "theme": "dark",
+            "width": 1440,
+            "home": {
+                "viewport": 1440,
+                "scrollWidth": 1440
+            },
+            "detail": {
+                "viewport": 1440,
+                "scrollWidth": 1440
+            },
+            "images": [
+                {
+                    "src": "/images/projects/servicio-mfa/01-api-codigo-valido.png",
+                    "width": 1920,
+                    "height": 1080,
+                    "renderedWidth": 1280,
+                    "renderedHeight": 720.875,
+                    "contentWidth": 1278,
+                    "contentHeight": 718.875
+                },
+                {
+                    "src": "/images/projects/servicio-mfa/03-admin-plataformas.png",
+                    "width": 1920,
+                    "height": 1080,
+                    "renderedWidth": 628,
+                    "renderedHeight": 353.25,
+                    "contentWidth": 628,
+                    "contentHeight": 353.25
+                },
+                {
+                    "src": "/images/projects/servicio-mfa/04-admin-registro-solicitud.png",
+                    "width": 1920,
+                    "height": 1080,
+                    "renderedWidth": 628,
+                    "renderedHeight": 353.25,
+                    "contentWidth": 628,
+                    "contentHeight": 353.25
+                },
+                {
+                    "src": "/images/projects/servicio-mfa/01-api-codigo-valido.png",
+                    "width": 1920,
+                    "height": 1080,
+                    "renderedWidth": 628,
+                    "renderedHeight": 353.25,
+                    "contentWidth": 628,
+                    "contentHeight": 353.25
+                },
+                {
+                    "src": "/images/projects/servicio-mfa/02-api-destinatario-rechazado.png",
+                    "width": 1920,
+                    "height": 1080,
+                    "renderedWidth": 628,
+                    "renderedHeight": 353.25,
+                    "contentWidth": 628,
+                    "contentHeight": 353.25
+                }
+            ],
+            "originalLinks": 4,
+            "errors": []
+        },
+        {
+            "locale": "es",
+            "theme": "light",
+            "width": 360,
+            "home": {
+                "viewport": 360,
+                "scrollWidth": 360
+            },
+            "detail": {
+                "viewport": 360,
+                "scrollWidth": 360
+            },
+            "images": [
+                {
+                    "src": "/images/projects/servicio-mfa/01-api-codigo-valido.png",
+                    "width": 1920,
+                    "height": 1080,
+                    "renderedWidth": 328,
+                    "renderedHeight": 185.375,
+                    "contentWidth": 326,
+                    "contentHeight": 183.375
+                },
+                {
+                    "src": "/images/projects/servicio-mfa/03-admin-plataformas.png",
+                    "width": 1920,
+                    "height": 1080,
+                    "renderedWidth": 328,
+                    "renderedHeight": 184.5,
+                    "contentWidth": 328,
+                    "contentHeight": 184.5
+                },
+                {
+                    "src": "/images/projects/servicio-mfa/04-admin-registro-solicitud.png",
+                    "width": 1920,
+                    "height": 1080,
+                    "renderedWidth": 328,
+                    "renderedHeight": 184.5,
+                    "contentWidth": 328,
+                    "contentHeight": 184.5
+                },
+                {
+                    "src": "/images/projects/servicio-mfa/01-api-codigo-valido.png",
+                    "width": 1920,
+                    "height": 1080,
+                    "renderedWidth": 328,
+                    "renderedHeight": 184.5,
+                    "contentWidth": 328,
+                    "contentHeight": 184.5
+                },
+                {
+                    "src": "/images/projects/servicio-mfa/02-api-destinatario-rechazado.png",
+                    "width": 1920,
+                    "height": 1080,
+                    "renderedWidth": 328,
+                    "renderedHeight": 184.5,
+                    "contentWidth": 328,
+                    "contentHeight": 184.5
+                }
+            ],
+            "originalLinks": 4,
+            "errors": []
+        },
+        {
+            "locale": "es",
+            "theme": "light",
+            "width": 1440,
+            "home": {
+                "viewport": 1440,
+                "scrollWidth": 1440
+            },
+            "detail": {
+                "viewport": 1440,
+                "scrollWidth": 1440
+            },
+            "images": [
+                {
+                    "src": "/images/projects/servicio-mfa/01-api-codigo-valido.png",
+                    "width": 1920,
+                    "height": 1080,
+                    "renderedWidth": 1280,
+                    "renderedHeight": 720.875,
+                    "contentWidth": 1278,
+                    "contentHeight": 718.875
+                },
+                {
+                    "src": "/images/projects/servicio-mfa/03-admin-plataformas.png",
+                    "width": 1920,
+                    "height": 1080,
+                    "renderedWidth": 628,
+                    "renderedHeight": 353.25,
+                    "contentWidth": 628,
+                    "contentHeight": 353.25
+                },
+                {
+                    "src": "/images/projects/servicio-mfa/04-admin-registro-solicitud.png",
+                    "width": 1920,
+                    "height": 1080,
+                    "renderedWidth": 628,
+                    "renderedHeight": 353.25,
+                    "contentWidth": 628,
+                    "contentHeight": 353.25
+                },
+                {
+                    "src": "/images/projects/servicio-mfa/01-api-codigo-valido.png",
+                    "width": 1920,
+                    "height": 1080,
+                    "renderedWidth": 628,
+                    "renderedHeight": 353.25,
+                    "contentWidth": 628,
+                    "contentHeight": 353.25
+                },
+                {
+                    "src": "/images/projects/servicio-mfa/02-api-destinatario-rechazado.png",
+                    "width": 1920,
+                    "height": 1080,
+                    "renderedWidth": 628,
+                    "renderedHeight": 353.25,
+                    "contentWidth": 628,
+                    "contentHeight": 353.25
+                }
+            ],
+            "originalLinks": 4,
+            "errors": []
+        },
+        {
+            "locale": "en",
+            "theme": "dark",
+            "width": 360,
+            "home": {
+                "viewport": 360,
+                "scrollWidth": 360
+            },
+            "detail": {
+                "viewport": 360,
+                "scrollWidth": 360
+            },
+            "images": [
+                {
+                    "src": "/images/projects/servicio-mfa/01-api-codigo-valido.png",
+                    "width": 1920,
+                    "height": 1080,
+                    "renderedWidth": 328,
+                    "renderedHeight": 185.375,
+                    "contentWidth": 326,
+                    "contentHeight": 183.375
+                },
+                {
+                    "src": "/images/projects/servicio-mfa/03-admin-plataformas.png",
+                    "width": 1920,
+                    "height": 1080,
+                    "renderedWidth": 328,
+                    "renderedHeight": 184.5,
+                    "contentWidth": 328,
+                    "contentHeight": 184.5
+                },
+                {
+                    "src": "/images/projects/servicio-mfa/04-admin-registro-solicitud.png",
+                    "width": 1920,
+                    "height": 1080,
+                    "renderedWidth": 328,
+                    "renderedHeight": 184.5,
+                    "contentWidth": 328,
+                    "contentHeight": 184.5
+                },
+                {
+                    "src": "/images/projects/servicio-mfa/01-api-codigo-valido.png",
+                    "width": 1920,
+                    "height": 1080,
+                    "renderedWidth": 328,
+                    "renderedHeight": 184.5,
+                    "contentWidth": 328,
+                    "contentHeight": 184.5
+                },
+                {
+                    "src": "/images/projects/servicio-mfa/02-api-destinatario-rechazado.png",
+                    "width": 1920,
+                    "height": 1080,
+                    "renderedWidth": 328,
+                    "renderedHeight": 184.5,
+                    "contentWidth": 328,
+                    "contentHeight": 184.5
+                }
+            ],
+            "originalLinks": 4,
+            "errors": []
+        },
+        {
+            "locale": "en",
+            "theme": "dark",
+            "width": 1440,
+            "home": {
+                "viewport": 1440,
+                "scrollWidth": 1440
+            },
+            "detail": {
+                "viewport": 1440,
+                "scrollWidth": 1440
+            },
+            "images": [
+                {
+                    "src": "/images/projects/servicio-mfa/01-api-codigo-valido.png",
+                    "width": 1920,
+                    "height": 1080,
+                    "renderedWidth": 1280,
+                    "renderedHeight": 720.875,
+                    "contentWidth": 1278,
+                    "contentHeight": 718.875
+                },
+                {
+                    "src": "/images/projects/servicio-mfa/03-admin-plataformas.png",
+                    "width": 1920,
+                    "height": 1080,
+                    "renderedWidth": 628,
+                    "renderedHeight": 353.25,
+                    "contentWidth": 628,
+                    "contentHeight": 353.25
+                },
+                {
+                    "src": "/images/projects/servicio-mfa/04-admin-registro-solicitud.png",
+                    "width": 1920,
+                    "height": 1080,
+                    "renderedWidth": 628,
+                    "renderedHeight": 353.25,
+                    "contentWidth": 628,
+                    "contentHeight": 353.25
+                },
+                {
+                    "src": "/images/projects/servicio-mfa/01-api-codigo-valido.png",
+                    "width": 1920,
+                    "height": 1080,
+                    "renderedWidth": 628,
+                    "renderedHeight": 353.25,
+                    "contentWidth": 628,
+                    "contentHeight": 353.25
+                },
+                {
+                    "src": "/images/projects/servicio-mfa/02-api-destinatario-rechazado.png",
+                    "width": 1920,
+                    "height": 1080,
+                    "renderedWidth": 628,
+                    "renderedHeight": 353.25,
+                    "contentWidth": 628,
+                    "contentHeight": 353.25
+                }
+            ],
+            "originalLinks": 4,
+            "errors": []
+        },
+        {
+            "locale": "en",
+            "theme": "light",
+            "width": 360,
+            "home": {
+                "viewport": 360,
+                "scrollWidth": 360
+            },
+            "detail": {
+                "viewport": 360,
+                "scrollWidth": 360
+            },
+            "images": [
+                {
+                    "src": "/images/projects/servicio-mfa/01-api-codigo-valido.png",
+                    "width": 1920,
+                    "height": 1080,
+                    "renderedWidth": 328,
+                    "renderedHeight": 185.375,
+                    "contentWidth": 326,
+                    "contentHeight": 183.375
+                },
+                {
+                    "src": "/images/projects/servicio-mfa/03-admin-plataformas.png",
+                    "width": 1920,
+                    "height": 1080,
+                    "renderedWidth": 328,
+                    "renderedHeight": 184.5,
+                    "contentWidth": 328,
+                    "contentHeight": 184.5
+                },
+                {
+                    "src": "/images/projects/servicio-mfa/04-admin-registro-solicitud.png",
+                    "width": 1920,
+                    "height": 1080,
+                    "renderedWidth": 328,
+                    "renderedHeight": 184.5,
+                    "contentWidth": 328,
+                    "contentHeight": 184.5
+                },
+                {
+                    "src": "/images/projects/servicio-mfa/01-api-codigo-valido.png",
+                    "width": 1920,
+                    "height": 1080,
+                    "renderedWidth": 328,
+                    "renderedHeight": 184.5,
+                    "contentWidth": 328,
+                    "contentHeight": 184.5
+                },
+                {
+                    "src": "/images/projects/servicio-mfa/02-api-destinatario-rechazado.png",
+                    "width": 1920,
+                    "height": 1080,
+                    "renderedWidth": 328,
+                    "renderedHeight": 184.5,
+                    "contentWidth": 328,
+                    "contentHeight": 184.5
+                }
+            ],
+            "originalLinks": 4,
+            "errors": []
+        },
+        {
+            "locale": "en",
+            "theme": "light",
+            "width": 1440,
+            "home": {
+                "viewport": 1440,
+                "scrollWidth": 1440
+            },
+            "detail": {
+                "viewport": 1440,
+                "scrollWidth": 1440
+            },
+            "images": [
+                {
+                    "src": "/images/projects/servicio-mfa/01-api-codigo-valido.png",
+                    "width": 1920,
+                    "height": 1080,
+                    "renderedWidth": 1280,
+                    "renderedHeight": 720.875,
+                    "contentWidth": 1278,
+                    "contentHeight": 718.875
+                },
+                {
+                    "src": "/images/projects/servicio-mfa/03-admin-plataformas.png",
+                    "width": 1920,
+                    "height": 1080,
+                    "renderedWidth": 628,
+                    "renderedHeight": 353.25,
+                    "contentWidth": 628,
+                    "contentHeight": 353.25
+                },
+                {
+                    "src": "/images/projects/servicio-mfa/04-admin-registro-solicitud.png",
+                    "width": 1920,
+                    "height": 1080,
+                    "renderedWidth": 628,
+                    "renderedHeight": 353.25,
+                    "contentWidth": 628,
+                    "contentHeight": 353.25
+                },
+                {
+                    "src": "/images/projects/servicio-mfa/01-api-codigo-valido.png",
+                    "width": 1920,
+                    "height": 1080,
+                    "renderedWidth": 628,
+                    "renderedHeight": 353.25,
+                    "contentWidth": 628,
+                    "contentHeight": 353.25
+                },
+                {
+                    "src": "/images/projects/servicio-mfa/02-api-destinatario-rechazado.png",
+                    "width": 1920,
+                    "height": 1080,
+                    "renderedWidth": 628,
+                    "renderedHeight": 353.25,
+                    "contentWidth": 628,
+                    "contentHeight": 353.25
+                }
+            ],
+            "originalLinks": 4,
+            "errors": []
+        }
+    ]
+}

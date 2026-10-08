@@ -1,0 +1,187 @@
+{
+    "environment": "production-local-port-3100",
+    "widths": [360, 390, 768, 1024, 1440],
+    "results": [
+        {
+            "locale": "es",
+            "theme": "dark",
+            "width": 360,
+            "status": 200,
+            "viewport": 360,
+            "scroll": 360,
+            "imagesKeepRatio": true
+        },
+        {
+            "locale": "es",
+            "theme": "dark",
+            "width": 390,
+            "status": 200,
+            "viewport": 390,
+            "scroll": 390,
+            "imagesKeepRatio": true
+        },
+        {
+            "locale": "es",
+            "theme": "dark",
+            "width": 768,
+            "status": 200,
+            "viewport": 768,
+            "scroll": 768,
+            "imagesKeepRatio": true
+        },
+        {
+            "locale": "es",
+            "theme": "dark",
+            "width": 1024,
+            "status": 200,
+            "viewport": 1024,
+            "scroll": 1024,
+            "imagesKeepRatio": true
+        },
+        {
+            "locale": "es",
+            "theme": "dark",
+            "width": 1440,
+            "status": 200,
+            "viewport": 1440,
+            "scroll": 1440,
+            "imagesKeepRatio": true
+        },
+        {
+            "locale": "es",
+            "theme": "light",
+            "width": 360,
+            "status": 200,
+            "viewport": 360,
+            "scroll": 360,
+            "imagesKeepRatio": true
+        },
+        {
+            "locale": "es",
+            "theme": "light",
+            "width": 390,
+            "status": 200,
+            "viewport": 390,
+            "scroll": 390,
+            "imagesKeepRatio": true
+        },
+        {
+            "locale": "es",
+            "theme": "light",
+            "width": 768,
+            "status": 200,
+            "viewport": 768,
+            "scroll": 768,
+            "imagesKeepRatio": true
+        },
+        {
+            "locale": "es",
+            "theme": "light",
+            "width": 1024,
+            "status": 200,
+            "viewport": 1024,
+            "scroll": 1024,
+            "imagesKeepRatio": true
+        },
+        {
+            "locale": "es",
+            "theme": "light",
+            "width": 1440,
+            "status": 200,
+            "viewport": 1440,
+            "scroll": 1440,
+            "imagesKeepRatio": true
+        },
+        {
+            "locale": "en",
+            "theme": "dark",
+            "width": 360,
+            "status": 200,
+            "viewport": 360,
+            "scroll": 360,
+            "imagesKeepRatio": true
+        },
+        {
+            "locale": "en",
+            "theme": "dark",
+            "width": 390,
+            "status": 200,
+            "viewport": 390,
+            "scroll": 390,
+            "imagesKeepRatio": true
+        },
+        {
+            "locale": "en",
+            "theme": "dark",
+            "width": 768,
+            "status": 200,
+            "viewport": 768,
+            "scroll": 768,
+            "imagesKeepRatio": true
+        },
+        {
+            "locale": "en",
+            "theme": "dark",
+            "width": 1024,
+            "status": 200,
+            "viewport": 1024,
+            "scroll": 1024,
+            "imagesKeepRatio": true
+        },
+        {
+            "locale": "en",
+            "theme": "dark",
+            "width": 1440,
+            "status": 200,
+            "viewport": 1440,
+            "scroll": 1440,
+            "imagesKeepRatio": true
+        },
+        {
+            "locale": "en",
+            "theme": "light",
+            "width": 360,
+            "status": 200,
+            "viewport": 360,
+            "scroll": 360,
+            "imagesKeepRatio": true
+        },
+        {
+            "locale": "en",
+            "theme": "light",
+            "width": 390,
+            "status": 200,
+            "viewport": 390,
+            "scroll": 390,
+            "imagesKeepRatio": true
+        },
+        {
+            "locale": "en",
+            "theme": "light",
+            "width": 768,
+            "status": 200,
+            "viewport": 768,
+            "scroll": 768,
+            "imagesKeepRatio": true
+        },
+        {
+            "locale": "en",
+            "theme": "light",
+            "width": 1024,
+            "status": 200,
+            "viewport": 1024,
+            "scroll": 1024,
+            "imagesKeepRatio": true
+        },
+        {
+            "locale": "en",
+            "theme": "light",
+            "width": 1440,
+            "status": 200,
+            "viewport": 1440,
+            "scroll": 1440,
+            "imagesKeepRatio": true
+        }
+    ],
+    "errors": []
+}

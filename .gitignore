@@ -1,0 +1,42 @@
+# Dependencies
+node_modules/
+
+# Next.js and generated build files
+.next/
+out/
+build/
+dist/
+next-env.d.ts
+*.tsbuildinfo
+
+# Test reports and local browser authentication
+coverage/
+playwright-report/
+test-results/
+blob-report/
+playwright/.auth/
+
+# Local caches and deployment metadata
+.cache/
+.eslintcache
+.vercel/
+
+# Environment variables and private keys
+.env*
+!.env.example
+*.pem
+*.key
+
+# Logs
+*.log
+
+# Operating system and editor files
+.DS_Store
+._*
+Thumbs.db
+Desktop.ini
+.idea/
+.vscode/
+*.swp
+*.swo
+*~

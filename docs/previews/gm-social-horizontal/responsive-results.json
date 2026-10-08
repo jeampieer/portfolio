@@ -1,0 +1,87 @@
+{
+    "revision": "horizontal-1920x1080",
+    "environment": "development-local-port-3000",
+    "results": [
+        {
+            "locale": "es",
+            "theme": "dark",
+            "width": 360,
+            "loadedGalleryImages": 8,
+            "naturalSize": "1920x1080",
+            "viewport": 360,
+            "scroll": 360,
+            "fullRatio": true
+        },
+        {
+            "locale": "es",
+            "theme": "dark",
+            "width": 1440,
+            "loadedGalleryImages": 8,
+            "naturalSize": "1920x1080",
+            "viewport": 1440,
+            "scroll": 1440,
+            "fullRatio": true
+        },
+        {
+            "locale": "es",
+            "theme": "light",
+            "width": 360,
+            "loadedGalleryImages": 8,
+            "naturalSize": "1920x1080",
+            "viewport": 360,
+            "scroll": 360,
+            "fullRatio": true
+        },
+        {
+            "locale": "es",
+            "theme": "light",
+            "width": 1440,
+            "loadedGalleryImages": 8,
+            "naturalSize": "1920x1080",
+            "viewport": 1440,
+            "scroll": 1440,
+            "fullRatio": true
+        },
+        {
+            "locale": "en",
+            "theme": "dark",
+            "width": 360,
+            "loadedGalleryImages": 8,
+            "naturalSize": "1920x1080",
+            "viewport": 360,
+            "scroll": 360,
+            "fullRatio": true
+        },
+        {
+            "locale": "en",
+            "theme": "dark",
+            "width": 1440,
+            "loadedGalleryImages": 8,
+            "naturalSize": "1920x1080",
+            "viewport": 1440,
+            "scroll": 1440,
+            "fullRatio": true
+        },
+        {
+            "locale": "en",
+            "theme": "light",
+            "width": 360,
+            "loadedGalleryImages": 8,
+            "naturalSize": "1920x1080",
+            "viewport": 360,
+            "scroll": 360,
+            "fullRatio": true
+        },
+        {
+            "locale": "en",
+            "theme": "light",
+            "width": 1440,
+            "loadedGalleryImages": 8,
+            "naturalSize": "1920x1080",
+            "viewport": 1440,
+            "scroll": 1440,
+            "fullRatio": true
+        }
+    ],
+    "errors": []
+}

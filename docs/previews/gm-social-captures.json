@@ -1,0 +1,137 @@
+{
+    "reviewDateLima": "2026-10-07",
+    "revision": "horizontal-1920x1080",
+    "originalPixelsPreserved": true,
+    "totalBytes": 1391780,
+    "mapScreenshotStatus": "pending_authorized_google_maps_origin",
+    "images": [
+        {
+            "file": "01-dashboard.png",
+            "width": 1920,
+            "height": 1080,
+            "sha256": "32caf6e4a5ba2c3fa5023f2a2a8a0920c5967b0257be27a998ea9fa5ad995ff6",
+            "bytes": 190463,
+            "viewport": {
+                "width": 1920,
+                "height": 1080
+            },
+            "fullPage": false,
+            "zoom": 1,
+            "deviceScaleFactor": 1,
+            "classification": "demo_local_authorized",
+            "source_visual_review": "passed"
+        },
+        {
+            "file": "03-estudio-cuotas.png",
+            "width": 1920,
+            "height": 1080,
+            "sha256": "726920fe2e94d4c5eb0036af2a7aca049da640b66aff6d0c9f2474225aa7fa55",
+            "bytes": 251624,
+            "viewport": {
+                "width": 1920,
+                "height": 1080
+            },
+            "fullPage": false,
+            "zoom": 1,
+            "deviceScaleFactor": 1,
+            "classification": "demo_local_authorized",
+            "source_visual_review": "passed"
+        },
+        {
+            "file": "04-instrumento-versionado.png",
+            "width": 1920,
+            "height": 1080,
+            "sha256": "6193b5c533efc3a3efb3888a0baa595f22aec9af86780f4a6e1cce80564cd77c",
+            "bytes": 141323,
+            "viewport": {
+                "width": 1920,
+                "height": 1080
+            },
+            "fullPage": false,
+            "zoom": 1,
+            "deviceScaleFactor": 1,
+            "classification": "demo_local_authorized",
+            "source_visual_review": "passed"
+        },
+        {
+            "file": "05-asignacion.png",
+            "width": 1920,
+            "height": 1080,
+            "sha256": "2cd807a301850ceda9cb8de8504ffddd11b02e379e790589c388bc38eb1f8d2b",
+            "bytes": 145878,
+            "viewport": {
+                "width": 1920,
+                "height": 1080
+            },
+            "fullPage": false,
+            "zoom": 1,
+            "deviceScaleFactor": 1,
+            "classification": "demo_local_authorized",
+            "source_visual_review": "passed"
+        },
+        {
+            "file": "06-actividades-recibidas.png",
+            "width": 1920,
+            "height": 1080,
+            "sha256": "57c3c2d86d5f9090970f57e29735a088047032a765bac35fb40e7b1d3cf97ff7",
+            "bytes": 231355,
+            "viewport": {
+                "width": 1920,
+                "height": 1080
+            },
+            "fullPage": false,
+            "zoom": 1,
+            "deviceScaleFactor": 1,
+            "classification": "demo_local_authorized",
+            "source_visual_review": "passed"
+        },
+        {
+            "file": "07-detalle-actividad.png",
+            "width": 1920,
+            "height": 1080,
+            "sha256": "a41dac4a52b0872678ece30e6db9ede139c8aabdd37b0d63a4106d8998859a60",
+            "bytes": 138426,
+            "viewport": {
+                "width": 1920,
+                "height": 1080
+            },
+            "fullPage": false,
+            "zoom": 1,
+            "deviceScaleFactor": 1,
+            "classification": "demo_local_authorized",
+            "source_visual_review": "passed"
+        },
+        {
+            "file": "08-supervision-calidad.png",
+            "width": 1920,
+            "height": 1080,
+            "sha256": "3034e01cbf48eab1d5c505a0bf0d38b477b31dd25e937c99f6a3a0a1a536accf",
+            "bytes": 127300,
+            "viewport": {
+                "width": 1920,
+                "height": 1080
+            },
+            "fullPage": false,
+            "zoom": 1,
+            "deviceScaleFactor": 1,
+            "classification": "demo_local_authorized",
+            "source_visual_review": "passed"
+        },
+        {
+            "file": "02-analisis.png",
+            "width": 1920,
+            "height": 1080,
+            "sha256": "015caf9f8017171e9993a3744f4b4faf09fb61b9948e16d0c287bc0e0283cd7d",
+            "bytes": 165411,
+            "viewport": {
+                "width": 1920,
+                "height": 1080
+            },
+            "fullPage": false,
+            "zoom": 1,
+            "deviceScaleFactor": 1,
+            "classification": "demo_local_authorized",
+            "source_visual_review": "passed"
+        }
+    ]
+}

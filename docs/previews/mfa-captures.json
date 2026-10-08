@@ -1,0 +1,184 @@
+{
+    "reviewDateLima": "2026-10-08",
+    "revision": "horizontal-1920x1080",
+    "classification": "synthetic_local_demo",
+    "backendOnly": true,
+    "originalPixelsPreserved": true,
+    "totalBytes": 505766,
+    "coverFile": "01-api-codigo-valido.png",
+    "images": [
+        {
+            "file": "03-admin-plataformas.png",
+            "width": 1920,
+            "height": 1080,
+            "bytes": 78084,
+            "sha256": "4258fc2b3e28884e00d04d6fcd883a33ac6ef8ac4cb6a0592a9c7aaf2e9caff6",
+            "viewport": {
+                "width": 1920,
+                "height": 1080
+            },
+            "fullPage": false,
+            "deviceScaleFactor": 1,
+            "zoom": 1,
+            "classification": "synthetic_local_demo",
+            "surface": "native_django_admin",
+            "source_visual_review": "passed",
+            "operation_http_status": 200,
+            "source_metadata": {
+                "title": {
+                    "es": "Plataformas sintéticas en Django Admin",
+                    "en": "Synthetic platforms in Django Admin"
+                },
+                "alt": {
+                    "es": "Django Admin original mostrando las configuraciones ATLAS-DEMO y NOVA-DEMO.",
+                    "en": "Original Django Admin showing ATLAS-DEMO and NOVA-DEMO configurations."
+                },
+                "caption": {
+                    "es": "Administración real del backend con dos configuraciones de plataforma sintéticas. Las claves y sus hashes quedan fuera de la captura.",
+                    "en": "Actual backend administration with two synthetic platform configurations. Keys and their hashes are not shown."
+                }
+            }
+        },
+        {
+            "file": "04-admin-registro-solicitud.png",
+            "width": 1920,
+            "height": 1080,
+            "bytes": 86128,
+            "sha256": "6ecddd08fb203f921345b0486ff62ed699263941ba5c812be6d114cb4e7df2e2",
+            "viewport": {
+                "width": 1920,
+                "height": 1080
+            },
+            "fullPage": false,
+            "deviceScaleFactor": 1,
+            "zoom": 1,
+            "classification": "synthetic_local_demo",
+            "surface": "native_django_admin",
+            "source_visual_review": "passed",
+            "operation_http_status": 200,
+            "source_metadata": {
+                "title": {
+                    "es": "Registro de solicitud validada",
+                    "en": "Validated request record"
+                },
+                "alt": {
+                    "es": "Django Admin original mostrando un contador de registro validado para demo-001 y ATLAS-DEMO.",
+                    "en": "Original Django Admin showing a validated registration counter for demo-001 and ATLAS-DEMO."
+                },
+                "caption": {
+                    "es": "Registro creado por la prueba HTTP de alta: usuario sintético, plataforma, fecha, cantidad y clasificación REGISTER / VALIDATE.",
+                    "en": "Record created by the HTTP registration test: synthetic user, platform, date, count and REGISTER / VALIDATE classification."
+                }
+            }
+        },
+        {
+            "file": "01-api-codigo-valido.png",
+            "width": 1920,
+            "height": 1080,
+            "bytes": 173931,
+            "sha256": "5a3a6b7eb1e91b494f1f6bfed597a0087266164dac7010e29548db242e7f1798",
+            "viewport": {
+                "width": 1920,
+                "height": 1080
+            },
+            "fullPage": false,
+            "deviceScaleFactor": 1,
+            "zoom": 1,
+            "classification": "synthetic_local_demo",
+            "surface": "api_test_client",
+            "source_visual_review": "passed",
+            "operation_http_status": 202,
+            "source_metadata": {
+                "title": {
+                    "es": "Verificación de código vigente",
+                    "en": "Valid verification code"
+                },
+                "alt": {
+                    "es": "Herramienta de prueba local con respuesta HTTP 202, auth verdadero y código oculto.",
+                    "en": "Local testing tool showing HTTP 202, auth true, and a hidden verification code."
+                },
+                "caption": {
+                    "es": "Solicitud HTTP real al backend: el código vigente es aceptado e invalidado tras su uso. Cliente de prueba propio, plataforma de origen fixture y datos sintéticos; correo guardado a archivo.",
+                    "en": "Real HTTP request to the backend: a valid code is accepted and invalidated after use. Custom test client, fixture origin platform and synthetic data; email saved to a local file."
+                }
+            }
+        },
+        {
+            "file": "02-api-destinatario-rechazado.png",
+            "width": 1920,
+            "height": 1080,
+            "bytes": 167623,
+            "sha256": "ef791ca121e8f44239b8a5576223e86121db8d2446d7e9307b402c169729fb1f",
+            "viewport": {
+                "width": 1920,
+                "height": 1080
+            },
+            "fullPage": false,
+            "deviceScaleFactor": 1,
+            "zoom": 1,
+            "classification": "synthetic_local_demo",
+            "surface": "api_test_client",
+            "source_visual_review": "passed",
+            "operation_http_status": 400,
+            "source_metadata": {
+                "title": {
+                    "es": "Validación del destinatario antes del correo",
+                    "en": "Recipient validation before email"
+                },
+                "alt": {
+                    "es": "Herramienta de prueba local con registro rechazado HTTP 400 por correo no coincidente.",
+                    "en": "Local testing tool showing HTTP 400 for a registration email that does not match."
+                },
+                "caption": {
+                    "es": "El backend consulta la plataforma local de prueba, que contrasta identificador y correo contra SQLite. Un destinatario no coincidente recibe HTTP 400 sin generar otro correo.",
+                    "en": "The backend queries the local fixture platform, which checks the identifier and email against SQLite. A mismatched recipient receives HTTP 400 without another email being generated."
+                }
+            }
+        }
+    ],
+    "results": [
+        {
+            "operation": "Registro validado contra plataforma local",
+            "httpStatus": 201,
+            "passed": true
+        },
+        {
+            "operation": "Código incorrecto rechazado",
+            "httpStatus": 401,
+            "passed": true
+        },
+        {
+            "operation": "Código vigente aceptado",
+            "httpStatus": 202,
+            "passed": true
+        },
+        {
+            "operation": "Código utilizado rechazado",
+            "httpStatus": 401,
+            "passed": true
+        },
+        {
+            "operation": "Destinatario no coincide con la plataforma",
+            "httpStatus": 400,
+            "passed": true
+        },
+        {
+            "operation": "Clave de plataforma incorrecta",
+            "httpStatus": 401,
+            "passed": true
+        },
+        {
+            "operation": "Plataforma desconocida",
+            "httpStatus": 400,
+            "passed": true
+        }
+    ],
+    "checks": {
+        "local_mail_recorded": true,
+        "no_mail_after_rejected_requests": true,
+        "otp_invalidated": true,
+        "all_expected_http_statuses": true,
+        "platform_secret_hash_verified": true
+    },
+    "integration": "Isolated local backend and synthetic origin platform; no production integration or deployment verified."
+}

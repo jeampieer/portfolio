@@ -1,0 +1,79 @@
+{
+    "reviewDateLima": "2026-10-07",
+    "originalPixelsPreserved": true,
+    "totalBytes": 1862922,
+    "images": [
+        {
+            "file": "01-dashboard.png",
+            "width": 1600,
+            "height": 1360,
+            "sha256": "85344df18235fe98d833ff9aaad4d1b86439644e9bc38c949d61ee96c49961f0",
+            "bytes": 283790,
+            "classification": "demo_local_authorized",
+            "source_visual_review": "passed"
+        },
+        {
+            "file": "03-estudio-cuotas.png",
+            "width": 1600,
+            "height": 1926,
+            "sha256": "6f3b228c86b8b3cba063744b57d7ac60826cc114029ae6bd8c773bb128c8ccb0",
+            "bytes": 391320,
+            "classification": "demo_local_authorized",
+            "source_visual_review": "passed"
+        },
+        {
+            "file": "04-instrumento-versionado.png",
+            "width": 1600,
+            "height": 1987,
+            "sha256": "b9b851fc8b08eb7048d5da4b5f8c814e7756194ee5df6ede4f7619ad23eeedfd",
+            "bytes": 239373,
+            "classification": "demo_local_authorized",
+            "source_visual_review": "passed"
+        },
+        {
+            "file": "05-asignacion.png",
+            "width": 1600,
+            "height": 850,
+            "sha256": "22996cc58c99d246097d289d43c4215c51fa677b4a11cb0039cf114293edafd6",
+            "bytes": 144862,
+            "classification": "demo_local_authorized",
+            "source_visual_review": "passed"
+        },
+        {
+            "file": "06-actividades-recibidas.png",
+            "width": 1600,
+            "height": 1100,
+            "sha256": "b7bcf3eca9a843eb338b6abd9105093baddd23b073d00a61478b22f3bc040b7a",
+            "bytes": 204009,
+            "classification": "demo_local_authorized",
+            "source_visual_review": "passed"
+        },
+        {
+            "file": "07-detalle-actividad.png",
+            "width": 1600,
+            "height": 2403,
+            "sha256": "d381251aae762a004f79e8c35339eed740d4bf7639dc4326ca2259a2768cb9ba",
+            "bytes": 316836,
+            "classification": "demo_local_authorized",
+            "source_visual_review": "passed"
+        },
+        {
+            "file": "08-supervision-calidad.png",
+            "width": 1600,
+            "height": 1100,
+            "sha256": "6ff94a96efcbdc8ecd05bef87d1c3660f6201d87a433c20518a4f30f098b6a34",
+            "bytes": 132871,
+            "classification": "demo_local_authorized",
+            "source_visual_review": "passed"
+        },
+        {
+            "file": "02-analisis.png",
+            "width": 1600,
+            "height": 980,
+            "sha256": "d93aa194ea734821effdd1a21b98720499bd5b7939904a0a30c0629a5b53d1a2",
+            "bytes": 149861,
+            "classification": "demo_local_authorized",
+            "source_visual_review": "passed"
+        }
+    ]
+}
