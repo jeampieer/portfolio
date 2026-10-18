@@ -19,16 +19,17 @@ Los E2E sirven el build de producción en `127.0.0.1:3100`, con dos workers y Ch
 - Educación entre identidad y stack, programas UTP/IDAT, periodos y estados confirmados, y tres idiomas con sus niveles y el alcance del inglés en ES/EN. Educación e idiomas legibles sin JavaScript.
 - Rutas y contenido ES/EN, también en detalles de proyectos.
 - Cambio de tema y persistencia entre recargas e idiomas.
-- Archivo de servidor sin filtros, orden GM Social/MFA y Orbital Signal oculto con rutas directas.
+- Archivo de servidor sin filtros, orden GM Social/IPERC/MFA y Orbital Signal oculto con rutas directas.
 - Navegación al caso MFA, título/metadatos ES/EN y atribución del despliegue inicial; ausencia de fechas inventadas, ilustración y enlaces públicos al servicio; cuatro capturas 1920×1080, proporción 16:9, originales PNG con HTTP 200 y aviso ES/EN de datos sintéticos y cliente local de prueba.
 - Caso GM Social, ocho capturas horizontales 1920×1080 cargadas con proporción 16:9 conservada, enlaces a originales PNG con HTTP 200, aviso demo y navegación ES/EN.
+- Caso IPERC Antapaccay, aporte API/web y atribución móvil, seis funcionalidades con límites de firma/exportación, metadatos y navegación ES/EN, tres capturas 1920×1080 con originales PNG y aviso explícito de respuestas API simuladas. Incluido en recorridos sin JavaScript, axe y matriz responsive.
 - Laboratorio: teclado en slider, órbita, pausa y reset.
 - Movimiento reducido y contenido visible.
 - Menú móvil, cierre por Escape y por navegación.
 - Ausencia de overflow horizontal a 360, 390, 768, 1024, 1280 y 1440px, con comprobación adicional a 1920px en ambos idiomas.
 - axe WCAG A/AA en ambos temas/idiomas y página de detalle.
 - 404, robots de desarrollo y ausencia de enlaces vacíos.
-- Lectura del contenido y navegación a los tres casos de estudio sin JavaScript.
+- Lectura del contenido y navegación a los cuatro casos de estudio sin JavaScript.
 - Enlace para saltar al contenido como primer destino de teclado.
 
 Los errores conservan trazas y capturas en `test-results/`; el reporte HTML está en `playwright-report/`. Ambos se excluyen de Git. `npx playwright show-report` abre el reporte.
@@ -45,13 +46,13 @@ Resultados de la entrega: [verification.md](verification.md).
 
 Cada agente cierra una tarea con cambios mediante un commit local de su trabajo, después de ejecutar las comprobaciones aplicables. Debe evaluar si corresponde actualizar las guías de `docs/` e incluirlas en el mismo commit; las etapas significativas conservan evidencia y límites en `verification.md`. Revisar el diff preparado para evitar incluir cambios ajenos y comunicar el hash y las verificaciones realizadas. Las tareas de análisis o lectura sin cambios no generan commits vacíos. Esta regla no autoriza push ni despliegues; una instrucción explícita del usuario de no hacer commit prevalece. La regla completa vive en [AGENTS.md](../AGENTS.md).
 
-Los recorridos UX comprueban ocho secciones principales, proceso dentro de identidad, orden GM Social/MFA, aporte localizado, Educación, Más y CV móvil. El cambio ES/EN conserva anclas y slug. Se prueba el disclosure nativo y el CV con JavaScript deshabilitado.
+Los recorridos UX comprueban ocho secciones principales, proceso dentro de identidad, orden GM Social/IPERC/MFA, aporte localizado, Educación, Más y CV móvil. El cambio ES/EN conserva anclas y slug. Se prueba el disclosure nativo y el CV con JavaScript deshabilitado.
 
 Las cards se prueban con hover y foco: las informativas no se transforman, las enlazadas elevan 3px y eliminan desplazamiento bajo movimiento reducido. Se comprueba pausa del laboratorio fuera de viewport, cambio dinámico de preferencia y ausencia de errores de hidratación/navegación ES/EN.
 
 El visor se prueba con teclado y touch simulado: apertura, anterior/siguiente, foco cíclico, Escape, tamaño original con desplazamiento, ajuste sin overflow, atribuciones/avisos y devolución del foco/scroll. Los originales siguen accesibles sin JavaScript. Las variantes 404 conservan HTML de recuperación sin JavaScript; el proxy asigna HTTP 404 a parámetros no publicados y deja pasar los recursos estáticos. La 404 global restaura el tema guardado, carga las fuentes y ofrece recuperaciones ES/EN; la localizada vuelve a Proyectos.
 
-`responsive.spec.ts` recorre seis anchos (360, 390, 768, 1024, 1280, 1440), dos idiomas, dos temas y seis vistas por idioma: inicio, tres proyectos, 404 localizada y 404 global (**144 combinaciones**). Comprueba HTTP, tema real, overflow, límites tipográficos e intercambio de navegación a 1280px. Guarda páginas completas a 390/1440px para inspección visual; los artefactos seleccionados están en `docs/previews/ux-ui/`. Estas comprobaciones usan Chromium, no dispositivos físicos ni todos los navegadores.
+`responsive.spec.ts` recorre seis anchos (360, 390, 768, 1024, 1280, 1440), dos idiomas, dos temas y siete vistas por idioma: inicio, cuatro proyectos, 404 localizada y 404 global (**168 combinaciones**). Comprueba HTTP, tema real, overflow, límites tipográficos e intercambio de navegación a 1280px. Guarda páginas completas a 390/1440px para inspección visual; los artefactos seleccionados están en `docs/previews/ux-ui/`. Estas comprobaciones usan Chromium, no dispositivos físicos ni todos los navegadores.
 
 Se prueban clics repetidos de marca tras desplazarse con el mismo hash y regreso desde detalle en ES/EN; apertura de cards desde texto, padding y teclado con un solo destino por card; ciclos de escritura/borrado del saludo y su estado completo bajo movimiento reducido.
 

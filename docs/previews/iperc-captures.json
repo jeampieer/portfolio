@@ -1,0 +1,197 @@
+{
+    "reviewDateLima": "2026-10-18",
+    "revision": "horizontal-1920x1080",
+    "classification": "frontend_ui_with_simulated_api",
+    "coverFile": "01-tableros.png",
+    "originalPixelsPreserved": true,
+    "totalBytes": 300046,
+    "images": [
+        {
+            "file": "01-tableros.png",
+            "width": 1920,
+            "height": 1080,
+            "bytes": 73935,
+            "sha256": "0f210ecbf545e8b46bbf424703ca23c619e254100b5748114cb689def6249807",
+            "viewport": {
+                "width": 1920,
+                "height": 1080
+            },
+            "fullPage": false,
+            "deviceScaleFactor": 1,
+            "zoom": 1,
+            "classification": "frontend_ui_with_simulated_api",
+            "surface": "original_nextjs_task_control_ui",
+            "source_visual_review": "passed",
+            "source_metadata": {
+                "title": {
+                    "es": "Tableros de control de tareas",
+                    "en": "Task control boards"
+                },
+                "caption": {
+                    "es": "Listado real de tableros con una contratista sintética y un registro de prueba. Captura local con datos sintéticos y respuestas API simuladas; no acredita el backend ni operación en producción.",
+                    "en": "Actual board list with one synthetic contractor and one test record. Local capture with synthetic data and simulated API responses; it does not demonstrate the backend or production use."
+                }
+            }
+        },
+        {
+            "file": "02-detalle-riesgos.png",
+            "width": 1920,
+            "height": 1080,
+            "bytes": 134971,
+            "sha256": "a96ed065cd8fc04f429e125b029dada3f1af9e1c05cee7a3263c7ac993969f01",
+            "viewport": {
+                "width": 1920,
+                "height": 1080
+            },
+            "fullPage": false,
+            "deviceScaleFactor": 1,
+            "zoom": 1,
+            "classification": "frontend_ui_with_simulated_api",
+            "surface": "original_nextjs_task_control_ui",
+            "source_visual_review": "passed",
+            "source_metadata": {
+                "title": {
+                    "es": "Detalle y matriz de riesgo",
+                    "en": "Board detail and risk matrix"
+                },
+                "caption": {
+                    "es": "Detalle real del tablero, desplazado hasta la tarea, el personal y la matriz de riesgo residual. Datos sintéticos y respuestas API simuladas; no acredita el backend ni operación en producción.",
+                    "en": "Actual board detail scrolled to its task, personnel and residual risk matrix. Synthetic data and simulated API responses; it does not demonstrate the backend or production use."
+                }
+            }
+        },
+        {
+            "file": "03-reportes.png",
+            "width": 1920,
+            "height": 1080,
+            "bytes": 91140,
+            "sha256": "9babcddd1b2a5f98c2fce56eeef0b9166c2d02eecc75991d8a7d0e047500bb45",
+            "viewport": {
+                "width": 1920,
+                "height": 1080
+            },
+            "fullPage": false,
+            "deviceScaleFactor": 1,
+            "zoom": 1,
+            "classification": "frontend_ui_with_simulated_api",
+            "surface": "original_nextjs_task_control_ui",
+            "source_visual_review": "passed",
+            "source_metadata": {
+                "title": {
+                    "es": "Consulta de reportes",
+                    "en": "Report preview"
+                },
+                "caption": {
+                    "es": "Vista real de reportes después de pulsar Consultar, con una fila derivada del tablero sintético. Respuestas API simuladas; la captura no valida la generación o descarga de archivos ni operación en producción.",
+                    "en": "Actual report view after pressing Consult, with one row derived from the synthetic board. Simulated API responses; this capture does not validate file generation, downloads or production use."
+                }
+            }
+        }
+    ],
+    "captureContext": {
+        "sourceApplication": "iperc-antapaccay-web",
+        "isolatedTemporaryCopy": true,
+        "sourceDirectoriesCompared": ["src", "public"],
+        "sourceFilesByteIdentical": 426,
+        "sourceTreeSha256": "05bb5c8fd22e7bd0968973c25e17dc316f3c02486597a9ec48302c596346badf",
+        "environmentFilesCopied": false,
+        "gitDirectoryCopied": false,
+        "sourceBuildCacheCopied": false,
+        "runtime": {
+            "node": "24.22.0",
+            "next": "16.2.10",
+            "bundler": "Turbopack",
+            "browser": "Google Chrome",
+            "browserVersion": "155.0.8059.80",
+            "playwright": "1.57.0"
+        },
+        "backendExecuted": false,
+        "realCredentialsUsed": false,
+        "session": "synthetic ADMIN from tests/task-control/fixtures.ts",
+        "fixtureSources": [
+            "tests/task-control/fixtures.ts",
+            "tests/task-control/browser-tests.ts:mockBackend"
+        ],
+        "fixtureDate": "2026-10-18",
+        "fixtureAdjustments": [
+            "board date follows todayInLima(), as in existing browser tests",
+            "personFixture.mobile_phone is null in the simulated response only; no telephone is visible",
+            "report preview row is mapped from the same boardFixture, with matching company, area, date and counts"
+        ],
+        "hiddenDevelopmentOverlays": [
+            "Next.js development indicator via devIndicators:false in temporary next.config.ts",
+            "React Query Devtools .tsqd-parent-container via capture-only CSS"
+        ],
+        "productComponentsOrStylesModified": false,
+        "networkIsolation": {
+            "applicationBinding": "loopback only",
+            "configuredBackend": "loopback discard port 9",
+            "browserExternalOriginsPolicy": "abort every request outside the local application origin",
+            "allBrowserBackendRequests": "intercepted and fulfilled with synthetic responses; never forwarded",
+            "unmodelledBackendRoutes": "synthetic 404; never forwarded",
+            "observedExternalBrowserRequests": 0
+        },
+        "verification": {
+            "pageErrors": [],
+            "failedSimulatedRoutes": [],
+            "simulatedHttpResponses": [
+                {
+                    "path": "/api/v1/common/companies/",
+                    "status": 200
+                },
+                {
+                    "path": "/api/v1/common/gerencias/",
+                    "status": 200
+                },
+                {
+                    "path": "/api/v1/common/areas/",
+                    "status": 200
+                },
+                {
+                    "path": "/api/v1/task-control/boards/filter/",
+                    "status": 200
+                },
+                {
+                    "path": "/api/v1/common/companies/00000000-0000-4000-8000-000000000002/",
+                    "status": 200
+                },
+                {
+                    "path": "/api/v1/task-control/boards/00000000-0000-4000-8000-000000000001/",
+                    "status": 200
+                },
+                {
+                    "path": "/api/v1/task-control/boards/00000000-0000-4000-8000-000000000001/tasks/filter/",
+                    "status": 200
+                },
+                {
+                    "path": "/api/v1/task-control/risk-matrices/default/",
+                    "status": 200
+                },
+                {
+                    "path": "/api/v1/task-control/boards/00000000-0000-4000-8000-000000000001/personnel/filter/",
+                    "status": 200
+                },
+                {
+                    "path": "/api/v1/common/gerencias/",
+                    "status": 200
+                },
+                {
+                    "path": "/api/v1/common/areas/",
+                    "status": 200
+                },
+                {
+                    "path": "/api/v1/task-control/reports/preview/",
+                    "status": 200
+                }
+            ],
+            "allSimulatedHttpResponsesSuccessful": true
+        }
+    },
+    "limits": [
+        "The images show the real frontend rendered locally with synthetic data and simulated API responses.",
+        "No backend execution, API integration, production deployment or operational usage is demonstrated.",
+        "No real user data, credentials, signatures, contact details or backend data were used.",
+        "No report download or file generation was executed or validated.",
+        "These captures cover only task-control; they do not demonstrate IPERC/PETAR creation or signing, mobile workflows, or dashboard integration."
+    ]
+}

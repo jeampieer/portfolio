@@ -122,14 +122,15 @@ test("theme switches and persists on reload and locale navigation", async ({ pag
 test("archive order, direct detail and language switch preserve the project", async ({ page }) => {
     await page.goto("/es");
     const archive = page.locator("#projects");
-    await expect(archive.locator("article")).toHaveCount(2);
+    await expect(archive.locator("article")).toHaveCount(3);
     await expect(archive.locator("article h3")).toHaveText([
         "GM Social — Gestión de estudios y trabajo de campo",
+        "IPERC Antapaccay — Gestión de riesgos y permisos de trabajo",
         "Servicio MFA para plataformas empresariales",
     ]);
     await expect(archive.getByRole("button")).toHaveCount(0);
     await expect(archive.getByRole("heading", { name: "Orbital Signal" })).toHaveCount(0);
-    await expect(archive.locator(".contribution-summary")).toHaveCount(2);
+    await expect(archive.locator(".contribution-summary")).toHaveCount(3);
     const response = await page.goto("/es/projects/orbital-signal");
     expect(response?.status()).toBe(200);
     await expect(page.getByRole("heading", { name: "La arquitectura" })).toBeVisible();
@@ -141,7 +142,66 @@ test("archive order, direct detail and language switch preserve the project", as
     await expect(page.getByRole("heading", { name: "The architecture" })).toBeVisible();
     await page.getByRole("link", { name: "Back to projects" }).first().click();
     await expect(page).toHaveURL(/\/en#projects$/);
-    await expect(archive.locator("article")).toHaveCount(2);
+    await expect(archive.locator("article")).toHaveCount(3);
+});
+
+test("IPERC case preserves verified scope, mobile attribution and simulated gallery context", async ({
+    page,
+    request,
+}) => {
+    await page.goto("/es#projects");
+    const card = page.locator("#projects article").filter({
+        has: page.getByRole("heading", { name: /^IPERC Antapaccay/ }),
+    });
+    await expect(card.locator(".contribution-summary")).toContainText("otros integrantes");
+    await card.getByRole("link", { name: "Explorar proyecto", exact: true }).click();
+    await expect(page).toHaveURL(/\/es\/projects\/iperc-antapaccay$/);
+    await expect(page).toHaveTitle(/IPERC Antapaccay — Gestión de riesgos/);
+    await expect(page.locator(".project-detail-header .eyebrow")).toHaveText(
+        "04 / FULL STACK EMPRESARIAL · PROYECTO PRIVADO"
+    );
+    await expect(page.locator(".project-external-links a, .project-artwork")).toHaveCount(0);
+    await expect(page.locator("#case-participation")).toContainText(
+        "La aplicación móvil fue desarrollada por otros integrantes"
+    );
+    await expect(page.locator(".project-features h3")).toHaveCount(6);
+    await expect(page.locator(".project-features")).toContainText(
+        "no crea ni firma documentos IPERC/PETAR"
+    );
+    await expect(page.locator(".project-features")).toContainText("trabajo en altura e izaje");
+    await expect(page.locator("#case-impact")).toContainText(
+        "no verifican la integración con el backend"
+    );
+    await expect(page.locator(".project-cover figcaption")).toContainText(
+        "respuestas de API simuladas"
+    );
+    await expect(page.locator(".project-gallery-notice")).toContainText("datos sintéticos");
+    const images = page.locator(".project-cover img, .project-gallery img");
+    await expect(images).toHaveCount(4);
+    for (const image of await images.all()) {
+        await image.scrollIntoViewIfNeeded();
+        await expect(image).toHaveJSProperty("naturalWidth", 1920);
+        await expect(image).toHaveJSProperty("naturalHeight", 1080);
+    }
+    const originals = page.locator(".project-gallery figcaption .original-image-link");
+    await expect(originals).toHaveCount(3);
+    for (const link of await originals.all()) {
+        const href = await link.getAttribute("href");
+        expect(href).toMatch(/^\/images\/projects\/iperc-antapaccay\//);
+        const response = await request.get(href!);
+        expect(response.status()).toBe(200);
+        expect(response.headers()["content-type"]).toContain("image/png");
+    }
+    await page.getByRole("link", { name: "Read in English" }).click();
+    await expect(page).toHaveURL(/\/en\/projects\/iperc-antapaccay$/);
+    await expect(page).toHaveTitle(/IPERC Antapaccay — Risk assessment/);
+    await expect(page.locator("#case-participation")).toContainText("Other team members");
+    await expect(page.locator(".project-gallery-notice")).toContainText("simulated API responses");
+    await expect(page.locator(".project-features")).toContainText(
+        "work at height and lifting operations"
+    );
+    await page.getByRole("link", { name: "Back to projects" }).first().click();
+    await expect(page).toHaveURL(/\/en#projects$/);
 });
 
 test("full stack case has a working demo gallery, original images and bilingual navigation", async ({
@@ -368,7 +428,12 @@ for (const locale of ["es", "en"]) {
 }
 
 test("project detail passes automated accessibility checks", async ({ page }) => {
-    for (const slug of ["orbital-signal", "servicio-mfa", "plataforma-encuestas-gm"]) {
+    for (const slug of [
+        "orbital-signal",
+        "servicio-mfa",
+        "plataforma-encuestas-gm",
+        "iperc-antapaccay",
+    ]) {
         await page.goto(`/en/projects/${slug}`);
         const result = await new AxeBuilder({ page })
             .withTags(["wcag2a", "wcag2aa", "wcag21aa"])
@@ -420,7 +485,7 @@ test("content and project routes remain readable without JavaScript", async ({ b
     await expect(page.locator("#education")).toContainText("Ingeniería de Software");
     await expect(page.locator("#education .education-status")).toHaveText(["En curso", "Egresado"]);
     await expect(page.locator("#education dt")).toHaveText(["Español", "Inglés", "Italiano"]);
-    await expect(page.locator("#projects article")).toHaveCount(2);
+    await expect(page.locator("#projects article")).toHaveCount(3);
     await expect(page.getByRole("heading", { name: "Orbital Signal", exact: true })).toHaveCount(0);
     await page.goto("http://127.0.0.1:3100/es/projects/orbital-signal");
     await expect(page.getByRole("heading", { name: "Orbital Signal", exact: true })).toBeVisible();
@@ -448,6 +513,16 @@ test("content and project routes remain readable without JavaScript", async ({ b
     await expect(page).toHaveURL(/\/es\/projects\/plataforma-encuestas-gm$/);
     await expect(page.getByRole("heading", { name: "Funcionalidades principales" })).toBeVisible();
     await expect(page.locator(".project-gallery figcaption .original-image-link")).toHaveCount(8);
+    await page.goto("http://127.0.0.1:3100/en");
+    await page
+        .locator("#projects article")
+        .filter({ has: page.getByRole("heading", { name: /^IPERC Antapaccay/ }) })
+        .getByRole("link", { name: "Explore project", exact: true })
+        .click();
+    await expect(page).toHaveURL(/\/en\/projects\/iperc-antapaccay$/);
+    await expect(page.locator("#case-participation")).toContainText("Other team members");
+    await expect(page.locator(".project-gallery-notice")).toContainText("simulated API responses");
+    await expect(page.locator(".project-gallery figcaption .original-image-link")).toHaveCount(3);
     await context.close();
 });
 
@@ -726,8 +801,9 @@ test("project cards open from their summary, empty padding and keyboard with one
     await page.emulateMedia({ reducedMotion: "reduce" });
     await page.goto("/es#projects");
     const cards = page.locator("#projects article");
-    await expect(cards.nth(0).getByRole("link")).toHaveCount(1);
-    await expect(cards.nth(1).getByRole("link")).toHaveCount(1);
+    for (const card of await cards.all()) {
+        await expect(card.getByRole("link")).toHaveCount(1);
+    }
     const summary = await cards.nth(0).locator(".contribution-summary").boundingBox();
     const card = await cards.nth(0).boundingBox();
     await cards.nth(0).click({
@@ -738,7 +814,9 @@ test("project cards open from their summary, empty padding and keyboard with one
     });
     await expect(page).toHaveURL(/\/es\/projects\/plataforma-encuestas-gm$/);
     await page.goto("/es#projects");
-    await cards.nth(1).click({ position: { x: 8, y: 8 } });
+    await cards
+        .filter({ has: page.getByRole("heading", { name: /^Servicio MFA/ }) })
+        .click({ position: { x: 8, y: 8 } });
     await expect(page).toHaveURL(/\/es\/projects\/servicio-mfa$/);
     await page.goto("/en#projects");
     const action = cards.nth(0).getByRole("link", { name: "Explore project", exact: true });

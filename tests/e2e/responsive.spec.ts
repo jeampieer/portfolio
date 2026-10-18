@@ -28,6 +28,7 @@ for (const width of [360, 390, 768, 1024, 1280, 1440]) {
                     "/projects/orbital-signal",
                     "/projects/servicio-mfa",
                     "/projects/plataforma-encuestas-gm",
+                    "/projects/iperc-antapaccay",
                     "/projects/missing",
                     "/missing/path",
                 ]) {

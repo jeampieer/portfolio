@@ -1,0 +1,41 @@
+{
+    "origin": "local production build",
+    "dateLima": "2026-10-18",
+    "scenarios": [
+        {
+            "locale": "es",
+            "theme": "dark",
+            "width": 1440,
+            "height": 1000,
+            "dimensions": {
+                "viewport": 1440,
+                "scroll": 1440
+            },
+            "viewerOriginal": {
+                "width": 1920,
+                "height": 1080
+            },
+            "pageErrors": []
+        },
+        {
+            "locale": "en",
+            "theme": "light",
+            "width": 390,
+            "height": 844,
+            "dimensions": {
+                "viewport": 390,
+                "scroll": 390
+            },
+            "viewerOriginal": {
+                "width": 1920,
+                "height": 1080
+            },
+            "pageErrors": [],
+            "cardCaptureViewport": {
+                "width": 390,
+                "height": 1400
+            },
+            "cardCaptureNote": "Element screenshot in a taller viewport to keep the fixed header outside the card; product UI is unchanged."
+        }
+    ]
+}

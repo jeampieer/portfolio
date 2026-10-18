@@ -263,3 +263,23 @@ La inspección visual detectó y corrigió una reducción del retrato móvil pro
 - [ES oscuro móvil](previews/ux-ui/portrait-mobile.png).
 
 Límites: Chromium y touch simulado; la visibilidad del documento se verificó mediante un evento simulado. No se probaron dispositivos físicos ni Safari/Firefox y no se afirma conformidad WCAG completa. Las capturas muestran estados estáticos; el recorrido comprueba el ciclo y sus controles. Tras la verificación solo se añadió este registro y las capturas, con formato comprobado por separado. El servidor local sigue activo en http://127.0.0.1:3000/es; no se realiza push ni despliegue.
+
+## IPERC Antapaccay — caso de estudio (2026-10-18)
+
+Se incorporó `iperc-antapaccay` al archivo junto a GM Social, antes de MFA, con detalle y metadatos ES/EN, aporte personal, seis funcionalidades, portada y galería. El propietario confirmó autoría de API y panel web; la aplicación móvil se atribuye a otros integrantes. Dos revisiones de código contrastaron dependencias, rutas, modelos, servicios, permisos y componentes conectados. El [registro de evidencia de IPERC](iperc-verification.md) conserva las fuentes y los límites. No se añadieron cargos, fechas del proyecto, métricas, enlaces privados ni tecnologías al stack personal.
+
+Se reutilizaron `Project`, las vistas, el visor y los rótulos existentes. No fue necesario cambiar componentes, CSS, configuración o dependencias. La entrada distingue la consulta/administración web de la creación y registro de firmas expuestos por la API; limita los exportadores PETAR a altura e izaje y no presenta dashboards de demostración como datos operativos.
+
+Las tres capturas originales del módulo real de control de tareas se obtuvieron desde una copia temporal aislada del frontend, con fixtures sintéticas y respuestas API simuladas, sin backend, credenciales reales ni datos operativos. Se ocultaron únicamente indicadores del entorno de desarrollo. Se comprobaron de forma independiente formato PNG, dimensiones **1920×1080**, **300 046 bytes** totales y las tres huellas SHA-256 contra [el manifiesto](previews/iperc-captures.json). Portada, galería y visor identifican la simulación. Las imágenes no acreditan persistencia, integración API, exportaciones reales ni producción.
+
+**Node 24.22.0**, Next **16.3.8**: `npm run verify` terminó con código **0**: lint, generación de tipos/TypeScript, formato, build actualizado y **44/44 E2E** en **42.8 s**. La matriz responsive cubrió **168 combinaciones** (seis anchos × ES/EN × oscuro/claro × inicio/cuatro casos/dos recuperaciones), sin overflow horizontal ni errores de ejecución/hidratación observados. El recorrido nuevo comprueba publicación desde el archivo, metadata e idioma, atribución móvil, límites funcionales, carga de los tres PNG y originales HTTP 200. Se ampliaron los recorridos sin JavaScript, axe y orden del archivo, y se evitó que la prueba de cards dependiera de la posición de MFA.
+
+La revisión visual usó el build de producción y Chromium a **1440px ES oscuro** y **390px EN claro**, sin ocultar contenido ni encabezado. Se inspeccionaron cabeceras, portada, texto completo, funcionalidades, galería y cards. Se comprobó además la apertura del visor del nuevo caso con original 1920×1080 y cierre por Escape en ambos tamaños, sin errores de página. La captura de la card móvil usa un viewport más alto para conservar el encabezado fijo fuera del elemento, sin cambiar la UI. El [registro visual](previews/iperc/visual-results.json) conserva ese detalle.
+
+Evidencia seleccionada:
+
+- Cabecera: [desktop ES](previews/iperc/es-dark-1440-header.png) y [móvil EN](previews/iperc/en-light-390-header.png).
+- Galería: [desktop ES](previews/iperc/es-dark-1440-gallery.png) y [móvil EN](previews/iperc/en-light-390-gallery.png).
+- Card del archivo: [desktop ES](previews/iperc/es-dark-1440-card.png) y [móvil EN](previews/iperc/en-light-390-card.png).
+
+Límites: las capacidades de la API fuente se comprobaron mediante lectura de código; no se ejecutaron sus pruebas, servicios externos ni app móvil. La presentación se verificó en Chromium, sin Safari/Firefox ni dispositivos físicos, y axe no certifica conformidad WCAG completa. Tras `verify` solo se añadieron este registro y las evidencias visuales, con formato y diff comprobados por separado. Los servidores temporales de captura se detuvieron; el desarrollo del portafolio queda activo en http://127.0.0.1:3000/es/projects/iperc-antapaccay y http://127.0.0.1:3000/en/projects/iperc-antapaccay. Cierre con commit local, sin push ni despliegue.

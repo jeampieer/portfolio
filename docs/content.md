@@ -45,7 +45,7 @@ Agregar una entrada a `projects` en `src/features/portfolio/data/portfolio.ts`. 
 
 Cada entrada genera su ficha en ambos idiomas, incluidos título y metadatos. Las capturas se presentan en la página de detalle si existen. `artwork: "orbital-signal"` habilita la composición conceptual CSS exclusiva de ese caso; no es una captura de un sistema externo. Omitir `artwork` en los demás casos y usar la galería solo para imágenes verificadas que el usuario autorice publicar.
 
-Orbital Signal está temporalmente oculto del inicio mediante `showInArchive: false` en su entrada de `portfolio.ts`; el archivo de proyectos muestra MFA y GM Social. Para volver a mostrarlo, quitar ese campo o cambiarlo a `true`. Su detalle sigue disponible en `/es/projects/orbital-signal` y `/en/projects/orbital-signal`. La opción controla presentación, no privacidad ni disponibilidad de la ruta.
+Orbital Signal está temporalmente oculto del inicio mediante `showInArchive: false` en su entrada de `portfolio.ts`; el archivo de proyectos muestra GM Social, IPERC Antapaccay y MFA. Para volver a mostrarlo, quitar ese campo o cambiarlo a `true`. Su detalle sigue disponible en `/es/projects/orbital-signal` y `/en/projects/orbital-signal`. La opción controla presentación, no privacidad ni disponibilidad de la ruta.
 
 ### Caso empresarial MFA confirmado
 
@@ -64,6 +64,14 @@ El usuario autorizó revisar Plataforma-Encuestas-GM y publicar una descripción
 La galería usa ocho PNG reales de `public/images/projects/plataforma-encuestas-gm/`, todos horizontales de **1920×1080 (16:9)**, capturados con viewport fijo y `fullPage: false`. Los textos ES/EN describen únicamente lo visible en cada encuadre y se conserva acceso al original. El dashboard es la portada y las capturas siguen el flujo de estudio, instrumento, asignación, recepción, detalle, calidad y análisis. Se identifica explícitamente que cifras, personas, respuestas y ubicaciones son de demostración. El [registro de revisión de GM Social](gm-social-verification.md) conserva evidencia y límites sin secretos ni código interno; las huellas de las imágenes están en `docs/previews/gm-social-captures.json`.
 
 La aceptación integral con Flutter, instrumentos oficiales e infraestructura productiva permanece pendiente. Google Maps no se validó en el entorno local y no se incluye una captura de mapa funcional. No atribuir resultados comerciales a los valores demo ni ampliar el stack personal a partir del stack de este proyecto. La autorización se limita a este caso y material demo; otros proyectos requieren su propia confirmación. El portafolio no depende de servicios, código o autenticación de GM Social.
+
+### Caso empresarial IPERC Antapaccay autorizado
+
+`iperc-antapaccay` presenta un proyecto full stack privado de gestión de riesgos, permisos PETAR y control de tareas. El propietario confirmó el desarrollo de toda la API y el panel web, excepto la aplicación móvil, atribuida a otros integrantes en ambos idiomas. No se publican año, cargo, métricas ni enlaces privados.
+
+El contenido distingue las capacidades de la API de las acciones conectadas en la web: el panel consulta documentos, participantes y firmas, administra catálogos y ofrece cierre, cancelación y exportación. No crea ni firma documentos IPERC/PETAR. El control de tareas sí permite editar tableros, tareas y personal. Los exportadores PETAR inspeccionados cubren altura e izaje; no se generalizan a todos los catálogos. El [registro de evidencia](iperc-verification.md) conserva fuentes y límites.
+
+La portada y la galería reúnen tres capturas reales de la interfaz de control de tareas, con datos sintéticos y respuestas de API simuladas en una copia local aislada. No son datos persistidos ni prueba de integración con el backend. Los PNG originales 1920×1080 viven en `public/images/projects/iperc-antapaccay/`; títulos, alternativas y captions ES/EN en `data/iperc-gallery.ts`, y metadatos en [el manifiesto de captura](previews/iperc-captures.json). Conservar el aviso de simulación en portada, galería y visor. No se incluyen dashboards de presentación ni documentos operativos. El portafolio no depende de los servicios de IPERC.
 
 ## Experiencias y comunidad
 

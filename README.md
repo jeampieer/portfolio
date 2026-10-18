@@ -46,6 +46,12 @@ El caso explica decisiones sobre instrumentos versionados, separación de estado
 
 Presento ocho capturas locales con datos de demostración y el alcance de las comprobaciones realizadas. La evidencia y los pendientes de integración están en [`docs/gm-social-verification.md`](docs/gm-social-verification.md).
 
+### IPERC Antapaccay — Gestión de riesgos y permisos de trabajo
+
+Desarrollé la API y el panel web para gestionar IPERC, permisos PETAR y tableros de control de tareas. El caso documenta matrices de riesgo, registro de firmas, permisos por rol y exportaciones Excel/PDF. La aplicación móvil fue desarrollada por otros integrantes.
+
+El contenido se contrastó con rutas, modelos, servicios e interfaces conectadas. Tres capturas muestran el módulo real de control de tareas con datos sintéticos y respuestas de API simuladas, sin acreditar integración con el backend ni producción. Las fuentes y límites están en [`docs/iperc-verification.md`](docs/iperc-verification.md).
+
 ### Servicio MFA para plataformas empresariales
 
 Reconstruí y refactoricé un backend heredado con Python, Django y Django REST Framework. Mi trabajo se centró en comprender el flujo existente, reorganizar registro y envío de códigos, extender validaciones de plataforma y destinatario y reutilizar configuración mediante caché. El despliegue inicial fue realizado por otro integrante del equipo.
@@ -105,7 +111,7 @@ npx playwright install chromium   # Primera instalación
 npm run verify
 ```
 
-Las 22 pruebas actuales cubren navegación bilingüe, educación e idiomas, persistencia del tema, filtros, galerías, laboratorio, movimiento reducido, teclado, rutas inexistentes y lectura sin JavaScript. También comprueban desbordamientos en varios anchos y ejecutan análisis automáticos de accesibilidad con axe.
+Los recorridos E2E cubren navegación bilingüe, educación e idiomas, persistencia del tema, archivo y cuatro casos de estudio, galerías, laboratorio, movimiento reducido, teclado, rutas inexistentes y lectura sin JavaScript. También comprueban desbordamientos en varios anchos y ejecutan análisis automáticos de accesibilidad con axe.
 
 Playwright inicia un servidor de producción independiente en `127.0.0.1:3100`; ese puerto debe estar libre. Para ejecutar solo los E2E, primero actualizo el build y después uso `npm run test:e2e`. Los resultados y límites de la validación están en [`docs/verification.md`](docs/verification.md). Las comprobaciones automáticas se complementan con revisión visual; no certifican conformidad WCAG completa.
 

@@ -13,5 +13,6 @@
 | [responsive-verification.md](responsive-verification.md) | Revisión responsive y límites de navegador                |
 | [mfa-verification.md](mfa-verification.md)               | Evidencia local autorizada y límites del caso MFA         |
 | [gm-social-verification.md](gm-social-verification.md)   | Evidencia autorizada y límites del caso GM Social         |
+| [iperc-verification.md](iperc-verification.md)           | Fuentes verificadas y límites del caso IPERC Antapaccay   |
 
 Punto de entrada: [README](../README.md). Instrucciones para agentes: [AGENTS.md](../AGENTS.md). Identidad original: [Design System v1.0](../JEAMPIEER_TECH_Design_System_v1.0.md).

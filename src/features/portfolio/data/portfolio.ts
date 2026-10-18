@@ -6,6 +6,7 @@ import type {
 } from "@/features/portfolio/types/portfolio.types";
 import { gmSocialGallery } from "@/features/portfolio/data/gm-social-gallery";
 import { mfaGallery } from "@/features/portfolio/data/mfa-gallery";
+import { ipercGallery } from "@/features/portfolio/data/iperc-gallery";
 
 // Publish only the project details explicitly approved by the owner.
 export const projects: Project[] = [
@@ -215,6 +216,116 @@ export const projects: Project[] = [
             en: "Screenshots from a local environment with demonstration data. Figures, people, responses and locations do not represent real study results.",
         },
         gallery: gmSocialGallery,
+    },
+    {
+        slug: "iperc-antapaccay",
+        number: "04",
+        cover: ipercGallery[0],
+        title: {
+            es: "IPERC Antapaccay — Gestión de riesgos y permisos de trabajo",
+            en: "IPERC Antapaccay — Risk assessment and work permit management",
+        },
+        contributionSummary: {
+            es: "Desarrollo de la API y del panel web, incluidas las reglas de negocio y su integración. La aplicación móvil corresponde a otros integrantes.",
+            en: "API and web panel development, including business rules and their integration. The mobile application belongs to other team members.",
+        },
+        category: "fullstack",
+        context: {
+            es: "FULL STACK EMPRESARIAL · PROYECTO PRIVADO",
+            en: "ENTERPRISE FULL STACK · PRIVATE PROJECT",
+        },
+        tags: [
+            "Next.js",
+            "React",
+            "TypeScript",
+            "Ant Design",
+            "TanStack Query",
+            "Django REST Framework",
+            "PostgreSQL",
+        ],
+        description: {
+            es: "Plataforma full stack para gestionar IPERC, permisos PETAR y tableros de control de tareas, con matrices de riesgo, seguimiento de firmas y exportación documental.",
+            en: "A full stack platform for managing IPERC risk assessments, PETAR work permits and task control boards, with risk matrices, signature tracking and document exports.",
+        },
+        problem: {
+            es: "Coordinar la evaluación de riesgos y los permisos de trabajo exige relacionar tareas, peligros, controles, participantes y firmas. La plataforma organiza esa información por contexto operativo y empresa, y permite consultar el estado de los documentos y preparar reportes desde el panel web.",
+            en: "Coordinating risk assessments and work permits requires linking tasks, hazards, controls, participants and signatures. The platform organizes this information by operational context and company, and supports document status lookup and report preparation through the web panel.",
+        },
+        participation: {
+            es: "Desarrollé la API y el panel web, incluyendo los modelos, las reglas de negocio, los permisos, las interfaces de administración y su integración. Mi trabajo abarca IPERC, PETAR y control de tareas. La aplicación móvil fue desarrollada por otros integrantes; no forma parte de mi autoría.",
+            en: "I developed the API and web panel, including models, business rules, permissions, administration interfaces and their integration. My work covers IPERC, PETAR and task control. Other team members developed the mobile application; I do not claim authorship of it.",
+        },
+        architecture: {
+            es: "API modular con Python, Django REST Framework y PostgreSQL. El backend separa las validaciones y transiciones en servicios, y la autorización en políticas y permisos. El panel utiliza Next.js, React y TypeScript, con Ant Design y TanStack Query, e integra la API mediante rutas del servidor. La creación y el registro de firmas de IPERC/PETAR se exponen en la API; el panel se centra en consulta, administración, cierre, cancelación y exportación. El módulo de control de tareas incorpora edición de tableros, tareas y personal en la web.",
+            en: "A modular API built with Python, Django REST Framework and PostgreSQL. The backend separates validation and state transitions into services, and authorization into policies and permissions. The panel uses Next.js, React and TypeScript, with Ant Design and TanStack Query, and integrates the API through server routes. IPERC/PETAR creation and signature recording are exposed by the API; the panel focuses on lookup, administration, closing, cancellation and exports. The task control module supports web editing of boards, tasks and personnel.",
+        },
+        decisions: {
+            es: "El backend aplica permisos por rol, empresa y participación. La creación de un IPERC con sus PETAR vinculados usa una transacción y contempla reintentos mediante identificadores locales. Los documentos pasan a activos al completar las firmas requeridas. El control de tareas calcula el riesgo en el servidor con una matriz 5×5, para que su valor no dependa del cálculo enviado por el cliente.",
+            en: "The backend enforces permissions by role, company and participation. Creating an IPERC with its linked PETAR permits uses a transaction and handles retries through local identifiers. Documents become active when the required signatures are complete. Task control calculates risk on the server using a 5×5 matrix so its value does not depend on a calculation submitted by the client.",
+        },
+        impact: {
+            es: "La implementación reúne evaluación de riesgos, permisos y control de tareas con trazabilidad de estados y exportaciones. La revisión contrastó rutas, modelos, servicios e interfaces. Las capturas muestran la interfaz real de control de tareas con datos sintéticos y respuestas de API simuladas; no verifican la integración con el backend. No se comprobaron producción, funcionamiento móvil sin conexión ni resultados operativos medidos.",
+            en: "The implementation brings together risk assessment, permits and task control with state traceability and exports. The review cross-checked routes, models, services and interfaces. Screenshots show the real task control interface with synthetic data and simulated API responses; they do not verify backend integration. Production, mobile offline operation and measured operational outcomes were not checked.",
+        },
+        learnings: {
+            es: "Separar las reglas del backend de las interfaces permite mantener criterios compartidos entre clientes. En los flujos de riesgo y firmas, los estados, permisos y registros de auditoría deben conservar un significado preciso. También es necesario distinguir una capacidad implementada de una integración comprobada y una demostración visual de evidencia operativa.",
+            en: "Separating backend rules from interfaces allows clients to share consistent criteria. In risk and signature workflows, states, permissions and audit records must retain precise meanings. It is also necessary to distinguish an implemented capability from a verified integration, and a visual demonstration from operational evidence.",
+        },
+        features: [
+            {
+                title: { es: "IPERC y matriz de riesgos", en: "IPERC and risk matrix" },
+                description: {
+                    es: "Consulta de documentos por contexto operativo, con actividades, peligros, controles y niveles de riesgo inicial y residual. El detalle reúne checklist, participantes y PETAR vinculados.",
+                    en: "Document lookup by operational context, with activities, hazards, controls and initial and residual risk levels. Details bring together the checklist, participants and linked PETAR permits.",
+                },
+            },
+            {
+                title: { es: "Permisos PETAR vinculados", en: "Linked PETAR work permits" },
+                description: {
+                    es: "La API permite crear permisos vinculados a un IPERC, con preguntas y participantes según su catálogo. La web consulta el detalle desde el IPERC y ofrece cierre, cancelación y exportación para los formatos admitidos.",
+                    en: "The API supports creating permits linked to an IPERC, with questions and participants defined by their catalog. The web opens permit details from the IPERC and provides closing, cancellation and export for supported formats.",
+                },
+            },
+            {
+                title: { es: "Firmas y estados", en: "Signatures and states" },
+                description: {
+                    es: "Registro de firmas de participantes en la API, con fechas de dispositivo y servidor, y activación al completar las firmas requeridas. El panel muestra su estado; no crea ni firma documentos IPERC/PETAR.",
+                    en: "Participant signatures are recorded through the API with device and server timestamps, and documents activate when required signatures are complete. The panel displays their status; it does not create or sign IPERC/PETAR documents.",
+                },
+            },
+            {
+                title: { es: "Control de tareas y riesgo 5×5", en: "Task control and 5×5 risk" },
+                description: {
+                    es: "Tableros por empresa y fecha, con tareas, responsables y personal. La probabilidad y la consecuencia determinan un puntaje de riesgo calculado en el servidor mediante una matriz fija 5×5.",
+                    en: "Boards by company and date, with tasks, responsible personnel and team members. Probability and consequence determine a risk score calculated on the server using a fixed 5×5 matrix.",
+                },
+            },
+            {
+                title: {
+                    es: "Reportes y exportación documental",
+                    en: "Reports and document exports",
+                },
+                description: {
+                    es: "Exportaciones Excel y PDF para IPERC y tableros, con reportes diarios o por periodo en control de tareas. Los exportadores PETAR implementados cubren trabajo en altura e izaje.",
+                    en: "Excel and PDF exports for IPERC and task boards, with daily or period-based task control reports. Implemented PETAR exporters cover work at height and lifting operations.",
+                },
+            },
+            {
+                title: {
+                    es: "Administración y acceso por rol",
+                    en: "Administration and role-based access",
+                },
+                description: {
+                    es: "Gestión de catálogos, checklists y plantillas de riesgo. El backend delimita el acceso de administradores, administradores contratistas, supervisores y trabajadores según empresa y participación.",
+                    en: "Catalog, checklist and risk template management. The backend scopes access for administrators, contractor administrators, supervisors and workers according to company and participation.",
+                },
+            },
+        ],
+        galleryNotice: {
+            es: "Interfaz real de control de tareas en un entorno local aislado, con datos sintéticos y respuestas de API simuladas. Las capturas no verifican integración con el backend ni uso en producción.",
+            en: "Real task control interface in an isolated local environment, with synthetic data and simulated API responses. Screenshots do not verify backend integration or production use.",
+        },
+        gallery: ipercGallery,
     },
 ];
 
