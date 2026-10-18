@@ -3,7 +3,7 @@
 import { useEffect, useRef, useSyncExternalStore } from "react";
 import { usePathname } from "next/navigation";
 import { ArrowUpRight, ChevronDown, Download, Menu, Moon, Sun, X } from "lucide-react";
-import { useTheme } from "next-themes";
+import { useThemeToggle } from "@/providers/AppProvider";
 import clsx from "clsx";
 import { Brand } from "@/components/ui/Brand";
 import { siteConfig } from "@/config/site";
@@ -25,7 +25,7 @@ export function Header({ locale, labels }: { locale: Locale; labels: Dictionary[
     const header = useRef<HTMLElement>(null);
     const compactMenu = useRef<HTMLDetailsElement>(null);
     const moreMenu = useRef<HTMLDetailsElement>(null);
-    const { resolvedTheme, setTheme } = useTheme();
+    const toggleTheme = useThemeToggle();
     const { activeSection, scrolled } = useSectionNavigation();
     const pathname = usePathname();
     const hash = useSyncExternalStore(
@@ -128,7 +128,7 @@ export function Header({ locale, labels }: { locale: Locale; labels: Dictionary[
                     <button
                         type="button"
                         className="icon-button theme-switch"
-                        onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
+                        onClick={toggleTheme}
                     >
                         <Sun className="theme-sun" size={17} aria-hidden="true" />
                         <Moon className="theme-moon" size={17} aria-hidden="true" />

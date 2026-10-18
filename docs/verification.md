@@ -302,3 +302,13 @@ Evidencia seleccionada:
 - [Móvil EN oscuro a 360px](previews/carousel/en-dark-360-section.png).
 
 Límites: Chromium, gesto táctil simulado y revisión visual seleccionada; no Safari/Firefox, dispositivos físicos ni evaluación integral con lector de pantalla. La adaptación usa scroll nativo, no arrastre personalizado con mouse. Tras la verificación solo se añadieron este registro y las capturas, con formato y diff comprobados por separado. El servidor temporal de producción se detuvo y el desarrollo permanece activo en http://127.0.0.1:3000/es#projects y http://127.0.0.1:3000/en#projects. Cierre con commit local, sin push ni despliegue.
+
+## Inicio siempre en oscuro (2026-10-18)
+
+Cada apertura o recarga de documento comienza en oscuro, incluso si el sistema o una antigua preferencia guardada indican claro. Los layouts localizados y las recuperaciones globales emiten `data-theme="dark"` desde el servidor. `AppProvider` controla `forcedTheme` de next-themes con estado React inicializado en oscuro; Header alterna ese estado mediante `useThemeToggle`, sin persistir la elección. La navegación interna de Next conserva el tema elegido durante la visita; una recarga, apertura directa o cambio de idioma con carga completa vuelve a oscuro. `RecoveryTheme` mantiene oscuro el documento de recuperación sin consultar `localStorage` ni añadir un bootstrap inline.
+
+**Node 24.22.0**, Next **16.3.8**: `npm run verify` terminó con código **0**: lint, tipos, formato, build actualizado y **49/49 E2E** en **49.8 s**. El recorrido de tema verifica sistema claro, preferencia previa clara, HTML inicial oscuro, alternancia manual, conservación al abrir un proyecto mediante Next, reinicio oscuro tras recarga/cambio de idioma y conservación intacta de la clave antigua. También comprueba apertura con sistema oscuro y recuperación 404 oscura.
+
+La matriz responsive ahora activa el claro mediante el botón visible de cada documento y cubre **156 combinaciones**: seis anchos × ES/EN × seis vistas con ambos temas, más la 404 global solo en oscuro, que no ofrece selector. Pasó sin overflow ni errores de ejecución/hidratación observados, junto a las comprobaciones axe y recorridos sin JavaScript existentes. La paleta y el layout no cambiaron; no se añadieron nuevas capturas de revisión. La cobertura sigue limitada a Chromium y no certifica conformidad WCAG completa.
+
+Se actualizaron README y las guías de arquitectura, sistema visual, seguridad y pruebas. Tras la cadena completa solo se añadió este registro, con formato y diff comprobados por separado. El desarrollo permanece activo en http://127.0.0.1:3000/es#projects. Cierre con commit local, sin push ni despliegue.

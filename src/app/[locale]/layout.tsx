@@ -45,7 +45,7 @@ export default async function LocaleLayout({
     // Unknown locales get a recovery shell; proxy supplies HTTP 404 before rendering.
     if (!isLocale(locale)) {
         return (
-            <html lang="es" suppressHydrationWarning>
+            <html lang="es" data-theme="dark" suppressHydrationWarning>
                 <body>
                     <RecoveryTheme />
                     <main>{children}</main>
@@ -55,7 +55,12 @@ export default async function LocaleLayout({
     }
     const dictionary = getDictionary(locale);
     return (
-        <html lang={locale} data-scroll-behavior="smooth" suppressHydrationWarning>
+        <html
+            lang={locale}
+            data-theme="dark"
+            data-scroll-behavior="smooth"
+            suppressHydrationWarning
+        >
             <body id="top">
                 <AppProvider>
                     <a className="skip-link" href="#main-content">

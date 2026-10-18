@@ -2,7 +2,7 @@
 
 ## Alcance actual
 
-Sitio de presentación. Sin autenticación, tokens, cookies de sesión, backend, uploads, pagos, analítica ni formularios de envío. `next-themes` guarda la elección de tema en `localStorage`; no almacena datos personales. El laboratorio y los filtros mantienen estado en memoria.
+Sitio de presentación. Sin autenticación, tokens, cookies de sesión, backend, uploads, pagos, analítica ni formularios de envío. La elección manual de tema, el laboratorio y el carrusel mantienen estado en memoria. El tema visible se controla mediante `forcedTheme` de `next-themes`: empieza en oscuro y no depende de la antigua preferencia guardada. El botón no persiste la elección ni elimina datos previos del navegador. No se almacenan datos personales.
 
 `mailto:` delega al cliente de correo del visitante y no transmite nada automáticamente. Copiar correo usa Clipboard API únicamente al pulsar el control y muestra un error si el navegador lo impide. No se recopila información de visitantes.
 

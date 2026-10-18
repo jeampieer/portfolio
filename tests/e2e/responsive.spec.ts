@@ -11,7 +11,6 @@ for (const width of [360, 390, 768, 1024, 1280, 1440]) {
                 viewport: { width, height: 900 },
                 reducedMotion: "reduce",
             });
-            await context.addInitScript((value) => localStorage.setItem("theme", value), theme);
             const page = await context.newPage();
             const errors: string[] = [];
             page.on("pageerror", (error) => errors.push(error.message));
@@ -32,8 +31,19 @@ for (const width of [360, 390, 768, 1024, 1280, 1440]) {
                     "/projects/missing",
                     "/missing/path",
                 ]) {
+                    if (theme === "light" && view === "/missing/path") continue;
                     const response = await page.goto(`/${locale}${view}`);
                     expect(response?.status()).toBe(view.includes("missing") ? 404 : 200);
+                    if (theme === "light")
+                        await page
+                            .getByRole("button", {
+                                name:
+                                    locale === "es"
+                                        ? "Activar tema claro"
+                                        : "Switch to light theme",
+                                exact: true,
+                            })
+                            .click();
                     await expect(page.locator("html")).toHaveAttribute("data-theme", theme);
                     await page.evaluate(() => document.fonts.ready);
                     const dimensions = await page.evaluate(() => ({

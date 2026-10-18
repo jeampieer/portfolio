@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 
 export default function GlobalNotFound() {
     return (
-        <html lang="es" suppressHydrationWarning>
+        <html lang="es" data-theme="dark" suppressHydrationWarning>
             <body>
                 <RecoveryTheme />
                 <main>

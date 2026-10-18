@@ -27,7 +27,7 @@ Las versiones exactas están en [`package-lock.json`](package-lock.json). Las te
 ## Experiencia de uso
 
 - Contenido y detalles de proyectos en ES/EN, con cambio de idioma que conserva el caso abierto.
-- Temas claro y oscuro con preferencia persistida en el navegador.
+- Modo oscuro en cada apertura o recarga, con cambio manual a claro durante la visita.
 - Carrusel de proyectos con flechas, contador, selección directa y desplazamiento táctil, sin avance automático. Las galerías conservan acceso a las capturas originales.
 - Experiencias y comunidad con capturas completas de las publicaciones de mi universidad y mi empresa en LinkedIn. La [guía de contenido](docs/content.md#experiencias-y-comunidad) explica cómo actualizarlas en `public/images/experiences/`.
 - Educación en UTP e IDAT e idiomas con sus niveles confirmados, disponibles en ES/EN.
@@ -111,7 +111,7 @@ npx playwright install chromium   # Primera instalación
 npm run verify
 ```
 
-Los recorridos E2E cubren navegación bilingüe, educación e idiomas, persistencia del tema, archivo y cuatro casos de estudio, galerías, laboratorio, movimiento reducido, teclado, rutas inexistentes y lectura sin JavaScript. También comprueban desbordamientos en varios anchos y ejecutan análisis automáticos de accesibilidad con axe.
+Los recorridos E2E cubren navegación bilingüe, educación e idiomas, inicio en oscuro y cambio manual de tema, archivo y cuatro casos de estudio, galerías, laboratorio, movimiento reducido, teclado, rutas inexistentes y lectura sin JavaScript. También comprueban desbordamientos en varios anchos y ejecutan análisis automáticos de accesibilidad con axe.
 
 Playwright inicia un servidor de producción independiente en `127.0.0.1:3100`; ese puerto debe estar libre. Para ejecutar solo los E2E, primero actualizo el build y después uso `npm run test:e2e`. Los resultados y límites de la validación están en [`docs/verification.md`](docs/verification.md). Las comprobaciones automáticas se complementan con revisión visual; no certifican conformidad WCAG completa.
 

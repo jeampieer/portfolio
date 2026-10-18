@@ -106,16 +106,37 @@ test("education and languages preserve confirmed dates and academic status in bo
     );
 });
 
-test("theme switches and persists on reload and locale navigation", async ({ page }) => {
+test("every document starts dark despite saved or system preferences and allows a manual toggle", async ({
+    page,
+    request,
+}) => {
+    await page.emulateMedia({ colorScheme: "light" });
+    await page.addInitScript(() => localStorage.setItem("theme", "light"));
     await page.goto("/es");
+    await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
+    expect(await (await request.get("/es")).text()).toMatch(/<html[^>]*data-theme="dark"/);
+    await page.getByRole("button", { name: "Activar tema claro" }).click();
+    await expect(page.locator("html")).toHaveAttribute("data-theme", "light");
+    await page
+        .locator("#projects article")
+        .first()
+        .getByRole("link", { name: "Explorar proyecto", exact: true })
+        .click();
+    await expect(page).toHaveURL(/\/es\/projects\/plataforma-encuestas-gm$/);
+    await expect(page.locator("html")).toHaveAttribute("data-theme", "light");
+    await page.reload();
     await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
     await page.getByRole("button", { name: "Activar tema claro" }).click();
     await expect(page.locator("html")).toHaveAttribute("data-theme", "light");
-    await page.reload();
-    await expect(page.locator("html")).toHaveAttribute("data-theme", "light");
     await page.getByRole("link", { name: "Read in English" }).click();
+    await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
+    await page.getByRole("button", { name: "Switch to light theme" }).click();
     await expect(page.locator("html")).toHaveAttribute("data-theme", "light");
     await page.getByRole("button", { name: "Switch to dark theme" }).click();
+    await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
+    expect(await page.evaluate(() => localStorage.getItem("theme"))).toBe("light");
+    await page.emulateMedia({ colorScheme: "dark" });
+    await page.goto("/en");
     await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
 });
 
@@ -737,13 +758,13 @@ test("touch viewer shares community captures and preserves publishers", async ({
     await context.close();
 });
 
-test("404 recovery uses brand, loaded fonts, saved theme and separate localized actions", async ({
+test("404 recovery starts dark and uses brand, loaded fonts and separate localized actions", async ({
     page,
 }) => {
     await page.goto("/es");
     await page.getByRole("button", { name: "Activar tema claro" }).click();
     await page.goto("/fr");
-    await expect(page.locator("html")).toHaveAttribute("data-theme", "light");
+    await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
     await expect(page.locator(".not-found .brand")).toBeVisible();
     await page.evaluate(() => document.fonts.ready);
     expect(await page.evaluate(() => document.fonts.check('16px "Space Grotesk Variable"'))).toBe(
@@ -863,8 +884,9 @@ test("portrait signal follows its orbit, pause works with keyboard and halo keep
         ["es", "dark"],
         ["en", "light"],
     ]) {
-        await page.addInitScript((value) => localStorage.setItem("theme", value), theme);
         await page.goto(`/${locale}`);
+        if (theme === "light")
+            await page.getByRole("button", { name: "Switch to light theme", exact: true }).click();
         const orbit = page.locator(".hero-orbiter");
         const halo = page.locator(".orbit-halo");
         const portrait = page.locator(".portrait");

@@ -12,6 +12,10 @@ Geist Variable se usa para texto, Space Grotesk Variable para títulos e IBM Ple
 
 La escala usa títulos hero de hasta 72px, títulos de casos de hasta 56px (40px en móvil), secciones de hasta 40px y variantes fluidas para móviles. Espaciado principal en múltiplos de 8; container máximo 1280px. Hay ajustes de tamaño para etiquetas y controles compactos. CSS Grid implementa composiciones de dos/cuatro columnas según el contenido; no se agrega una cuadrícula de doce columnas vacía.
 
+## Tema al abrir la plataforma
+
+Cada carga de documento comienza en oscuro, independientemente del sistema operativo o de una elección anterior guardada. `data-theme="dark"` está presente en el HTML del servidor y `AppProvider` controla `forcedTheme` con estado React local. El botón permite alternar claro/oscuro durante la visita; la navegación interna de Next conserva la elección, pero recargar, abrir otra página directamente o cambiar de idioma mediante navegación completa vuelve al oscuro. No se borra la antigua clave `theme`; su valor no controla la apariencia ni se actualiza al pulsar el botón. Las recuperaciones globales también abren en oscuro.
+
 ## Componentes e interacción
 
 - Botón primario cian, secundario con borde, ghost y botón de icono con etiqueta.
