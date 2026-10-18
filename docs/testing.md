@@ -19,7 +19,7 @@ Los E2E sirven el build de producción en `127.0.0.1:3100`, con dos workers y Ch
 - Educación entre identidad y stack, programas UTP/IDAT, periodos y estados confirmados, y tres idiomas con sus niveles y el alcance del inglés en ES/EN. Educación e idiomas legibles sin JavaScript.
 - Rutas y contenido ES/EN, también en detalles de proyectos.
 - Cambio de tema y persistencia entre recargas e idiomas.
-- Archivo de servidor sin filtros, orden GM Social/IPERC/MFA y Orbital Signal oculto con rutas directas.
+- Cards compuestas en servidor y carrusel sin filtros, orden GM Social/IPERC/MFA y Orbital Signal oculto con rutas directas.
 - Navegación al caso MFA, título/metadatos ES/EN y atribución del despliegue inicial; ausencia de fechas inventadas, ilustración y enlaces públicos al servicio; cuatro capturas 1920×1080, proporción 16:9, originales PNG con HTTP 200 y aviso ES/EN de datos sintéticos y cliente local de prueba.
 - Caso GM Social, ocho capturas horizontales 1920×1080 cargadas con proporción 16:9 conservada, enlaces a originales PNG con HTTP 200, aviso demo y navegación ES/EN.
 - Caso IPERC Antapaccay, aporte API/web y atribución móvil, seis funcionalidades con límites de firma/exportación, metadatos y navegación ES/EN, tres capturas 1920×1080 con originales PNG y aviso explícito de respuestas API simuladas. Incluido en recorridos sin JavaScript, axe y matriz responsive.
@@ -57,3 +57,5 @@ El visor se prueba con teclado y touch simulado: apertura, anterior/siguiente, f
 Se prueban clics repetidos de marca tras desplazarse con el mismo hash y regreso desde detalle en ES/EN; apertura de cards desde texto, padding y teclado con un solo destino por card; ciclos de escritura/borrado del saludo y su estado completo bajo movimiento reducido.
 
 La señal del retrato se comprueba en cuatro posiciones del ciclo, conservando radio y fotografía estable. Se verifica halo por hover en ambos temas, pausa/reanudación por teclado y touch simulado, pausa fuera del viewport y visibilidad del documento mediante evento simulado. Movimiento reducido se prueba desde hidratación y al cambiar la preferencia; sin JavaScript, saludo y retrato permanecen estáticos y el control se oculta.
+
+`carousel.spec.ts` cubre controles y límites, conservación del foco, selección directa, navegación con flechas e Inicio/Fin, Tab hacia enlaces fuera de vista, desplazamiento táctil mediante eventos CDP, conservación del proyecto al redimensionar, desplazamiento instantáneo con movimiento reducido y lectura/navegación sin JavaScript. Los recorridos de IPERC y MFA seleccionan primero su card mediante controles visibles. Las capturas de la matriz responsive restablecen la primera card después de verificar las imágenes de todos los proyectos.

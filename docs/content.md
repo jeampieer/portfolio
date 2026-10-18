@@ -47,6 +47,8 @@ Cada entrada genera su ficha en ambos idiomas, incluidos título y metadatos. La
 
 Orbital Signal está temporalmente oculto del inicio mediante `showInArchive: false` en su entrada de `portfolio.ts`; el archivo de proyectos muestra GM Social, IPERC Antapaccay y MFA. Para volver a mostrarlo, quitar ese campo o cambiarlo a `true`. Su detalle sigue disponible en `/es/projects/orbital-signal` y `/en/projects/orbital-signal`. La opción controla presentación, no privacidad ni disponibilidad de la ruta.
 
+La sección de inicio presenta una card por vista en un carrusel. El orden y la disponibilidad siguen dependiendo de `archiveProjects` y `showInArchive`, sin filtros adicionales ni duplicación de contenido. Los controles, mensajes de posición y etiquetas del carrusel se editan en `dictionary.projects.carousel` en ES/EN. El total y el título anunciado se calculan a partir de los proyectos publicados; no se mantienen contadores manuales. El contenido completo, incluido el aporte y las atribuciones, permanece en las cards y en el HTML sin JavaScript.
+
 ### Caso empresarial MFA confirmado
 
 `servicio-mfa` presenta «Servicio MFA para plataformas empresariales» como proyecto backend privado con descripción general autorizada por el usuario. Su aporte fue estudiar y reconstruir el flujo heredado, rehacer/refactorizar el backend y optimizar registro, validaciones y envío de correos/códigos. El detalle atribuye el despliegue inicial a otro integrante del equipo. Python, Django y Django REST Framework son tecnologías del servicio; AWS Lambda, Zappa y Terraform describen la infraestructura heredada y no amplían el stack personal ni atribuyen su despliegue al propietario.

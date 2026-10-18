@@ -6,7 +6,7 @@ El sitio reúne casos de estudio de frontend y backend en español e inglés. Su
 
 ## Enfoque de ingeniería
 
-Diseñé el portafolio alrededor de una necesidad concreta: publicar contenido y permitir que se explore con facilidad. Elegí páginas prerenderizadas con Next.js App Router, contenido local tipado y componentes de servidor para la presentación. Las interacciones —navegación, filtros, tema y laboratorio— se resuelven en componentes cliente.
+Diseñé el portafolio alrededor de una necesidad concreta: publicar contenido y permitir que se explore con facilidad. Elegí páginas prerenderizadas con Next.js App Router, contenido local tipado y componentes de servidor para la presentación. Las interacciones —navegación, carrusel, tema, visor y laboratorio— se resuelven en componentes cliente.
 
 Separé contenido, contratos y vistas para que actualizar un proyecto o una traducción no requiera modificar la composición de la página. Las rutas validan idioma y proyecto, preparan metadatos y delegan la presentación a la feature de portafolio.
 
@@ -28,7 +28,7 @@ Las versiones exactas están en [`package-lock.json`](package-lock.json). Las te
 
 - Contenido y detalles de proyectos en ES/EN, con cambio de idioma que conserva el caso abierto.
 - Temas claro y oscuro con preferencia persistida en el navegador.
-- Archivo de proyectos con filtros por categoría y galerías con acceso a las capturas originales.
+- Carrusel de proyectos con flechas, contador, selección directa y desplazamiento táctil, sin avance automático. Las galerías conservan acceso a las capturas originales.
 - Experiencias y comunidad con capturas completas de las publicaciones de mi universidad y mi empresa en LinkedIn. La [guía de contenido](docs/content.md#experiencias-y-comunidad) explica cómo actualizarlas en `public/images/experiences/`.
 - Educación en UTP e IDAT e idiomas con sus niveles confirmados, disponibles en ES/EN.
 - Laboratorio orbital con controles de trayectoria, velocidad, pausa y reinicio.

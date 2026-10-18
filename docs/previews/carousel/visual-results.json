@@ -1,0 +1,135 @@
+{
+    "dateLima": "2026-10-18",
+    "origin": "local production build",
+    "captureNote": "Section captures use taller viewports to keep the full section in frame and the fixed header outside the element. A separate 390x844 viewport capture is included. No product content or controls were hidden.",
+    "scenarios": [
+        {
+            "locale": "es",
+            "theme": "dark",
+            "width": 1440,
+            "height": 1400,
+            "selected": 0,
+            "dimensions": {
+                "client": 1440,
+                "scroll": 1440
+            },
+            "states": [
+                {
+                    "title": "GM Social — Gestión de estudios y trabajo de campo",
+                    "width": 1280,
+                    "height": 583.90625,
+                    "columns": "680.797px 597.203px"
+                },
+                {
+                    "title": "IPERC Antapaccay — Gestión de riesgos y permisos de trabajo",
+                    "width": 1280,
+                    "height": 583.90625,
+                    "columns": "680.797px 597.203px"
+                },
+                {
+                    "title": "Servicio MFA para plataformas empresariales",
+                    "width": 1280,
+                    "height": 583.90625,
+                    "columns": "680.797px 597.203px"
+                }
+            ],
+            "pageErrors": []
+        },
+        {
+            "locale": "en",
+            "theme": "light",
+            "width": 390,
+            "height": 2000,
+            "selected": 1,
+            "dimensions": {
+                "client": 390,
+                "scroll": 390
+            },
+            "states": [
+                {
+                    "title": "GM Social — Social study and fieldwork management",
+                    "width": 358,
+                    "height": 914.96875,
+                    "columns": "356px"
+                },
+                {
+                    "title": "IPERC Antapaccay — Risk assessment and work permit management",
+                    "width": 358,
+                    "height": 914.96875,
+                    "columns": "356px"
+                },
+                {
+                    "title": "MFA service for enterprise platforms",
+                    "width": 358,
+                    "height": 914.96875,
+                    "columns": "356px"
+                }
+            ],
+            "pageErrors": []
+        },
+        {
+            "locale": "es",
+            "theme": "light",
+            "width": 768,
+            "height": 1700,
+            "selected": 2,
+            "dimensions": {
+                "client": 768,
+                "scroll": 768
+            },
+            "states": [
+                {
+                    "title": "GM Social — Gestión de estudios y trabajo de campo",
+                    "width": 704,
+                    "height": 900.8125,
+                    "columns": "702px"
+                },
+                {
+                    "title": "IPERC Antapaccay — Gestión de riesgos y permisos de trabajo",
+                    "width": 704,
+                    "height": 900.8125,
+                    "columns": "702px"
+                },
+                {
+                    "title": "Servicio MFA para plataformas empresariales",
+                    "width": 704,
+                    "height": 900.8125,
+                    "columns": "702px"
+                }
+            ],
+            "pageErrors": []
+        },
+        {
+            "locale": "en",
+            "theme": "dark",
+            "width": 360,
+            "height": 2100,
+            "selected": 0,
+            "dimensions": {
+                "client": 360,
+                "scroll": 360
+            },
+            "states": [
+                {
+                    "title": "GM Social — Social study and fieldwork management",
+                    "width": 328,
+                    "height": 947.59375,
+                    "columns": "326px"
+                },
+                {
+                    "title": "IPERC Antapaccay — Risk assessment and work permit management",
+                    "width": 328,
+                    "height": 947.59375,
+                    "columns": "326px"
+                },
+                {
+                    "title": "MFA service for enterprise platforms",
+                    "width": 328,
+                    "height": 947.59375,
+                    "columns": "326px"
+                }
+            ],
+            "pageErrors": []
+        }
+    ]
+}

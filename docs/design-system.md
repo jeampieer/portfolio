@@ -31,4 +31,12 @@ La revisión automatizada de contraste/accesibilidad y la inspección responsive
 
 El visor usa la misma superficie, borde, tipografía y controles que el sitio, con opacidad de 160ms al abrir/cerrar mediante transiciones discretas de dialog. El fondo queda inerte y la captura completa se ajusta con contain; tamaño original habilita scroll nativo. Movimiento reducido elimina las transiciones y las transformaciones de hover; no se recorta el foco en los enlaces de imagen. La 404 reutiliza marca y estilos de recuperación en ambos temas.
 
-La marca usa el ancla nativa `/{locale}#top` para volver arriba incluso al repetir el mismo destino. Cada card de proyecto tiene un único enlace de detalle cuya área cubre toda la card, con foco visible en su contorno y contexto del título; no se anidan enlaces ni se añade un handler cliente a la sección.
+La marca usa el ancla nativa `/{locale}#top` para volver arriba incluso al repetir el mismo destino. Cada card de proyecto tiene un único enlace de detalle cuya área cubre toda la card, con foco visible en su contorno y contexto del título; no se anidan enlaces ni se convierte la card en un botón. La navegación entre cards se controla desde una isla cliente independiente.
+
+## Carrusel del archivo de proyectos
+
+Una card protagonista por vista conserva imagen completa y texto, con composición horizontal desde 1024px y vertical en tablet/móvil. El track ajusta cada card con scroll snap nativo y comparte la altura para mantener estables los controles al cambiar de proyecto. Flechas de 44px, contador y selectores de 44px proporcionan navegación explícita, además del gesto táctil y el trackpad. La posición se indica únicamente en el contador del carrusel; los identificadores internos de los casos se conservan en sus detalles. El acento identifica la posición activa; las flechas en los límites permanecen reconocibles y no cambian el foco.
+
+No avanza automáticamente ni obliga a arrastrar. El teclado permite recorrer el track con flechas e Inicio/Fin o seguir los enlaces con Tab. Se conserva foco visible, etiquetas ES/EN y un anuncio breve de posición y título. Con movimiento reducido, los cambios son instantáneos. Sin JavaScript se conserva el desplazamiento nativo y los enlaces, y se ocultan únicamente los controles dependientes de hidratación.
+
+Referencias de interacción: [patrón de carrusel WAI-ARIA APG](https://www.w3.org/WAI/ARIA/apg/patterns/carousel/) y [scroll snap de CSS](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/scroll-snap-type). La implementación adapta esos principios a contenido prerenderizado y desplazable; no constituye una certificación de accesibilidad.

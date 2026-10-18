@@ -75,6 +75,12 @@ for (const width of [360, 390, 768, 1024, 1280, 1440]) {
                             await image.scrollIntoViewIfNeeded();
                             await expect(image).toHaveJSProperty("complete", true);
                         }
+                        if (view === "")
+                            await page
+                                .locator(".project-list")
+                                .evaluate((track) =>
+                                    track.scrollTo({ left: 0, behavior: "instant" })
+                                );
                         await page.evaluate(() => window.scrollTo({ top: 0, behavior: "instant" }));
                         await page.screenshot({
                             path: testInfo.outputPath(`${name}.png`),

@@ -128,7 +128,7 @@ test("archive order, direct detail and language switch preserve the project", as
         "IPERC Antapaccay — Gestión de riesgos y permisos de trabajo",
         "Servicio MFA para plataformas empresariales",
     ]);
-    await expect(archive.getByRole("button")).toHaveCount(0);
+    await expect(archive.getByRole("button", { name: "Proyecto siguiente" })).toBeVisible();
     await expect(archive.getByRole("heading", { name: "Orbital Signal" })).toHaveCount(0);
     await expect(archive.locator(".contribution-summary")).toHaveCount(3);
     const response = await page.goto("/es/projects/orbital-signal");
@@ -153,6 +153,7 @@ test("IPERC case preserves verified scope, mobile attribution and simulated gall
     const card = page.locator("#projects article").filter({
         has: page.getByRole("heading", { name: /^IPERC Antapaccay/ }),
     });
+    await page.getByRole("button", { name: /^Mostrar proyecto: IPERC Antapaccay/ }).click();
     await expect(card.locator(".contribution-summary")).toContainText("otros integrantes");
     await card.getByRole("link", { name: "Explorar proyecto", exact: true }).click();
     await expect(page).toHaveURL(/\/es\/projects\/iperc-antapaccay$/);
@@ -300,6 +301,7 @@ test("backend case has verified screenshots, locale navigation and deployment at
             exact: true,
         }),
     });
+    await page.getByRole("button", { name: /^Mostrar proyecto: Servicio MFA/ }).click();
     await expect(archive).toHaveCount(1);
     await expect(archive.getByRole("heading", { name: "Orbital Signal" })).toHaveCount(0);
     await expect(archive.locator(".project-cover-link img")).toHaveAttribute(
@@ -814,6 +816,7 @@ test("project cards open from their summary, empty padding and keyboard with one
     });
     await expect(page).toHaveURL(/\/es\/projects\/plataforma-encuestas-gm$/);
     await page.goto("/es#projects");
+    await page.getByRole("button", { name: /^Mostrar proyecto: Servicio MFA/ }).click();
     await cards
         .filter({ has: page.getByRole("heading", { name: /^Servicio MFA/ }) })
         .click({ position: { x: 8, y: 8 } });

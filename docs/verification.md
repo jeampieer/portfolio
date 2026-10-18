@@ -283,3 +283,22 @@ Evidencia seleccionada:
 - Card del archivo: [desktop ES](previews/iperc/es-dark-1440-card.png) y [móvil EN](previews/iperc/en-light-390-card.png).
 
 Límites: las capacidades de la API fuente se comprobaron mediante lectura de código; no se ejecutaron sus pruebas, servicios externos ni app móvil. La presentación se verificó en Chromium, sin Safari/Firefox ni dispositivos físicos, y axe no certifica conformidad WCAG completa. Tras `verify` solo se añadieron este registro y las evidencias visuales, con formato y diff comprobados por separado. Los servidores temporales de captura se detuvieron; el desarrollo del portafolio queda activo en http://127.0.0.1:3000/es/projects/iperc-antapaccay y http://127.0.0.1:3000/en/projects/iperc-antapaccay. Cierre con commit local, sin push ni despliegue.
+
+## Carrusel de proyectos — UX/UI (2026-10-18)
+
+La sección de proyectos presenta una card por vista, con flechas, contador y selectores directos, gesto táctil y desplazamiento por trackpad. Se mantiene el orden GM Social/IPERC/MFA, el contenido completo y un único enlace extendido por card. Se retiró la numeración interna de las cards del inicio para que la posición se lea solo en el contador; los identificadores de los detalles se conservan. La composición es horizontal desde **1024px** y vertical en tablet/móvil, con altura compartida para evitar saltos entre proyectos. No hay avance automático ni librerías nuevas.
+
+`MissionArchive` conserva la composición de servidor y entrega las cards como hijos a la isla `ProjectCarousel`. CSS resuelve el scroll nativo y el ajuste entre cards; el estado cliente añade controles y anuncios ES/EN. Las flechas izquierda/derecha e Inicio/Fin funcionan con foco en el track, sin interceptar combinaciones del navegador con Alt/Ctrl/Meta. Tab conserva el recorrido por enlaces y alinea la card enfocada. Los botones mantienen el foco al llegar a los límites; el estado anuncia posición/título de forma discreta. Movimiento reducido usa cambios instantáneos. Sin JavaScript quedan presentes todas las cards y enlaces, con scroll y barra nativos; los controles dependientes de hidratación se ocultan y permanecen inertes. Se documentó el patrón y se actualizaron README, arquitectura, contenido y sistema visual.
+
+**Node 24.22.0**, Next **16.3.8**: la ejecución final de `npm run verify` terminó con código **0**: lint, tipos, formato, build actualizado y **49/49 E2E** en **48.3 s**. Las cinco pruebas nuevas comprueban límites y foco, selección directa, desplazamiento suave hasta el destino real, teclado y enlaces fuera de vista, gesto táctil mediante CDP, selección conservada al redimensionar, movimiento reducido sin desplazar la página y navegación sin JavaScript. Se adaptaron los recorridos de IPERC/MFA para usar los controles visibles. La matriz de **168 combinaciones** volvió a pasar sin overflow horizontal ni errores de ejecución/hidratación observados; se mantienen las comprobaciones axe existentes sin certificar WCAG completa.
+
+La revisión visual adicional contra producción comprobó los tres proyectos a **1440px ES oscuro**, **390px EN claro**, **768px ES claro** y **360px EN oscuro**, con alturas iguales entre cards en cada escenario, contador coherente, texto completo y ningún error de página o consola observado. Las capturas por sección usan un viewport alto para evitar que el encabezado fijo cubra el elemento; se conserva también una captura normal de **390×844**. No se ocultó contenido ni controles. Dimensiones, alturas y proyectos revisados están en [el registro visual](previews/carousel/visual-results.json).
+
+Evidencia seleccionada:
+
+- [Escritorio ES oscuro, GM Social](previews/carousel/es-dark-1440-section.png).
+- [Móvil EN claro, IPERC](previews/carousel/en-light-390-section.png) y [viewport 390×844](previews/carousel/en-light-390-viewport.png).
+- [Tablet ES claro, MFA](previews/carousel/es-light-768-section.png).
+- [Móvil EN oscuro a 360px](previews/carousel/en-dark-360-section.png).
+
+Límites: Chromium, gesto táctil simulado y revisión visual seleccionada; no Safari/Firefox, dispositivos físicos ni evaluación integral con lector de pantalla. La adaptación usa scroll nativo, no arrastre personalizado con mouse. Tras la verificación solo se añadieron este registro y las capturas, con formato y diff comprobados por separado. El servidor temporal de producción se detuvo y el desarrollo permanece activo en http://127.0.0.1:3000/es#projects y http://127.0.0.1:3000/en#projects. Cierre con commit local, sin push ni despliegue.
