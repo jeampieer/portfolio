@@ -42,6 +42,8 @@ export interface Project {
     slug: string;
     number: string;
     title: Localized<string>;
+    cardTitle?: Localized<string>;
+    cardDescription?: Localized<string>;
     category: ProjectCategory;
     showInArchive?: boolean;
     year?: string;

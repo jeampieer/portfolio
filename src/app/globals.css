@@ -1026,21 +1026,6 @@
     overflow: hidden;
     background: var(--card-bg);
 }
-.project-card-action::after {
-    content: "";
-    z-index: 2;
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    cursor: pointer;
-}
-.project-card-action:focus-visible {
-    outline: none;
-}
-.project-card-action:focus-visible::after {
-    outline: 2px solid var(--accent);
-    outline-offset: -4px;
-}
 .project-carousel {
     min-width: 0;
 }
@@ -1170,7 +1155,7 @@
 .project-card-text {
     grid-template-columns: 1fr;
 }
-.project-card-text .project-info > p:not(.eyebrow) {
+.project-card-text .project-summary {
     max-width: 720px;
 }
 .project-artwork-link {
@@ -1322,21 +1307,19 @@
     display: flex;
     align-items: flex-start;
     flex-direction: column;
-}
-.project-year {
-    font-size: 12px;
-    color: var(--text-secondary);
-    letter-spacing: 0.06em;
-    margin-top: 24px;
+    justify-content: center;
+    gap: 16px;
+    min-width: 0;
 }
 .project-info h3 {
     font-size: 32px;
-    margin-block: 12px 16px;
+    margin: 0;
 }
-.project-info > p:not(.eyebrow) {
-    font-size: 15px;
+.project-info .project-summary {
+    font-size: 16px;
+    line-height: 1.75;
     color: var(--text-secondary);
-    max-width: 380px;
+    max-width: 40ch;
 }
 .tags {
     display: flex;
@@ -1353,17 +1336,8 @@
     border-radius: 4px;
     padding: 5px 9px;
 }
-.contribution-summary {
-    margin-top: 16px;
-    padding-left: 12px;
-    border-left: 2px solid var(--accent);
-}
-.contribution-summary strong {
-    color: var(--text-primary);
-    font-weight: 500;
-}
-.project-info .text-link {
-    margin-top: auto;
+.project-card-action {
+    margin-top: 12px;
 }
 .skills-grid {
     display: grid;
@@ -2313,7 +2287,7 @@ input[type="range"] {
     .project-carousel .project-info h3 {
         font-size: 28px;
     }
-    .project-carousel .project-info > p:not(.eyebrow) {
+    .project-carousel .project-info .project-summary {
         max-width: none;
     }
 }

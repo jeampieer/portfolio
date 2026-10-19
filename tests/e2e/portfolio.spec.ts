@@ -145,13 +145,17 @@ test("archive order, direct detail and language switch preserve the project", as
     const archive = page.locator("#projects");
     await expect(archive.locator("article")).toHaveCount(3);
     await expect(archive.locator("article h3")).toHaveText([
-        "GM Social — Gestión de estudios y trabajo de campo",
-        "IPERC Antapaccay — Gestión de riesgos y permisos de trabajo",
-        "Servicio MFA para plataformas empresariales",
+        "GM Social",
+        "IPERC Antapaccay",
+        "Servicio MFA",
     ]);
     await expect(archive.getByRole("button", { name: "Proyecto siguiente" })).toBeVisible();
     await expect(archive.getByRole("heading", { name: "Orbital Signal" })).toHaveCount(0);
-    await expect(archive.locator(".contribution-summary")).toHaveCount(3);
+    await expect(
+        archive.locator(
+            ".contribution-summary, .project-year, .project-info .tags, .project-info .eyebrow"
+        )
+    ).toHaveCount(0);
     const response = await page.goto("/es/projects/orbital-signal");
     expect(response?.status()).toBe(200);
     await expect(page.getByRole("heading", { name: "La arquitectura" })).toBeVisible();
@@ -175,7 +179,6 @@ test("IPERC case preserves verified scope, mobile attribution and simulated gall
         has: page.getByRole("heading", { name: /^IPERC Antapaccay/ }),
     });
     await page.getByRole("button", { name: /^Mostrar proyecto: IPERC Antapaccay/ }).click();
-    await expect(card.locator(".contribution-summary")).toContainText("otros integrantes");
     await card.getByRole("link", { name: "Explorar proyecto", exact: true }).click();
     await expect(page).toHaveURL(/\/es\/projects\/iperc-antapaccay$/);
     await expect(page).toHaveTitle(/IPERC Antapaccay — Gestión de riesgos/);
@@ -318,7 +321,7 @@ test("backend case has verified screenshots, locale navigation and deployment at
     await page.goto("/es");
     const archive = page.locator("#projects article").filter({
         has: page.getByRole("heading", {
-            name: "Servicio MFA para plataformas empresariales",
+            name: "Servicio MFA",
             exact: true,
         }),
     });
@@ -517,7 +520,7 @@ test("content and project routes remain readable without JavaScript", async ({ b
         .locator("article")
         .filter({
             has: page.getByRole("heading", {
-                name: "Servicio MFA para plataformas empresariales",
+                name: "Servicio MFA",
                 exact: true,
             }),
         })
@@ -607,7 +610,7 @@ test("native disclosures and archive navigation work without JavaScript on mobil
     await context.close();
 });
 
-test("informational cards stay stable and project hover also follows keyboard focus", async ({
+test("cards stay stable while the primary project CTA provides hover and keyboard focus", async ({
     page,
 }) => {
     await page.goto("/es#about");
@@ -619,12 +622,17 @@ test("informational cards stay stable and project hover also follows keyboard fo
     const project = page.locator(".project-card").first();
     await project.scrollIntoViewIfNeeded();
     await project.hover();
-    await expect(project).toHaveCSS("transform", "matrix(1, 0, 0, 1, 0, -3)");
-    await page.mouse.move(0, 0);
-    await project.getByRole("link", { name: "Explorar proyecto", exact: true }).focus();
-    await expect(project).toHaveCSS("transform", "matrix(1, 0, 0, 1, 0, -3)");
-    await page.emulateMedia({ reducedMotion: "reduce" });
     await expect(project).toHaveCSS("transform", "none");
+    const action = project.getByRole("link", { name: "Explorar proyecto", exact: true });
+    await action.hover();
+    await expect(action).toHaveCSS("transform", "matrix(1, 0, 0, 1, 0, -2)");
+    await page.mouse.move(0, 0);
+    await action.focus();
+    await expect(action).toHaveCSS("outline-style", "solid");
+    await expect(project).toHaveCSS("transform", "none");
+    await page.emulateMedia({ reducedMotion: "reduce" });
+    await action.hover();
+    await expect(action).toHaveCSS("transform", "none");
 });
 
 test("lab pauses outside the viewport and reduced motion hydrates without errors", async ({
@@ -818,29 +826,31 @@ test("brand returns to the top repeatedly and from a project detail in both loca
     }
 });
 
-test("project cards open from their summary, empty padding and keyboard with one link per card", async ({
+test("project cards open through their primary CTA and leave text and padding noninteractive", async ({
     page,
 }) => {
     await page.emulateMedia({ reducedMotion: "reduce" });
     await page.goto("/es#projects");
     const cards = page.locator("#projects article");
     for (const card of await cards.all()) {
-        await expect(card.getByRole("link")).toHaveCount(1);
+        const action = card.getByRole("link");
+        await expect(action).toHaveCount(1);
+        await expect(action).toHaveClass(/button-primary/);
+        const bounds = await action.boundingBox();
+        expect(bounds!.height).toBeGreaterThanOrEqual(48);
     }
-    const summary = await cards.nth(0).locator(".contribution-summary").boundingBox();
-    const card = await cards.nth(0).boundingBox();
-    await cards.nth(0).click({
-        position: {
-            x: summary!.x - card!.x + summary!.width / 2,
-            y: summary!.y - card!.y + summary!.height / 2,
-        },
-    });
+    await cards.nth(0).locator(".project-summary").click();
+    await expect(page).toHaveURL(/\/es#projects$/);
+    await cards.nth(0).click({ position: { x: 8, y: 8 } });
+    await expect(page).toHaveURL(/\/es#projects$/);
+    await cards.nth(0).getByRole("link", { name: "Explorar proyecto", exact: true }).click();
     await expect(page).toHaveURL(/\/es\/projects\/plataforma-encuestas-gm$/);
     await page.goto("/es#projects");
     await page.getByRole("button", { name: /^Mostrar proyecto: Servicio MFA/ }).click();
     await cards
         .filter({ has: page.getByRole("heading", { name: /^Servicio MFA/ }) })
-        .click({ position: { x: 8, y: 8 } });
+        .getByRole("link", { name: "Explorar proyecto", exact: true })
+        .click();
     await expect(page).toHaveURL(/\/es\/projects\/servicio-mfa$/);
     await page.goto("/en#projects");
     const action = cards.nth(0).getByRole("link", { name: "Explore project", exact: true });

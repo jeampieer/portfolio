@@ -44,6 +44,11 @@ export const projects: Project[] = [
     {
         slug: "servicio-mfa",
         number: "02",
+        cardTitle: { es: "Servicio MFA", en: "MFA service" },
+        cardDescription: {
+            es: "Reconstrucción de un backend de autenticación multifactor para plataformas empresariales.",
+            en: "Rebuilding a multifactor authentication backend for enterprise platforms.",
+        },
         title: {
             es: "Servicio MFA para plataformas empresariales",
             en: "MFA service for enterprise platforms",
@@ -96,6 +101,11 @@ export const projects: Project[] = [
     {
         slug: "plataforma-encuestas-gm",
         number: "03",
+        cardTitle: { es: "GM Social", en: "GM Social" },
+        cardDescription: {
+            es: "Planificación de estudios sociales, coordinación de campo y supervisión de información.",
+            en: "Social study planning, fieldwork coordination and information supervision.",
+        },
         title: {
             es: "GM Social — Gestión de estudios y trabajo de campo",
             en: "GM Social — Social study and fieldwork management",
@@ -220,6 +230,11 @@ export const projects: Project[] = [
     {
         slug: "iperc-antapaccay",
         number: "04",
+        cardTitle: { es: "IPERC Antapaccay", en: "IPERC Antapaccay" },
+        cardDescription: {
+            es: "Evaluación de riesgos, permisos de trabajo y control de tareas.",
+            en: "Risk assessments, work permits and task control.",
+        },
         cover: ipercGallery[0],
         title: {
             es: "IPERC Antapaccay — Gestión de riesgos y permisos de trabajo",
