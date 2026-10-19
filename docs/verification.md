@@ -312,23 +312,3 @@ Cada apertura o recarga de documento comienza en oscuro, incluso si el sistema o
 La matriz responsive ahora activa el claro mediante el botón visible de cada documento y cubre **156 combinaciones**: seis anchos × ES/EN × seis vistas con ambos temas, más la 404 global solo en oscuro, que no ofrece selector. Pasó sin overflow ni errores de ejecución/hidratación observados, junto a las comprobaciones axe y recorridos sin JavaScript existentes. La paleta y el layout no cambiaron; no se añadieron nuevas capturas de revisión. La cobertura sigue limitada a Chromium y no certifica conformidad WCAG completa.
 
 Se actualizaron README y las guías de arquitectura, sistema visual, seguridad y pruebas. Tras la cadena completa solo se añadió este registro, con formato y diff comprobados por separado. El desarrollo permanece activo en http://127.0.0.1:3000/es#projects. Cierre con commit local, sin push ni despliegue.
-
-## Cards de proyectos — jerarquía y CTA (2026-10-19)
-
-Las cards del carrusel presentan imagen, nombre breve, una frase y «Explorar proyecto» / «Explore project» como CTA primario. Se retiraron del resumen el rótulo repetido de proyecto destacado, contexto/fecha, tecnologías y bloque de aporte. Los campos localizados `cardTitle` y `cardDescription` resumen contenido existente en `portfolio.ts`; los títulos completos, metadata, stack y atribuciones siguen en los casos, incluida la autoría externa de la app móvil IPERC. No se añadieron afirmaciones sobre los proyectos ni se truncó texto mediante CSS.
-
-El CTA conserva semántica de enlace y usa los tokens primarios de cada tema, altura de **48px**, foco visible y contexto accesible del título. Solo ese control abre el caso; imagen, resumen y padding permanecen informativos. La card queda estable y la respuesta de hover se concentra en el CTA, con elevación de 2px anulada bajo movimiento reducido. Se conserva el carrusel nativo, su navegación, composición de servidor y acceso sin JavaScript. La jerarquía separa título/descripción por 16px y deja 28px antes de la acción.
-
-**Node 24.22.0**, Next **16.3.8**: `npm run verify` terminó con código **0**: lint, tipos, formato, build actualizado y **49/49 E2E** en **49.5 s**. Se actualizaron los recorridos para comprobar los nombres breves, ausencia de metadatos repetidos, enlace primario único, altura táctil, foco, hover/movimiento reducido, activación por mouse/teclado y ausencia de navegación desde texto o padding. Los recorridos de detalle mantienen las verificaciones de participación y atribuciones. La matriz de **156 combinaciones** de anchos, idiomas, temas y vistas pasó junto a las comprobaciones axe, carrusel y navegación sin JavaScript existentes.
-
-La inspección visual del build de producción cubrió **1440px ES oscuro**, **390px EN claro**, **768px ES claro** y **360px EN oscuro**, representando GM Social, IPERC y MFA. Las tres cards mantienen alturas iguales en cada escenario: 406.81px, 453.72px, 664.34px y 464.84px, respectivamente. No se observó overflow horizontal ni errores de página/consola. El claro se activó mediante el botón visible de tema. Las capturas por sección usan viewports altos para evitar que el header fijo cubra el elemento; se conserva también un viewport normal de 390×844. No se ocultaron controles ni contenido.
-
-Evidencia seleccionada:
-
-- [Escritorio ES oscuro, GM Social](previews/project-cards/es-dark-1440-section.png).
-- [Móvil EN claro, IPERC](previews/project-cards/en-light-390-section.png) y [viewport 390×844](previews/project-cards/en-light-390-viewport.png).
-- [Tablet ES claro, MFA](previews/project-cards/es-light-768-section.png).
-- [Móvil EN oscuro a 360px](previews/project-cards/en-dark-360-section.png).
-- [Registro de geometría, CTA y errores](previews/project-cards/visual-results.json).
-
-Límites: Chromium y touch simulado, sin Safari/Firefox, dispositivos físicos ni evaluación integral con lector de pantalla. Axe no certifica conformidad WCAG completa; no se midió conversión con usuarios. Tras la cadena completa solo se añadieron este registro y las evidencias visuales, con formato y diff comprobados por separado. El servidor temporal de producción se detuvo y el desarrollo permanece activo en http://127.0.0.1:3000/es#projects. Cierre con commit local, sin push ni despliegue.

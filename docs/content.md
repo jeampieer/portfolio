@@ -35,8 +35,7 @@ Agregar una entrada a `projects` en `src/features/portfolio/data/portfolio.ts`. 
 - `year` opcional: omitir si el usuario no confirmó una fecha. `context` opcional con rótulo ES/EN; si se omite, se usa el rótulo del portafolio personal.
 - `showInArchive` opcional: se muestra por defecto; `false` oculta la ficha del archivo de proyectos en el inicio ES/EN. Conserva el contenido y el acceso directo al detalle, metadatos y sitemap.
 - `description`, `problem`, `architecture`, `impact` y `learnings`, cada uno con `es` y `en`.
-- `cardTitle` y `cardDescription` opcionales ES/EN: nombre corto y una frase de contexto para el carrusel. Deben resumir información ya verificada. Si faltan, se usan `title` y `description`; los títulos completos y metadatos del caso no se alteran.
-- `contributionSummary` opcional ES/EN resume el aporte ya autorizado para el bloque de participación del detalle; no añade cargos, métricas o responsabilidades.
+- `contributionSummary` opcional ES/EN resume el aporte ya autorizado para la ficha y el detalle; no añade cargos, métricas o responsabilidades.
 - `participation` y `decisions` opcionales, con ES/EN, para distinguir el aporte personal y las decisiones de ingeniería. Solo se muestran las secciones presentes.
 - `tags` con las tecnologías confirmadas del proyecto.
 - `features` opcional: lista de funcionalidades con título y descripción ES/EN.
@@ -48,7 +47,7 @@ Cada entrada genera su ficha en ambos idiomas, incluidos título y metadatos. La
 
 Orbital Signal está temporalmente oculto del inicio mediante `showInArchive: false` en su entrada de `portfolio.ts`; el archivo de proyectos muestra GM Social, IPERC Antapaccay y MFA. Para volver a mostrarlo, quitar ese campo o cambiarlo a `true`. Su detalle sigue disponible en `/es/projects/orbital-signal` y `/en/projects/orbital-signal`. La opción controla presentación, no privacidad ni disponibilidad de la ruta.
 
-La sección de inicio presenta una card por vista en un carrusel. El orden y la disponibilidad siguen dependiendo de `archiveProjects` y `showInArchive`, sin filtros adicionales ni duplicación de contenido. Los controles, mensajes de posición y etiquetas del carrusel se editan en `dictionary.projects.carousel` en ES/EN. El total y el título anunciado se calculan a partir de los proyectos publicados; no se mantienen contadores manuales. Cada card presenta solo la imagen, el nombre breve, una frase y el CTA «Explorar proyecto» / «Explore project». No muestra rótulos repetidos, contexto, fecha, stack ni bloque de aporte. El botón es un enlace de navegación con apariencia primaria; la imagen, el texto y el espacio de la card no abren el caso. Stack, aporte y atribuciones permanecen completos en el detalle, también sin JavaScript. No se recorta texto mediante line clamp.
+La sección de inicio presenta una card por vista en un carrusel. El orden y la disponibilidad siguen dependiendo de `archiveProjects` y `showInArchive`, sin filtros adicionales ni duplicación de contenido. Los controles, mensajes de posición y etiquetas del carrusel se editan en `dictionary.projects.carousel` en ES/EN. El total y el título anunciado se calculan a partir de los proyectos publicados; no se mantienen contadores manuales. El contenido completo, incluido el aporte y las atribuciones, permanece en las cards y en el HTML sin JavaScript.
 
 ### Caso empresarial MFA confirmado
 

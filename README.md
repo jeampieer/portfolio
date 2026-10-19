@@ -28,7 +28,7 @@ Las versiones exactas están en [`package-lock.json`](package-lock.json). Las te
 
 - Contenido y detalles de proyectos en ES/EN, con cambio de idioma que conserva el caso abierto.
 - Modo oscuro en cada apertura o recarga, con cambio manual a claro durante la visita.
-- Carrusel de proyectos con imagen, nombre breve, una frase y CTA primario «Explorar proyecto». Incluye flechas, contador, selección directa y desplazamiento táctil, sin avance automático. Las galerías conservan acceso a las capturas originales.
+- Carrusel de proyectos con flechas, contador, selección directa y desplazamiento táctil, sin avance automático. Las galerías conservan acceso a las capturas originales.
 - Experiencias y comunidad con capturas completas de las publicaciones de mi universidad y mi empresa en LinkedIn. La [guía de contenido](docs/content.md#experiencias-y-comunidad) explica cómo actualizarlas en `public/images/experiences/`.
 - Educación en UTP e IDAT e idiomas con sus niveles confirmados, disponibles en ES/EN.
 - Laboratorio orbital con controles de trayectoria, velocidad, pausa y reinicio.
