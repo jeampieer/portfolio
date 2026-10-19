@@ -1,5 +1,57 @@
 import { expect, test } from "@playwright/test";
 
+test("floating arrows sit on opposite card edges and stay usable on desktop and mobile", async ({
+    page,
+}) => {
+    await page.emulateMedia({ reducedMotion: "reduce" });
+    for (const width of [1440, 768, 390, 360]) {
+        await page.setViewportSize({ width, height: 1800 });
+        await page.goto("/es#projects");
+        const carousel = page.locator(".project-carousel");
+        await expect(carousel).toHaveAttribute("data-ready", "true");
+        const card = await carousel.locator("article").first().boundingBox();
+        const previous = carousel.getByRole("button", { name: "Proyecto anterior", exact: true });
+        const next = carousel.getByRole("button", { name: "Proyecto siguiente", exact: true });
+        for (const [button, edge] of [
+            [previous, card!.x],
+            [next, card!.x + card!.width],
+        ] as const) {
+            const bounds = await button.boundingBox();
+            expect(bounds!.width).toBeGreaterThanOrEqual(44);
+            expect(bounds!.height).toBeGreaterThanOrEqual(44);
+            expect(bounds!.x).toBeGreaterThanOrEqual(0);
+            expect(bounds!.x + bounds!.width).toBeLessThanOrEqual(width);
+            expect(bounds!.x).toBeLessThan(edge);
+            expect(bounds!.x + bounds!.width).toBeGreaterThan(edge);
+            expect(
+                Math.abs(bounds!.y + bounds!.height / 2 - (card!.y + card!.height / 2))
+            ).toBeLessThan(2);
+        }
+        if (width < 768) {
+            const info = await carousel
+                .locator(".project-info")
+                .first()
+                .evaluate((element) => {
+                    const bounds = element.getBoundingClientRect();
+                    const style = getComputedStyle(element);
+                    return {
+                        left: bounds.left + parseFloat(style.paddingLeft),
+                        right: bounds.right - parseFloat(style.paddingRight),
+                    };
+                });
+            const left = await previous.boundingBox();
+            const right = await next.boundingBox();
+            expect(left!.x + left!.width).toBeLessThanOrEqual(info.left);
+            expect(right!.x).toBeGreaterThanOrEqual(info.right);
+        }
+        await next.click();
+        await expect(carousel.locator(".project-carousel-count")).toHaveText("02/ 03");
+        await expect(page).toHaveURL(/\/es#projects$/);
+        await previous.click();
+        await expect(carousel.locator(".project-carousel-count")).toHaveText("01/ 03");
+    }
+});
+
 test("carousel controls preserve focus, boundaries and direct project navigation", async ({
     page,
 }) => {

@@ -327,3 +327,20 @@ Se revisó visualmente el build de producción a **1440px ES oscuro** (GM Social
 - [Registro de estilos y escenarios](previews/project-cta/visual-results.json).
 
 Límites: Chromium y touch simulado, sin Safari/Firefox ni dispositivos físicos. Axe no acredita conformidad WCAG completa y no se midió conversión. Se actualizaron las guías de sistema visual y pruebas; la arquitectura y el contenido no cambian. Tras `verify` solo se añadieron este registro y las capturas, con formato y diff comprobados por separado. El servidor temporal de producción se detuvo y el desarrollo permanece activo en http://127.0.0.1:3000/es#projects. Cierre con commit local, sin push ni despliegue.
+
+## Flechas flotantes del carrusel (2026-10-19)
+
+Las flechas anterior/siguiente se superponen sobre los bordes izquierdo/derecho de la card, centradas verticalmente. Son circulares, de **48px** en escritorio/tablet y **44px** en móvil, con fondo de tema al 88%, blur de 8px, borde visible, hover de acento y foco interior. En móvil sobresalen 16px hacia fuera; el padding lateral del texto pasa de 24px a 32px para mantener separación. El contador permanece arriba y los selectores directos debajo. Se conservan contenido, CTA, orden, límites, foco, gesto táctil y movimiento reducido.
+
+`project-carousel-stage` reúne track y controles en una capa aislada; las flechas no se desplazan con los proyectos y quedan sobre el enlace extendido de la card. Solo los botones capturan eventos, dejando el resto del área disponible para swipe y navegación. No se añadieron dependencias ni lógica de navegación. Sin JavaScript, flechas/contador/paginación permanecen ocultos y los enlaces y scroll nativo siguen disponibles.
+
+**Node 24.22.0**, Next **16.3.8**: `npm run verify` terminó con código **0**: lint, tipos, formato, build actualizado y **50/50 E2E** en **50.5 s**. El recorrido nuevo comprueba posición sobre bordes opuestos, centrado, tamaño táctil, límites del viewport, separación respecto al texto móvil y clic de navegación sin abrir el caso a **1440/768/390/360px**. Pasaron también los recorridos de foco/límites, swipe mediante CDP, teclado, CTA, movimiento reducido, acceso sin JavaScript y las **156 combinaciones** responsive, junto a las comprobaciones axe existentes.
+
+Se revisaron capturas de producción a **1440px ES oscuro** (GM Social), **390px EN claro** (IPERC) y **768px ES claro** (MFA), con comprobación geométrica adicional a **360px EN oscuro**. Las flechas permanecieron centradas e íntegramente dentro del viewport, las cards conservaron alturas iguales en cada escenario y no se observaron overflow horizontal ni errores de página/consola. La revisión adicional comprobó anterior/siguiente y foco mediante Tab en los cuatro escenarios. Las capturas incluyen todo el ancho para mostrar la parte exterior de las flechas y usan viewports altos para conservar la sección completa debajo del header visible. No se ocultó contenido ni controles.
+
+- [Escritorio ES oscuro](previews/floating-carousel/es-dark-1440.png).
+- [Móvil EN claro](previews/floating-carousel/en-light-390.png).
+- [Tablet ES claro](previews/floating-carousel/es-light-768.png).
+- [Geometría y escenarios](previews/floating-carousel/visual-results.json).
+
+Límites: Chromium, touch simulado y revisión visual seleccionada, sin Safari/Firefox ni dispositivos físicos. Axe no certifica conformidad WCAG completa. Se actualizaron arquitectura, sistema visual y pruebas; no hubo cambios de contenido ES/EN. Tras `verify` solo se añadieron evidencias y documentación, con formato y diff comprobados por separado. El servidor temporal de producción se detuvo y el desarrollo permanece activo en http://127.0.0.1:3000/es#projects. Cierre con commit local, sin push ni despliegue.

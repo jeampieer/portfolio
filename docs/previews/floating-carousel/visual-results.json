@@ -1,0 +1,239 @@
+{
+    "dateLima": "2026-10-19",
+    "origin": "local production build",
+    "captureNote": "Viewport heights are adjusted to fit the section below the visible fixed header. Captures include the full viewport width so both floating arrows remain visible outside the card. No UI content or controls were hidden. Light mode was enabled with the visible theme toggle.",
+    "scenarios": [
+        {
+            "locale": "es",
+            "theme": "dark",
+            "width": 1440,
+            "index": 0,
+            "viewport": {
+                "width": 1440,
+                "height": 1161
+            },
+            "dimensions": {
+                "client": 1440,
+                "scroll": 1425
+            },
+            "cards": [
+                {
+                    "title": "GM Social — Gestión de estudios y trabajo de campo",
+                    "x": 72.5,
+                    "y": 379.71875,
+                    "width": 1280,
+                    "height": 608.8125
+                },
+                {
+                    "title": "IPERC Antapaccay — Gestión de riesgos y permisos de trabajo",
+                    "x": 1376.5,
+                    "y": 379.71875,
+                    "width": 1280,
+                    "height": 608.8125
+                },
+                {
+                    "title": "Servicio MFA para plataformas empresariales",
+                    "x": 2680.5,
+                    "y": 379.71875,
+                    "width": 1280,
+                    "height": 608.8125
+                }
+            ],
+            "arrows": [
+                {
+                    "label": "Proyecto anterior",
+                    "disabled": "true",
+                    "x": 48.5,
+                    "y": 660.125,
+                    "width": 48,
+                    "height": 48,
+                    "background": "color(srgb 0.0588235 0.0666667 0.0823529 / 0.88)"
+                },
+                {
+                    "label": "Proyecto siguiente",
+                    "disabled": "false",
+                    "x": 1328.5,
+                    "y": 660.125,
+                    "width": 48,
+                    "height": 48,
+                    "background": "color(srgb 0.0588235 0.0666667 0.0823529 / 0.88)"
+                }
+            ],
+            "errors": []
+        },
+        {
+            "locale": "en",
+            "theme": "light",
+            "width": 390,
+            "index": 1,
+            "viewport": {
+                "width": 390,
+                "height": 1496
+            },
+            "dimensions": {
+                "client": 390,
+                "scroll": 390
+            },
+            "cards": [
+                {
+                    "title": "GM Social — Social study and fieldwork management",
+                    "x": -366,
+                    "y": 358.015625,
+                    "width": 358,
+                    "height": 989.375
+                },
+                {
+                    "title": "IPERC Antapaccay — Risk assessment and work permit management",
+                    "x": 16,
+                    "y": 358.015625,
+                    "width": 358,
+                    "height": 989.375
+                },
+                {
+                    "title": "MFA service for enterprise platforms",
+                    "x": 398,
+                    "y": 358.015625,
+                    "width": 358,
+                    "height": 989.375
+                }
+            ],
+            "arrows": [
+                {
+                    "label": "Previous project",
+                    "disabled": "false",
+                    "x": 0,
+                    "y": 830.703125,
+                    "width": 44,
+                    "height": 44,
+                    "background": "color(srgb 0.960784 0.968627 0.972549 / 0.88)"
+                },
+                {
+                    "label": "Next project",
+                    "disabled": "false",
+                    "x": 346,
+                    "y": 830.703125,
+                    "width": 44,
+                    "height": 44,
+                    "background": "color(srgb 0.960784 0.968627 0.972549 / 0.88)"
+                }
+            ],
+            "errors": []
+        },
+        {
+            "locale": "es",
+            "theme": "light",
+            "width": 768,
+            "index": 2,
+            "viewport": {
+                "width": 768,
+                "height": 1484
+            },
+            "dimensions": {
+                "client": 768,
+                "scroll": 753
+            },
+            "cards": [
+                {
+                    "title": "GM Social — Gestión de estudios y trabajo de campo",
+                    "x": -1394,
+                    "y": 369.5,
+                    "width": 689,
+                    "height": 942.03125
+                },
+                {
+                    "title": "IPERC Antapaccay — Gestión de riesgos y permisos de trabajo",
+                    "x": -681,
+                    "y": 369.5,
+                    "width": 689,
+                    "height": 942.03125
+                },
+                {
+                    "title": "Servicio MFA para plataformas empresariales",
+                    "x": 32,
+                    "y": 369.5,
+                    "width": 689,
+                    "height": 942.03125
+                }
+            ],
+            "arrows": [
+                {
+                    "label": "Proyecto anterior",
+                    "disabled": "false",
+                    "x": 8,
+                    "y": 816.515625,
+                    "width": 48,
+                    "height": 48,
+                    "background": "color(srgb 0.960784 0.968627 0.972549 / 0.88)"
+                },
+                {
+                    "label": "Proyecto siguiente",
+                    "disabled": "true",
+                    "x": 697,
+                    "y": 816.515625,
+                    "width": 48,
+                    "height": 48,
+                    "background": "color(srgb 0.960784 0.968627 0.972549 / 0.88)"
+                }
+            ],
+            "errors": []
+        },
+        {
+            "locale": "en",
+            "theme": "dark",
+            "width": 360,
+            "index": 0,
+            "viewport": {
+                "width": 360,
+                "height": 1518
+            },
+            "dimensions": {
+                "client": 360,
+                "scroll": 360
+            },
+            "cards": [
+                {
+                    "title": "GM Social — Social study and fieldwork management",
+                    "x": 16,
+                    "y": 357.515625,
+                    "width": 328,
+                    "height": 1011.296875
+                },
+                {
+                    "title": "IPERC Antapaccay — Risk assessment and work permit management",
+                    "x": 368,
+                    "y": 357.515625,
+                    "width": 328,
+                    "height": 1011.296875
+                },
+                {
+                    "title": "MFA service for enterprise platforms",
+                    "x": 720,
+                    "y": 357.515625,
+                    "width": 328,
+                    "height": 1011.296875
+                }
+            ],
+            "arrows": [
+                {
+                    "label": "Previous project",
+                    "disabled": "true",
+                    "x": 0,
+                    "y": 841.15625,
+                    "width": 44,
+                    "height": 44,
+                    "background": "color(srgb 0.0588235 0.0666667 0.0823529 / 0.88)"
+                },
+                {
+                    "label": "Next project",
+                    "disabled": "false",
+                    "x": 316,
+                    "y": 841.15625,
+                    "width": 44,
+                    "height": 44,
+                    "background": "color(srgb 0.0588235 0.0666667 0.0823529 / 0.88)"
+                }
+            ],
+            "errors": []
+        }
+    ]
+}

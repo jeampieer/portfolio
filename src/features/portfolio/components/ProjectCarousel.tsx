@@ -99,14 +99,16 @@ export function ProjectCarousel({
                     <MoveHorizontal size={16} aria-hidden="true" />
                     {labels.hint}
                 </p>
+                <p className="project-carousel-count mono" aria-hidden="true">
+                    <span>{String(active + 1).padStart(2, "0")}</span>
+                    <span>/ {String(items.length).padStart(2, "0")}</span>
+                </p>
+            </div>
+            <div className="project-carousel-stage">
                 <div className="project-carousel-controls" inert={!ready} aria-hidden={!ready}>
-                    <p className="project-carousel-count mono" aria-hidden="true">
-                        <span>{String(active + 1).padStart(2, "0")}</span>
-                        <span>/ {String(items.length).padStart(2, "0")}</span>
-                    </p>
                     <button
                         type="button"
-                        className="project-carousel-arrow"
+                        className="project-carousel-arrow project-carousel-previous"
                         aria-label={labels.previous}
                         aria-controls="project-carousel-track"
                         aria-disabled={active === 0}
@@ -116,7 +118,7 @@ export function ProjectCarousel({
                     </button>
                     <button
                         type="button"
-                        className="project-carousel-arrow"
+                        className="project-carousel-arrow project-carousel-next"
                         aria-label={labels.next}
                         aria-controls="project-carousel-track"
                         aria-disabled={active === items.length - 1}
@@ -125,51 +127,51 @@ export function ProjectCarousel({
                         <ArrowRight size={20} aria-hidden="true" />
                     </button>
                 </div>
-            </div>
-            <div
-                ref={trackRef}
-                id="project-carousel-track"
-                className="project-list"
-                role="group"
-                tabIndex={0}
-                aria-label={labels.track}
-                onKeyDown={(event) => {
-                    if (
-                        event.target !== event.currentTarget ||
-                        event.altKey ||
-                        event.ctrlKey ||
-                        event.metaKey
-                    )
-                        return;
-                    const destination = {
-                        ArrowLeft: Math.max(0, active - 1),
-                        ArrowRight: Math.min(items.length - 1, active + 1),
-                        Home: 0,
-                        End: items.length - 1,
-                    }[event.key];
-                    if (destination === undefined) return;
-                    event.preventDefault();
-                    goTo(destination);
-                }}
-                onFocusCapture={(event) => {
-                    const slide = (event.target as HTMLElement).closest<HTMLElement>(
-                        "[data-project-slide]"
-                    );
-                    if (slide) goTo(Number(slide.dataset.projectSlide), false);
-                }}
-            >
-                {Children.map(children, (child, index) => (
-                    <div
-                        className="project-slide"
-                        id={`project-slide-${items[index].slug}`}
-                        data-project-slide={index}
-                        role="group"
-                        aria-roledescription={labels.slide}
-                        aria-labelledby={`project-${items[index].slug}`}
-                    >
-                        {child}
-                    </div>
-                ))}
+                <div
+                    ref={trackRef}
+                    id="project-carousel-track"
+                    className="project-list"
+                    role="group"
+                    tabIndex={0}
+                    aria-label={labels.track}
+                    onKeyDown={(event) => {
+                        if (
+                            event.target !== event.currentTarget ||
+                            event.altKey ||
+                            event.ctrlKey ||
+                            event.metaKey
+                        )
+                            return;
+                        const destination = {
+                            ArrowLeft: Math.max(0, active - 1),
+                            ArrowRight: Math.min(items.length - 1, active + 1),
+                            Home: 0,
+                            End: items.length - 1,
+                        }[event.key];
+                        if (destination === undefined) return;
+                        event.preventDefault();
+                        goTo(destination);
+                    }}
+                    onFocusCapture={(event) => {
+                        const slide = (event.target as HTMLElement).closest<HTMLElement>(
+                            "[data-project-slide]"
+                        );
+                        if (slide) goTo(Number(slide.dataset.projectSlide), false);
+                    }}
+                >
+                    {Children.map(children, (child, index) => (
+                        <div
+                            className="project-slide"
+                            id={`project-slide-${items[index].slug}`}
+                            data-project-slide={index}
+                            role="group"
+                            aria-roledescription={labels.slide}
+                            aria-labelledby={`project-${items[index].slug}`}
+                        >
+                            {child}
+                        </div>
+                    ))}
+                </div>
             </div>
             <div
                 className="project-carousel-pagination"

@@ -1071,23 +1071,33 @@
     flex-shrink: 0;
     color: var(--accent);
 }
+.project-carousel-stage {
+    position: relative;
+    display: grid;
+    isolation: isolate;
+}
 .project-carousel-controls {
+    position: absolute;
+    inset: 0 0 20px;
+    z-index: 4;
     display: flex;
     align-items: center;
-    gap: 8px;
+    justify-content: space-between;
+    pointer-events: none;
 }
 .project-carousel-controls,
+.project-carousel-count,
 .project-carousel-pagination {
     visibility: hidden;
 }
 .project-carousel[data-ready="true"] .project-carousel-controls,
+.project-carousel[data-ready="true"] .project-carousel-count,
 .project-carousel[data-ready="true"] .project-carousel-pagination {
     visibility: visible;
 }
 .project-carousel-count {
     display: flex;
     gap: 8px;
-    margin-right: 12px;
     font-size: 12px;
     white-space: nowrap;
     color: var(--text-secondary);
@@ -1098,25 +1108,38 @@
 .project-carousel-arrow {
     display: grid;
     place-items: center;
-    width: 44px;
-    height: 44px;
+    width: 48px;
+    height: 48px;
     flex-shrink: 0;
     border: 1px solid var(--border);
-    border-radius: 8px;
-    background: var(--card-bg);
+    border-radius: 50%;
+    background: color-mix(in srgb, var(--bg-primary) 88%, transparent);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 4px 16px color-mix(in srgb, var(--bg-primary) 24%, transparent);
     color: var(--text-primary);
     cursor: pointer;
+    pointer-events: auto;
     transition:
         border-color var(--motion-fast),
-        background var(--motion-fast);
+        background var(--motion-fast),
+        color var(--motion-fast);
+}
+.project-carousel-previous {
+    transform: translateX(-50%);
+}
+.project-carousel-next {
+    transform: translateX(50%);
+}
+.project-carousel-arrow:focus-visible {
+    outline-offset: -4px;
 }
 .project-carousel-arrow:hover:not([aria-disabled="true"]) {
     border-color: var(--accent);
-    background: var(--glow);
+    background: var(--surface);
+    color: var(--accent);
 }
 .project-carousel-arrow[aria-disabled="true"] {
     color: var(--text-secondary);
-    opacity: 0.45;
     cursor: default;
 }
 .project-list {
@@ -2494,11 +2517,20 @@ input[type="range"] {
         font-size: 12px;
     }
     .project-carousel-count {
-        margin-right: 0;
         gap: 4px;
     }
+    .project-carousel-arrow {
+        width: 44px;
+        height: 44px;
+    }
+    .project-carousel-previous {
+        transform: translateX(-16px);
+    }
+    .project-carousel-next {
+        transform: translateX(16px);
+    }
     .project-carousel .project-info {
-        padding: 24px;
+        padding: 24px 32px;
     }
     .project-info h3 {
         font-size: 28px;
