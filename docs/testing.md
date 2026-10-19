@@ -48,7 +48,7 @@ Cada agente cierra una tarea con cambios mediante un commit local de su trabajo,
 
 Los recorridos UX comprueban ocho secciones principales, proceso dentro de identidad, orden GM Social/IPERC/MFA, aporte localizado, Educación, Más y CV móvil. El cambio ES/EN conserva anclas y slug. Se prueba el disclosure nativo y el CV con JavaScript deshabilitado.
 
-Las cards se prueban con hover y foco: las informativas no se transforman, las enlazadas elevan 3px y eliminan desplazamiento bajo movimiento reducido. Se comprueba pausa del laboratorio fuera de viewport, cambio dinámico de preferencia y ausencia de errores de hidratación/navegación ES/EN.
+Las cards se prueban con hover y foco: las informativas no se transforman, las enlazadas elevan 3px y eliminan desplazamiento bajo movimiento reducido. El CTA primario «Explorar proyecto» mide al menos 48px de alto, mantiene su aspecto base al pasar por la card y solo cambia al color de hover y eleva 2px con el puntero directamente encima. Se comprueba su foco visible y la eliminación del desplazamiento con movimiento reducido. También se comprueba pausa del laboratorio fuera de viewport, cambio dinámico de preferencia y ausencia de errores de hidratación/navegación ES/EN.
 
 El visor se prueba con teclado y touch simulado: apertura, anterior/siguiente, foco cíclico, Escape, tamaño original con desplazamiento, ajuste sin overflow, atribuciones/avisos y devolución del foco/scroll. Los originales siguen accesibles sin JavaScript. Las variantes 404 conservan HTML de recuperación sin JavaScript; el proxy asigna HTTP 404 a parámetros no publicados y deja pasar los recursos estáticos. La 404 global conserva el oscuro inicial, carga las fuentes y ofrece recuperaciones ES/EN; la localizada vuelve a Proyectos.
 

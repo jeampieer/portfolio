@@ -79,12 +79,14 @@ export function MissionArchive({
                                 ))}
                             </ul>
                             <Link
-                                className="text-link project-card-action"
+                                className="project-card-action"
                                 aria-describedby={`project-${project.slug}`}
                                 href={`/${locale}/projects/${project.slug}`}
                             >
-                                {labels.detail}
-                                <ArrowUpRight size={18} />
+                                <span className="button button-primary project-card-cta">
+                                    {labels.detail}
+                                    <ArrowUpRight size={18} aria-hidden="true" />
+                                </span>
                             </Link>
                         </div>
                     </article>

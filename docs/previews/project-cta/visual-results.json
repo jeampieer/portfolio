@@ -1,0 +1,107 @@
+{
+    "dateLima": "2026-10-19",
+    "origin": "local production build",
+    "captureNote": "Section captures use tall viewports to keep the full section visible below the fixed header. No content or controls were hidden. Desktop screenshots show direct CTA hover and keyboard focus after Tab navigation. Mobile captures the default CTA. Light mode was enabled using the visible theme control.",
+    "scenarios": [
+        {
+            "locale": "es",
+            "theme": "dark",
+            "width": 1440,
+            "height": 1500,
+            "index": 0,
+            "mobile": false,
+            "title": "GM Social — Gestión de estudios y trabajo de campo",
+            "base": {
+                "width": 193.90625,
+                "height": 48,
+                "background": "rgb(89, 225, 231)",
+                "color": "rgb(15, 17, 21)",
+                "transform": "none",
+                "outline": "none"
+            },
+            "hover": {
+                "width": 193.90625,
+                "height": 48,
+                "background": "rgb(126, 235, 240)",
+                "color": "rgb(15, 17, 21)",
+                "transform": "matrix(1, 0, 0, 1, 0, -2)",
+                "outline": "none"
+            },
+            "focus": {
+                "width": 193.90625,
+                "height": 48,
+                "background": "rgb(89, 225, 231)",
+                "color": "rgb(15, 17, 21)",
+                "transform": "none",
+                "outline": "solid"
+            },
+            "dimensions": {
+                "client": 1440,
+                "scroll": 1425
+            },
+            "errors": []
+        },
+        {
+            "locale": "en",
+            "theme": "light",
+            "width": 390,
+            "height": 1900,
+            "index": 1,
+            "mobile": true,
+            "title": "IPERC Antapaccay — Risk assessment and work permit management",
+            "base": {
+                "width": 177.109375,
+                "height": 48,
+                "background": "rgb(8, 119, 125)",
+                "color": "rgb(255, 255, 255)",
+                "transform": "none",
+                "outline": "none"
+            },
+            "hover": null,
+            "focus": null,
+            "dimensions": {
+                "client": 390,
+                "scroll": 390
+            },
+            "errors": []
+        },
+        {
+            "locale": "en",
+            "theme": "light",
+            "width": 1440,
+            "height": 1500,
+            "index": 2,
+            "mobile": false,
+            "title": "MFA service for enterprise platforms",
+            "base": {
+                "width": 177.109375,
+                "height": 48,
+                "background": "rgb(8, 119, 125)",
+                "color": "rgb(255, 255, 255)",
+                "transform": "none",
+                "outline": "none"
+            },
+            "hover": {
+                "width": 177.109375,
+                "height": 48,
+                "background": "rgb(7, 92, 97)",
+                "color": "rgb(255, 255, 255)",
+                "transform": "matrix(1, 0, 0, 1, 0, -2)",
+                "outline": "none"
+            },
+            "focus": {
+                "width": 177.109375,
+                "height": 48,
+                "background": "rgb(8, 119, 125)",
+                "color": "rgb(255, 255, 255)",
+                "transform": "none",
+                "outline": "solid"
+            },
+            "dimensions": {
+                "client": 1440,
+                "scroll": 1425
+            },
+            "errors": []
+        }
+    ]
+}

@@ -607,7 +607,7 @@ test("native disclosures and archive navigation work without JavaScript on mobil
     await context.close();
 });
 
-test("informational cards stay stable and project hover also follows keyboard focus", async ({
+test("project CTA responds to direct hover and keyboard focus while preserving card interactions", async ({
     page,
 }) => {
     await page.goto("/es#about");
@@ -618,12 +618,27 @@ test("informational cards stay stable and project hover also follows keyboard fo
     await expect(identity).toHaveCSS("transform", "none");
     const project = page.locator(".project-card").first();
     await project.scrollIntoViewIfNeeded();
-    await project.hover();
+    await project.hover({ position: { x: 8, y: 8 } });
     await expect(project).toHaveCSS("transform", "matrix(1, 0, 0, 1, 0, -3)");
+    const action = project.getByRole("link", { name: "Explorar proyecto", exact: true });
+    const cta = action.locator(".project-card-cta");
+    await expect(cta).toHaveCSS("transform", "none");
+    const initialBackground = await cta.evaluate(
+        (element) => getComputedStyle(element).backgroundColor
+    );
+    expect((await cta.boundingBox())!.height).toBeGreaterThanOrEqual(48);
+    await cta.hover();
+    await expect(cta).toHaveCSS("transform", "matrix(1, 0, 0, 1, 0, -2)");
+    expect(await cta.evaluate((element) => getComputedStyle(element).backgroundColor)).not.toBe(
+        initialBackground
+    );
     await page.mouse.move(0, 0);
-    await project.getByRole("link", { name: "Explorar proyecto", exact: true }).focus();
+    await action.focus();
+    await expect(cta).toHaveCSS("outline-style", "solid");
     await expect(project).toHaveCSS("transform", "matrix(1, 0, 0, 1, 0, -3)");
     await page.emulateMedia({ reducedMotion: "reduce" });
+    await cta.hover();
+    await expect(cta).toHaveCSS("transform", "none");
     await expect(project).toHaveCSS("transform", "none");
 });
 

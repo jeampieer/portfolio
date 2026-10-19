@@ -35,7 +35,7 @@ La revisión automatizada de contraste/accesibilidad y la inspección responsive
 
 El visor usa la misma superficie, borde, tipografía y controles que el sitio, con opacidad de 160ms al abrir/cerrar mediante transiciones discretas de dialog. El fondo queda inerte y la captura completa se ajusta con contain; tamaño original habilita scroll nativo. Movimiento reducido elimina las transiciones y las transformaciones de hover; no se recorta el foco en los enlaces de imagen. La 404 reutiliza marca y estilos de recuperación en ambos temas.
 
-La marca usa el ancla nativa `/{locale}#top` para volver arriba incluso al repetir el mismo destino. Cada card de proyecto tiene un único enlace de detalle cuya área cubre toda la card, con foco visible en su contorno y contexto del título; no se anidan enlaces ni se convierte la card en un botón. La navegación entre cards se controla desde una isla cliente independiente.
+La marca usa el ancla nativa `/{locale}#top` para volver arriba incluso al repetir el mismo destino. Cada card de proyecto tiene un único enlace de detalle cuya área cubre toda la card, con foco visible en su contorno y contexto del título; no se anidan enlaces ni se convierte la card en un botón. «Explorar proyecto» / «Explore project» se presenta como CTA primario cian de al menos 48px de alto. Su superficie visual queda sobre el enlace extendido para que solo el hover directo del CTA active el cambio a `accent-hover` y una elevación de 2px en 180ms; pasar sobre el resto de la card conserva el aspecto base del CTA. El foco de teclado resalta también el CTA y movimiento reducido elimina su desplazamiento. La navegación entre cards se controla desde una isla cliente independiente.
 
 ## Carrusel del archivo de proyectos
 

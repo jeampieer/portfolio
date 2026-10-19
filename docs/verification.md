@@ -312,3 +312,18 @@ Cada apertura o recarga de documento comienza en oscuro, incluso si el sistema o
 La matriz responsive ahora activa el claro mediante el botón visible de cada documento y cubre **156 combinaciones**: seis anchos × ES/EN × seis vistas con ambos temas, más la 404 global solo en oscuro, que no ofrece selector. Pasó sin overflow ni errores de ejecución/hidratación observados, junto a las comprobaciones axe y recorridos sin JavaScript existentes. La paleta y el layout no cambiaron; no se añadieron nuevas capturas de revisión. La cobertura sigue limitada a Chromium y no certifica conformidad WCAG completa.
 
 Se actualizaron README y las guías de arquitectura, sistema visual, seguridad y pruebas. Tras la cadena completa solo se añadió este registro, con formato y diff comprobados por separado. El desarrollo permanece activo en http://127.0.0.1:3000/es#projects. Cierre con commit local, sin push ni despliegue.
+
+## CTA de proyectos con hover (2026-10-19)
+
+«Explorar proyecto» / «Explore project» usa la apariencia primaria del sistema: fondo de acento, texto de contraste y altura de **48px**. El hover directo cambia a `accent-hover` y eleva el CTA **2px** en **180ms**. Se conserva el único enlace extendido de cada card; su superficie visual queda encima del overlay para que el hover del resto de la card no active el efecto del CTA. La navegación por teclado resalta el control y el contorno de la card; movimiento reducido elimina los desplazamientos. El contenido, los títulos, las atribuciones, el carrusel y la apertura desde toda la card permanecen como en la versión restaurada. No se añadieron dependencias ni JavaScript.
+
+**Node 24.22.0**, Next **16.3.8**: `npm run verify` terminó con código **0**: lint, tipos, formato, build actualizado y **49/49 E2E** en **50.0 s**. El recorrido de hover/foco comprueba altura, cambio de color y elevación solo sobre el CTA, foco visible y movimiento reducido. Los recorridos existentes verifican navegación ES/EN, clic desde texto/padding, enlace único, acceso sin JavaScript y las **156 combinaciones** responsive; también pasaron las comprobaciones axe existentes.
+
+Se revisó visualmente el build de producción a **1440px ES oscuro** (GM Social con hover y foco de teclado) y **390px EN claro** (IPERC). Una comprobación adicional a **1440px EN claro** sobre MFA confirmó color de hover y foco. Se activó el claro con el selector visible y el foco mediante Tab. No se observaron overflow horizontal ni errores de página/consola. Las capturas por sección usan viewports altos para conservar todo el contenido y dejar el header fijo fuera del elemento, sin ocultar controles.
+
+- [Hover del CTA en escritorio](previews/project-cta/es-dark-1440-hover.png).
+- [Foco de teclado](previews/project-cta/es-dark-1440-focus.png).
+- [CTA en móvil y tema claro](previews/project-cta/en-light-390.png).
+- [Registro de estilos y escenarios](previews/project-cta/visual-results.json).
+
+Límites: Chromium y touch simulado, sin Safari/Firefox ni dispositivos físicos. Axe no acredita conformidad WCAG completa y no se midió conversión. Se actualizaron las guías de sistema visual y pruebas; la arquitectura y el contenido no cambian. Tras `verify` solo se añadieron este registro y las capturas, con formato y diff comprobados por separado. El servidor temporal de producción se detuvo y el desarrollo permanece activo en http://127.0.0.1:3000/es#projects. Cierre con commit local, sin push ni despliegue.

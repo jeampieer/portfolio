@@ -1041,6 +1041,15 @@
     outline: 2px solid var(--accent);
     outline-offset: -4px;
 }
+.project-card-cta {
+    position: relative;
+    z-index: 3;
+    cursor: pointer;
+}
+.project-card-action:focus-visible .project-card-cta {
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
+}
 .project-carousel {
     min-width: 0;
 }
@@ -1362,7 +1371,7 @@
     color: var(--text-primary);
     font-weight: 500;
 }
-.project-info .text-link {
+.project-card-action {
     margin-top: auto;
 }
 .skills-grid {
